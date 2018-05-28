@@ -8,12 +8,21 @@ header {
   position: fixed;
   top: 0px;
   width: 100vw;
+  color: white;
 }
 
 #site-header {
   width: 100%;
   height: 4rem;
-  background-color: black;
+  background-color: blue;
+}
+
+#header-sign-in-buttons-wrap {
+  float: right;
+}
+
+#teach-star {
+  background-image: image-url("/assets/images/star.png");
 }
 
 #page-header {

@@ -8,8 +8,19 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+  <header>
+    <div id="site-header">site header</div>
+    <div id="page-header"> page header
+      <%#do a content for yield here%>
+    </div>
+  </header>
+  <div id="page-frame">
     <%= yield %>
-  </body>
+
+</div>
+<footer>
+tiny things to say on the footer
+</footer>
+</body>
 </html>

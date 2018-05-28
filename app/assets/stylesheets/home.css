@@ -1,0 +1,36 @@
+body {
+  font-family: monospace;
+}
+
+header {
+  /* height: 6rem; */
+  /* border: dotted green 2px; */
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+}
+
+#site-header {
+  width: 100%;
+  height: 4rem;
+  background-color: black;
+}
+
+#page-header {
+  width: 100%;
+  height: 3rem;
+  background-color: rgb(78, 78, 78);
+}
+
+#page-frame {
+  /* border: dotted magenta 3px; */
+  margin-top: 7rem;
+}
+
+footer {
+  width: 100%;
+  height: 1rem;
+  background-color: black;
+  position: fixed;
+  bottom: 0px;
+}

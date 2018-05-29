@@ -4,13 +4,45 @@
     <title>Journal</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
   <header>
-    <div id="site-header">site header</div>
+    <div id="site-header">site header
+
+        <%if false%>
+          <div id="header-sign-in-buttons-wrap">
+            <button id="header-sign-in">sign in</button>
+            <button id="header-sign-in">sign up</button>
+          </div>
+        <%else%>
+        <div id="header-profile-wrap">
+        <div id="stars-wrap">
+        <div id="teach-star-wrap" class="star-wrap">
+            <div id="teach-star-content" class="star-content">
+                5
+            </div>
+        </div>
+    
+        <div id="learn-star-wrap" class="star-wrap">
+            <div id="learn-star-content" class="star-content">
+                5
+            </div>
+        </div>
+        <div id="create-star-wrap" class="star-wrap">
+            <div id="create-star-content" class="star-content">
+                5
+            </div>
+        </div>
+    </div>
+    <div id="header-user-name">hi, user-name</div>
+    
+
+
+          </div>
+        <%end%>
+    </div>
     <div id="page-header"> page header
       <%#do a content for yield here%>
     </div>

@@ -1,12 +1,87 @@
+<button id="header-sign-in">sign in</button>
+
+<div id="stars-wrap">
+    <div id="teach-star-wrap">
+        <div id="teach-star-content">
+            5
+        </div>
+    </div>
+
+    <div id="learn-star-wrap">
+        <div id="learn-star-content">
+            5
+        </div>
+    </div>
+    <div id="create-star-wrap">
+        <div id="create-star-content">
+            5
+        </div>
+    </div>
+</div>
+<div id="header-user-name">hi, user-name</div>
+
+
+
+
+
 <header>
-    <div id="site-header"></div>
-    <div id="page-header"></div>
+    <div id="site-header">
+        <div id="header-sign-in-buttons-wrap">
+            <button id="header-sign-in-button">sign in</button>
+            <button id="header-sign-in-button">sign up</button>
+        </div>
+
+        <div id="header-profile-buttons-wrap">
+            <button>
+                teach star
+            </button>
+            <button>
+                learn star
+            </button>
+            <button>
+                create star
+            </button>
+        </div>
+    </div>
+    <div id="page-header">
+        page header
+    </div>
 </header>
 
-<div id="pageFrame">
+
+<header>
+    <div id="site-header">site header
+
+        <%if false%>
+            <div id="header-sign-in-buttons-wrap">
+                <button id="header-sign-in-button">sign in</button>
+                <button id="header-sign-up-button">sign up</button>
+            </div>
+            <%else%>
 
 
 
-</div>
-<footer>
-</footer>
+
+                <div id="teach-star-wrap">
+
+                </div>
+
+
+                <div id="header-profile-buttons-wrap">
+                    <div id="teach-star">
+
+                        <div id="teach-star-background">
+                            <div id="teach-star-value">5 </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <%end%>
+
+    </div>
+    <div id="page-header"> page header
+        <%#do a content for yield here%>
+    </div>
+</header>

@@ -15,6 +15,12 @@ header {
   background-color: black;
 }
 
+#site-title {
+  padding: 1rem;
+  display: inline-block;
+  font-size: 1.5rem;
+}
+
 #page-header {
   width: 100%;
   height: 3rem;
@@ -23,7 +29,7 @@ header {
 /* HEADER: SIGN IN WRAP -OR- PROFILE WRAP */
 #header-sign-in-buttons-wrap,
 #header-profile-wrap {
-  margin-top: 0px;
+  margin-top: 10px;
   float: right;
   width: 320px;
   height: 2.5rem;
@@ -51,6 +57,7 @@ header {
   height: 2rem;
   background-color: turquoise;
 }
+
 #teach-star-wrap {
   background-color: rgba(87, 3, 130, 0.946);
 }
@@ -59,6 +66,12 @@ header {
 }
 #create-star-wrap {
   background-color: rgb(106, 9, 242);
+  color: gray;
+}
+
+.star-count {
+  transform: translate(0px, 3px);
+  color: rgba(255, 255, 255, 0.775);
 }
 
 .star-content {
@@ -67,6 +80,9 @@ header {
   background-image: url(star.png);
   background-size: contain;
   background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #header-user-name {

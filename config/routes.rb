@@ -2,6 +2,14 @@ Rails.application.routes.draw do
  
   
 
+  resources :questions
+  get 'question/index'
+  get 'question/show'
+  get 'question/new'
+  get 'question/edit'
+  get 'question/create'
+  get 'question/update'
+  get 'question/destroy'
 # get '/', to: 'tutorials#index'
 
 root to: 'tutorials#index'

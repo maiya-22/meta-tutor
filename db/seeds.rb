@@ -23,11 +23,12 @@ require 'faker'
         format: 'video',
         user_id: 1
     )
+    p @tutorial
     @tutorial_ids.push(@tutorial.id)
 end
 
 5.times do |num|
-    @tutorial = Tutorial.create(
+    @tutorial = Tutorial.create!(
         title: "Optional Chaining Operator in JavaScript",
         author: "mpj",
         url: "https://www.youtube.com/watch?v=FKRVqtP8o48",
@@ -37,6 +38,7 @@ end
     @tutorial_ids.push(@tutorial.id)
 end
 
+p @tutorial_ids
 
 # create videos for half of the tutorials
 @video_ids = []
@@ -54,7 +56,7 @@ end
 
 # create chapters for half of the tutorials
 @chapter_ids = []
-(5..10).each do |num|
+(5..9).each do |num|
     @chapter = Chapter.create(
         tutorial_id: @tutorial_ids[num],
         start_page: 1,
@@ -68,8 +70,8 @@ end
 
 
 # make 10 questions for each tutorial:
-@tutorial_ids.each do |tutorial_id|
-    if(Tutorial.find(tutorial_id).format == 'chapter')
+@tutorial_ids.each do |id|
+    if(Tutorial.find(id).format == 'chapter')
         10.times do
             Question.create(
                 title: "title",
@@ -78,10 +80,10 @@ end
                 level: "intermediate",
                 page: rand(1...100),
                 user_id: 1,
-                tutorial_id: tutorial_id
+                tutorial_id: id
             )
         end
-    elsif (Tutorial.find(tutorial_id).format == 'video')
+    elsif (Tutorial.find(id).format == 'video')
         10.times do
             Question.create(
                 title: "title",
@@ -90,7 +92,7 @@ end
                 level: "intermediate",
                 time: rand(1...100),
                 user_id: 1,
-                tutorial_id: tutorial_id
+                tutorial_id: id
             )
         end
     end

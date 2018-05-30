@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question Title:</strong>
+  <%= @question.title %>
+</p>
+
+<p>
+  <strong>Tutorial title:</strong>
+  <%= @question.tutorial.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @question.content %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @question.status %>
+</p>
+<p>
+  <strong>Tutorial format:</strong>
+  <%= @question.tutorial.format %>
+</p>
+<p>
+  <strong>Level:</strong>
+  <%= @question.level %>
+</p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @question.page %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @question.time %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @question.user_id %>
+</p>
+
+<p>
+  <strong>Tutorial:</strong>
+  <%= @question.tutorial_id %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+
+<%= link_to 'Back', tutorial_path %>
+<%= link_to 'Back', questions_path %>
+<a href="/tutorials/1">back to tutorial hard coded</a>
+<a href="/tutorials/">back to tutorial no id</a>
+
+<a href="/tutorials/<%= @question.tutorial.id %>">back to tutorials interpolated</>

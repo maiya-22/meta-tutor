@@ -3,6 +3,8 @@
 <p>
   <strong>Title:</strong>
   <%= @tutorial.title %>
+  </br> tutorial id:
+  <%= @tutorial.id %>
 </p>
 
 <p>
@@ -27,3 +29,23 @@
 
 <%= link_to 'Edit', edit_tutorial_path(@tutorial) %> |
 <%= link_to 'Back', tutorials_path %>
+
+<h1>Questions:</h1>
+
+<%10.times.each do %>
+  <%@questions.each do |question|%>
+    ******************************<br>
+    QUESTION:
+    <p><%=question.title%></p>
+    <p><%=question.content%></p>
+    <p><%=question.user.name%></p>
+    <%if @tutorial.format == "video"%>
+      <p><%=question.time%></p>
+    <%elsif @tutorial.format == "chapter"%>
+    <p><%=question.page%></p>
+    <%end%>
+    <%= link_to 'Show', question %>
+    <%= link_to 'Edit', edit_question_path(question) %>
+    <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%end%>
+<%end%>

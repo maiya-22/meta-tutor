@@ -10,6 +10,12 @@ class TutorialsController < ApplicationController
   # GET /tutorials/1
   # GET /tutorials/1.json
   def show
+    if(@tutorial.format == "video")
+      @questions = Question.where(tutorial_id: @tutorial.id).order(:time)
+    elsif (@tutorial.format == "chapter")
+      @questions = Question.where(tutorial_id: @tutorial.id).order(:page)
+    end
+   
   end
 
   # GET /tutorials/new

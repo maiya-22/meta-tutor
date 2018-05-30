@@ -14,12 +14,23 @@ require 'faker'
 
 # create ten tutorials
 @tutorial_ids = []
-10.times do |num|
+5.times do |num|
     @tutorial = Tutorial.create(
         title: "Optional Chaining Operator in JavaScript",
         author: "mpj",
         url: "https://www.youtube.com/watch?v=FKRVqtP8o48",
         format: 'video',
+        user_id: 1
+    )
+    @tutorial_ids.push(@tutorial.id)
+end
+
+5.times do |num|
+    @tutorial = Tutorial.create(
+        title: "Optional Chaining Operator in JavaScript",
+        author: "mpj",
+        url: "https://www.youtube.com/watch?v=FKRVqtP8o48",
+        format: 'chapter',
         user_id: 1
     )
     @tutorial_ids.push(@tutorial.id)

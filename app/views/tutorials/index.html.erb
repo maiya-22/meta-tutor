@@ -21,7 +21,7 @@
         <td> FORMAT: <%= tutorial.format %></td>
             <%# tutorial.user_id %>
         <td> USER: <%= tutorial.user.name %>
-
+        <td> Format: <%= tutorial.format %></td>
           <%if tutorial.format == "video"%>
               <td>This is a video<td>
               <td><%#=  why isn't this working? tutorial.video%><td>
@@ -29,7 +29,9 @@
               <% if @video != nil %><td>
                   <td><%=@video.duration %><td>
               <% end %>
-        <%end%>
+          <%elsif tutorial.format == "chapter"%>
+            <div>this is a chapter</div>
+          <%end%>
         
         <td><%= link_to 'Show', tutorial %></td>
         <td><%= link_to 'Edit', edit_tutorial_path(tutorial) %></td>

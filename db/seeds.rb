@@ -14,6 +14,7 @@ require 'faker'
 
 # create ten tutorials
 @tutorial_ids = []
+
 5.times do |num|
     @tutorial = Tutorial.create(
         title: "Optional Chaining Operator in JavaScript",
@@ -64,3 +65,33 @@ end
     @chapter_ids.push(@chapter.id)
 end
 
+
+
+# make 10 questions for each tutorial:
+@tutorial_ids.each do |tutorial_id|
+    if(Tutorial.find(tutorial_id).format == 'chapter')
+        10.times do
+            Question.create(
+                title: "title",
+                content: "content",
+                status: "open",
+                level: "intermediate",
+                page: rand(1...100),
+                user_id: 1,
+                tutorial_id: tutorial_id
+            )
+        end
+    elsif (Tutorial.find(tutorial_id).format == 'video')
+        10.times do
+            Question.create(
+                title: "title",
+                content: "content",
+                status: "open",
+                level: "intermediate",
+                time: rand(1...100),
+                user_id: 1,
+                tutorial_id: tutorial_id
+            )
+        end
+    end
+end

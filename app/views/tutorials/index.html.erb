@@ -6,47 +6,59 @@
 <% end %>
 
 
-<%= link_to 'New Tutorial', new_tutorial_path %>
+
 <h1>Tutorials</h1>
 
-<table>
-  
 
-  <tbody>
     <% @tutorials.each do |tutorial| %>
-      <tr>
-        <td> TITLE: <%= tutorial.title %></td>
-        <td> AUTHOR: <%= tutorial.author %></td>
-        <td> URL: <%= tutorial.url %></td>
-        <td> FORMAT: <%= tutorial.format %></td>
-            <%# tutorial.user_id %>
-        <td> USER: <%= tutorial.user.name %>
-        <td> Format: <%= tutorial.format %></td>
+      <div class="tutorials-summary-wrap">
+          <%# tutorial.user_id %>
+          <p>format: <%= tutorial.format %></p>
+          <p>title: <%= tutorial.title %></p>
+          <p>author: <%= tutorial.author %></p>
+          <p>url: <%= tutorial.url %></p>
+          
+          <p>added by: <%= tutorial.user.name %> </p>
           <%if tutorial.format == "video"%>
-              <td>This is a video<td>
-              <td><%#=  why isn't this working? tutorial.video%><td>
-              <td><% @video = Video.where(tutorial_id: tutorial.id)[0]%><td>
-              <% if @video != nil %><td>
-                  <td><%=@video.duration %><td>
-              <% end %>
+            <p>this tutorial is a video:</p>
+            <%#=  why isn't this working? tutorial.video%>
+            <% @video = Video.where(tutorial_id: tutorial.id)[0]%>
+            <% if @video != nil %>
+                  <p>channel: <%=@video.channel %></p>
+                  <p>playlist: <%=@video.playlist %></p>
+                  <p>duration: <%=@video.duration %><p>
+            <% end %>
+            
           <%elsif tutorial.format == "chapter"%>
-            <div>this is a chapter</div>
-          <%end%>
-        
-        <td><%= link_to 'Show', tutorial %></td>
-        <td><%= link_to 'Edit', edit_tutorial_path(tutorial) %></td>
-        <td><%= link_to 'Destroy', tutorial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-     
-
+          <% @chapter = Chapter.where(tutorial_id: tutorial.id)[0]%>
+          <% if @chapter != nil %>
+          <p>book title: <%=@chapter.book_title %></p>
+          <p>book edition: <%=@chapter.book_edition %></p>
+          <p>start page: <%=@chapter.start_page %><p>
+          <p>end page: <%=@chapter.end_page %><p>
+          <p>tutorial_id: <%=@chapter.tutorial_id %><p>
     <% end %>
-  </tbody>
-</table>
+          
+          <%end%>
+          
+          <%= link_to 'Show', tutorial %>
+            <%= link_to 'Edit', edit_tutorial_path(tutorial) %>
+            <%= link_to 'Destroy', tutorial, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
 
-<br>
+  <%end%>
+      
+  
+          
+           
+  
+       
+        
+
+  <%= link_to 'New Tutorial', new_tutorial_path %>
 
 
-<%# adding content to check css behavior%>
-<%1000.times do |num|%>
-  <p>hello</p>
-<%end%>
+
+
+</br>
+

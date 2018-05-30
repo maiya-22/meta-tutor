@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  content: MyText
+  status: MyString
+  level: MyString
+  page: 1.5
+  time: 1.5
+  user_id: 1
+  tutorial_id: 1
+
+two:
+  title: MyString
+  content: MyText
+  status: MyString
+  level: MyString
+  page: 1.5
+  time: 1.5
+  user_id: 1
+  tutorial_id: 1

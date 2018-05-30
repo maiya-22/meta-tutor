@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+
+<% content_for :page_links do %>
+  <%= link_to 'New Tutorial', new_tutorial_path %>
+<% end %>
+
+
+<%= link_to 'New Tutorial', new_tutorial_path %>
+<h1>Tutorials</h1>
+
+<table>
+  
+
+  <tbody>
+    <% @tutorials.each do |tutorial| %>
+      <tr>
+        <td> TITLE: <%= tutorial.title %></td>
+        <td> AUTHOR: <%= tutorial.author %></td>
+        <td> URL: <%= tutorial.url %></td>
+        <td> FORMAT: <%= tutorial.format %></td>
+            <%# tutorial.user_id %>
+        <td> USER: <%= tutorial.user.name %>
+
+          <%if tutorial.format == "video"%>
+              <td>This is a video<td>
+              <td><%#=  why isn't this working? tutorial.video%><td>
+              <td><% @video = Video.where(tutorial_id: tutorial.id)[0]%><td>
+              <% if @video != nil %><td>
+                  <td><%=@video.duration %><td>
+              <% end %>
+        <%end%>
+        
+        <td><%= link_to 'Show', tutorial %></td>
+        <td><%= link_to 'Edit', edit_tutorial_path(tutorial) %></td>
+        <td><%= link_to 'Destroy', tutorial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+     
+
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%# adding content to check css behavior%>
+<%1000.times do |num|%>
+  <p>hello</p>
+<%end%>

@@ -15,3 +15,10 @@
  *= require home
  *= require_self
  */
+
+#flash-notices {
+  position: fixed;
+  top: 0px;
+  background-color: pink;
+  border: orange dotted 3px;
+}

@@ -9,6 +9,16 @@ header {
   color: white;
 }
 
+option {
+  font-size: 0.5rem;
+  -webkit-appearance: none;
+}
+
+input {
+  -webkit-appearance: none;
+  box-shadow: none !important;
+}
+
 #site-header {
   width: 100%;
   height: 3.7rem;
@@ -104,4 +114,20 @@ footer {
   bottom: 0px;
   padding: 0.5rem;
   color: white;
+}
+
+#sign-in-wrap {
+  width: 40vw;
+  height: 40vh;
+  margin: auto;
+  border: dotted darkmagenta 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+.field {
+  padding: 0.5rem;
 }

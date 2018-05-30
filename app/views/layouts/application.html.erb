@@ -50,15 +50,32 @@
             </div>
             
         </div>
-        <div id="header-user-name">user-name</div>
+        <div id="header-user-name">
+        <% if user_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_user_session_path)  %>  
+  </li>
+<% end %>
+        </div>
     </div>
         <%end%>
     </div>
     <div id="page-header"> page header
+        <%= yield :page_links %>
       <%#do a content for yield here%>
     </div>
   </header>
+  <div id="flash-notices">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
   <div id="page-frame">
+
+  
     <%= yield %>
 
 </div>

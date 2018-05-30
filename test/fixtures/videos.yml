@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  playlist: MyString
+  channel: MyString
+  duration: 2018-05-30 08:04:06
+  tutorial_id: MyString
+
+two:
+  playlist: MyString
+  channel: MyString
+  duration: 2018-05-30 08:04:06
+  tutorial_id: MyString

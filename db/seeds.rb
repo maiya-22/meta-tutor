@@ -8,8 +8,12 @@
 
 require 'faker'
 
-@tutorial_ids = []
 
+# create a user by sigining up on the site.  The user will have id = 1
+
+
+# create ten tutorials
+@tutorial_ids = []
 10.times do |num|
     @tutorial = Tutorial.create(
         title: "Optional Chaining Operator in JavaScript",
@@ -22,10 +26,11 @@ require 'faker'
 end
 
 
+# create videos for half of the tutorials
 @video_ids = []
-5.times do |num|
+(0..4).each do |num|
     @video = Video.create(
-        tutorial_id: @tutorial_ids[num-1],
+        tutorial_id: @tutorial_ids[num],
         duration: ActiveSupport::Duration.build(46).parts,
         playlist:"playlist",
         channel: "channel"
@@ -33,14 +38,18 @@ end
     @video_ids.push(@video.id)
 end
 
-# @video_ids = []
-# 5.times do |num|
-#     @video = Chapter.create(
-#         tutorial_id: @tutorial_ids[@video_ids.length + num-1],
-#         duration: ActiveSupport::Duration.build(46).parts,
-#         playlist:"playlist",
-#         channel: "channel"
-#     )
-#     @video_ids.push(@video.id)
-# end
+
+
+# create chapters for half of the tutorials
+@chapter_ids = []
+(5..10).each do |num|
+    @chapter = Chapter.create(
+        tutorial_id: @tutorial_ids[num],
+        start_page: 1,
+        end_page:10,
+        book_title: "I am a book title",
+        book_edition: "I am a book title"
+    )
+    @chapter_ids.push(@chapter.id)
+end
 

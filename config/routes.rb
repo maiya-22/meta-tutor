@@ -2,6 +2,7 @@ Rails.application.routes.draw do
  
   
 
+  resources :answers
   resources :questions
   get 'question/index'
   get 'question/show'

@@ -10,7 +10,7 @@ require 'faker'
 
 
 # create a user by sigining up on the site.  The user will have id = 1
-
+# this is needed, in order for the rest of the seeds to work
 
 # create ten tutorials
 @tutorial_ids = []
@@ -23,7 +23,6 @@ require 'faker'
         format: 'video',
         user_id: 1
     )
-    p @tutorial
     @tutorial_ids.push(@tutorial.id)
 end
 
@@ -38,8 +37,6 @@ end
     @tutorial_ids.push(@tutorial.id)
 end
 
-p @tutorial_ids
-
 # create videos for half of the tutorials
 @video_ids = []
 (0..4).each do |num|
@@ -51,8 +48,6 @@ p @tutorial_ids
     )
     @video_ids.push(@video.id)
 end
-
-
 
 # create chapters for half of the tutorials
 @chapter_ids = []
@@ -67,13 +62,12 @@ end
     @chapter_ids.push(@chapter.id)
 end
 
-
-
 # make 10 questions for each tutorial:
+@question_ids = []
 @tutorial_ids.each do |id|
     if(Tutorial.find(id).format == 'chapter')
         10.times do
-            Question.create(
+            @question = Question.create(
                 title: "title",
                 content: "content",
                 status: "open",
@@ -82,10 +76,11 @@ end
                 user_id: 1,
                 tutorial_id: id
             )
+            @question_ids.push(@question.id)
         end
     elsif (Tutorial.find(id).format == 'video')
         10.times do
-            Question.create(
+            @question = Question.create(
                 title: "title",
                 content: "content",
                 status: "open",
@@ -94,6 +89,20 @@ end
                 user_id: 1,
                 tutorial_id: id
             )
+            @question_ids.push(@question.id)
         end
+    end
+end
+
+# Make 3 answers for each of the questions:
+@question_ids.each do |id|
+    4.times do |num|
+        Answer.create(
+            content: "i am some content of an answer.",
+            votes: 5,
+            approved: true,
+            question_id: id,
+            user_id: 1
+        )
     end
 end

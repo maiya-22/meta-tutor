@@ -55,4 +55,11 @@
 <a href="/tutorials/1">back to tutorial hard coded</a>
 <a href="/tutorials/">back to tutorial no id</a>
 
-<a href="/tutorials/<%= @question.tutorial.id %>">back to tutorials interpolated</>
+<a href="/tutorials/<%= @question.tutorial.id %>">back to tutorials interpolated</a>
+
+<%=@question.answers.length%>
+<%@question.answers.each do |answer|%>
+  </br>
+    <p>ANSWER:</p>
+    <p><%=answer.content%></p>
+<%end%>

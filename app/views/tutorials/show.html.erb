@@ -1,3 +1,9 @@
+
+
+
+
+<div id="#page-top">top of page</div>
+
 **  PUT LINKS HERE TO add a question
 
 <p id="notice"><%= notice %></p>
@@ -32,6 +38,28 @@
 <%= link_to 'Edit', edit_tutorial_path(@tutorial) %> |
 <%= link_to 'Back', tutorials_path %>
 
+
+
+
+<div id="questions-location-links-wrap">
+  <%if @tutorial.format == "chapter"%>
+    <p>auto-scroll to the page you are studying</p>
+    <% @start_point = @questions[0].page %>
+    <% @end_point = @questions.last.page%>
+    <%@i = @start_point%>
+    <%while @i <= @end_point%>
+        <a href="#<%=@i%>">p. <%=@i%></a>
+        <%@i+=1%>
+    <%end%>
+    <p>Start POINT</p>
+    <%=@start_point%>
+    <p>END POINT</p>
+    <%=@end_point%>
+  <%elsif @tutorial.format == "video"%>
+    It's a video
+  <%end%>
+</div>
+
 <h1>Questions:</h1>
 
 <%10.times.each do %>
@@ -47,5 +75,6 @@
     <p><%=question.page%></p>
     <%end%>
     <%= link_to 'Show', question %>
+    <a href="#page-top">back to top of page</a>
   <%end%>
 <%end%>

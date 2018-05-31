@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<h1>PUT A SEARCH BAR HERE TO SEARCH BY AUTHOR AND TITLE</h1>
 
+<div id="page-number-links-wrap">
+
+</div>
 <% content_for :page_links do %>
   <%= link_to 'New Tutorial', new_tutorial_path %>
 <% end %>
@@ -12,10 +16,12 @@
   <a href="#">go to tutorials with tag: <%=tag.name%></a>
 <%end%>
 
-<h1>Tutorials</h1>
 
 
     <% @tutorials.each do |tutorial| %>
+
+
+
       <div class="tutorials-summary-wrap">
           <%# tutorial.user_id %>
           <p>format: <%= tutorial.format %></p>
@@ -58,7 +64,7 @@
            
   
        
-        <%= will_paginate @tutorials%>
+        <%#= will_paginate @tutorials%>
 
   <%= link_to 'New Tutorial', new_tutorial_path %>
 

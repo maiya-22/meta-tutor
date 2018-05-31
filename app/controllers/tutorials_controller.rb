@@ -4,8 +4,8 @@ class TutorialsController < ApplicationController
   # GET /tutorials
   # GET /tutorials.json
   def index
-    # @tutorials = Tutorial.all
-    @tutorials = Tutorial.paginate(:page =>params[:page], :per_page => 2)
+    @tutorials = Tutorial.all
+    # @tutorials = Tutorial.paginate(:page =>params[:page], :per_page => 2)
   end
 
   # GET /tutorials/1

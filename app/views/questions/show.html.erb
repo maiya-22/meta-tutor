@@ -1,82 +1,103 @@
 
-PUT CONTENT HERE FOR THE HEADER:  "ASK ANOTHER QUESTION --> takes you back to the tutorial page and opens a form"
+<% content_for :page_links do %>
+  <%= link_to 'New Tutorial', new_tutorial_path %>
+  PUT CONTENT HERE FOR THE HEADER:  "ASK ANOTHER QUESTION --> takes you back to the tutorial page and opens a form"
+  <a href="/tutorials/<%= @question.tutorial.id %>">back to tutorial interpolated</a>
+<% end %>
 
 
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Question Title:</strong>
-  <%= @question.title %>
-</p>
+<div id="question-page-wrap">
+  <p id="notice"><%= notice %></p>
+  <div id="question-page-question-wrap">
+      <div id="question-status-wrap">
+          <%#make ajax to give a star%>
+          <a class="question-star-vote" href="#">˄</a>
+          <div id="question-stars-wrap">
+            <div id="question-stars-count">
+             5
+            </div>
+            <div id="question-stars-star">
+              ★
+            </div>
+          </div>
+          <a class="question-star-vote" href="#">˅</a>
+      </div>
+      <div id="question-content-wrap"> 
+          <p>
+            <strong>From:</strong>
+            <%= @question.tutorial.title %>
+            </p>
+            <%if @question.tutorial.format == "chapter"%>
+              <p>
+              <strong>p.</strong>
+              <%= @question.page %>
+              </p>
+            <%end%>
+            
+          
+          <p>
+            <strong>Question:</strong>
+            <%= @question.title %>
+          </p>
+          
+          <p>
+            <strong>Content:</strong>
+            <%= @question.content %>
+          </p>
 
-<p>
-  <strong>Tutorial title:</strong>
-  <%= @question.tutorial.title %>
-</p>
+          <p>
+            <strong>Status:</strong>
+            <%= @question.status %>
+          </p>
+        
+          <p>
+            <strong>Level:</strong>
+            <%= @question.level %>
+          </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @question.content %>
-</p>
+        
 
-<p>
-  <strong>Status:</strong>
-  <%= @question.status %>
-</p>
-<p>
-  <strong>Tutorial format:</strong>
-  <%= @question.tutorial.format %>
-</p>
-<p>
-  <strong>Level:</strong>
-  <%= @question.level %>
-</p>
+          <p>
+            <strong>Time:</strong>
+            <%= @question.time %>
+          </p>
 
-<p>
-  <strong>Page:</strong>
-  <%= @question.page %>
-</p>
+          <p>
+            <strong>User:</strong>
+            <%= @question.user_id %>
+          </p>
 
-<p>
-  <strong>Time:</strong>
-  <%= @question.time %>
-</p>
+          <p>
+            <strong>Tutorial:</strong>
+            <%= @question.tutorial_id %>
+          </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @question.user_id %>
-</p>
+          <%= link_to 'Edit', edit_question_path(@question) %> |
+          <%= link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
+  
+       
+      </div>
 
-<p>
-  <strong>Tutorial:</strong>
-  <%= @question.tutorial_id %>
-</p>
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', tutorial_path %>
-<%= link_to 'Back', questions_path %>
-<a href="/tutorials/1">back to tutorial hard coded</a>
-<a href="/tutorials/">back to tutorial no id</a>
-
-<a href="/tutorials/<%= @question.tutorial.id %>">back to tutorials interpolated</a>
-
-<p>number of comments:</p>
-<%=@question.comments.length%>
-<%@question.comments.each do |comment|%>
-  <div class="comment-wrap">
-    <%@comment = comment%>
-    <%= render partial: 'show_comment', locals: {comment: @comment} %>
+     
   </div>
-<%end%>
-<p>**  put a link here to add another comment </p>
+  <p>number of comments:</p>
+  <%=@question.comments.length%>
+  <%@question.comments.each do |comment|%>
+    <div class="comment-wrap">
+      <%@comment = comment%>
+      <%= render partial: 'show_comment', locals: {comment: @comment} %>
+    </div>
+  <%end%>
+  <p>**  put a link here to add another comment </p>
 
 
 
-<%=@question.answers.length%>
-<%@question.answers.each do |answer|%>
-  <div class="answer-wrap">
-    <%@answer = answer%>
-    <%= render partial: 'show_answer', locals: {answer: @answer} %>
+  <%=@question.answers.length%>
+  <%@question.answers.each do |answer|%>
+    <div class="answer-wrap">
+      <%@answer = answer%>
+      <%= render partial: 'show_answer', locals: {answer: @answer} %>
+    </div>
+  <%end%>
   </div>
-<%end%>

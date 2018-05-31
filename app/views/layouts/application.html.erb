@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Journal</title>
     <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
-            <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-                <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' , :defer => "defer" %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' , :defer => "defer" %>
 </head>
-
 <body>
     <header>
         <div id="site-header">
@@ -24,15 +22,22 @@
                     <a href="#">SQL</a>
                 </div>
                 <form id="search-tutorials" action="/tutorials/search" method="GET">
-                    <input type="text" class="searchTerm" placeholder="Search by Title .." name="title">
+                    <input type="text" class="searchTerm" placeholder="Search by title .." name="title">
                     <button type="submit" class="searchButton">search</button>
                 </form>
-                
             </div>
             <div id="header-profile-wrap">
+            <% if user_signed_in? %>
                 <div class="dropdown">
-                    <button><%=current_user.name%></button>
-                  </div>
+                  <button class="dropbtn" onclick="myFunction()">
+                   <%=current_user.name%></button>
+                   <div id="myDropdown" class="dropdown-content">
+                        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>   
+                    </div>
+                </div>
+              <% else %>
+                <%= link_to('log in', new_user_session_path)  %>  
+              <% end %>
                 <div id="stars-wrap">
                     <div class="outter-star-wrap">
                         <p>teach</p>
@@ -61,12 +66,7 @@
                     </div>
                     
                 </div>
-               
-
             </div>
-
-
-
         </div>
         <div id="page-header">
             <%= yield :page_header %>
@@ -82,14 +82,10 @@
         </p>
     </div>
     <div id="page-frame">
-
-
         <%= yield %>
-
     </div>
     <footer>
         contact us @meta-tutor
     </footer>
 </body>
-
 </html>

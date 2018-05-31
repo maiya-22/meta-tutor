@@ -35,7 +35,6 @@ input {
   height: 3.7rem;
   background-color: black;
   display: flex;
-  align-items: center;
 }
 
 #site-title {
@@ -45,16 +44,14 @@ input {
 /* HEADER: SIGN IN WRAP -OR- PROFILE WRAP */
 #header-sign-in-buttons-wrap,
 #header-profile-wrap {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
+  align-items: center; */
 }
 
 #header-explore-wrap {
   display: flex;
-  align-content: center;
-  justify-content: space-between;
 }
 
 #explore-by-topic-wrap {
@@ -65,14 +62,15 @@ input {
 }
 
 #stars-wrap {
-  height: 3rem;
+  border: solid magenta 2px;
 }
-#outter-star-wrap {
+.outter-star-wrap {
   width: 3rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: solid turquoise 2px;
 }
 
 .star-wrap {

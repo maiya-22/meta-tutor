@@ -1,118 +1,92 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Journal</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' , :defer => "defer" %>
-  </head>
-  <body>
-  <header>
-    <div id="site-header">
-    
-      <h1 id="site-title"><a href="/">meta-tutor</a></h1>
-      
-    
+        <%= csp_meta_tag %>
+            <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+                <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' , :defer => "defer" %>
+</head>
+
+<body>
+    <header>
+        <div id="site-header">
+            <h1 id="site-title">
+                <a href="/">meta-tutor</a>
+            </h1>
+            <div id="header-explore-wrap">
+                <div id="explore-by-topic-wrap">
+                    <h3>EXPLORE tutorials by topic</h3>
+                    <a href="#">HTML</a>
+                    <a href="#">CSS</a>
+                    <a href="#">JavaScript</a>
+                    <a href="#">SQL</a> ...
+                </div>
+                <form id="search-tutorials" action="/tutorials/search" method="GET">
+                    <input type="text" class="searchTerm" placeholder="Search by Title .." name="title">
+                    <button type="submit" class="searchButton">search</button>
+                </form>
+                <a href="#" class="header-add-tutorial-link">add a new tutorial</a>
+            </div>
+            <div id="header-profile-wrap">
+                <div id="stars-wrap">
+                    <div class="outter-star-wrap">
+                        <p>teach</p>
+                        <div id="teach-star-wrap" class="star-wrap">
+                            <div id="teach-star-content" class="star-content">
+                                <p class="star-count">5</p>
+                            </div>
+                        </div>
+                        <div class="outter-star-wrap">
+                            <p>teach</p>
+                            <div id="teach-star-wrap" class="star-wrap">
+                                <div id="teach-star-content" class="star-content">
+                                    <p class="star-count">5</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="outter-star-wrap">
+                            <p>teach</p>
+                            <div id="teach-star-wrap" class="star-wrap">
+                                <div id="teach-star-content" class="star-content">
+                                    <p class="star-count">5</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                  <button><%=current_user.name%></button>
+                </div>
+
+            </div>
 
 
 
-      
-        <%if false%>
-          <div id="header-sign-in-buttons-wrap">
-            <button id="header-sign-in">sign in</button>
-            <button id="header-sign-in">sign up</button>
-          </div>
-        <%else%>
-        <div id="header-profile-wrap">
-        <div id="stars-wrap">
-            <div id="outter-star-wrap">
-            <p>teach</p>
-                <div id="teach-star-wrap" class="star-wrap">
-                    <div id="teach-star-content" class="star-content">
-                              <p class="star-count">5</p>
-                    </div>
-                </div>
-                
-            </div>
-            <div id="outter-star-wrap">
-            <p>learn</p>
-                <div id="learn-star-wrap" class="star-wrap">
-                    <div id="learn-star-content" class="star-content">
-                    <p class="star-count">5</p>
-                    </div>
-                </div>
-                
-            </div>
-    
-            <div id="outter-star-wrap">
-            <p>create</p>
-                <div id="create-star-wrap" class="star-wrap">
-                    <div id="create-star-content" class="star-content">
-                    <p class="star-count">5</p>
-                    </div>
-                </div>
-              
-            </div>
-            
         </div>
-
-        <div id="header-user-name">
-          <% if user_signed_in? %>
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn"><%=current_user.name%></button>
-                <div id="myDropdown" class="dropdown-content">
-                    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>  
-                </div>
-            </div>
-      <% else %>
-
-          <%= link_to('Login', new_user_session_path)  %>  
-
-      <% end %>
-      </div>
+        <div id="page-header">
+            <%= yield :page_header %>
+                <%#do a content for yield here%>
+        </div>
+    </header>
+    <div id="flash-notices">
+        <p class="notice">
+            <%= notice %>
+        </p>
+        <p class="alert">
+            <%= alert %>
+        </p>
     </div>
-        <%end%>
-        <%#if signed out, new tutorial leads to sign-in/ sign up%>
-  
+    <div id="page-frame">
 
-    <div id="header-explore-wrap">
-      <div id="explore-by-topic-wrap">
-        <h3>EXPLORE tutorials by topic</h3>
-        <a href="#">HTML</a>
-        <a href="#">CSS</a>
-        <a href="#">JavaScript</a>
-        <a href="#">SQL</a> ...
-      </div>     
-      <div><form id="search-tutorials" action="/tutorials/search" method="GET">
-               <input type="text" class="searchTerm" placeholder="Search by Title .." name="title">
-                <button type="submit" class="searchButton">
-               search
-              </button>
-          </form> </div>
-          <div><a href="#" class="header-add-tutorial-link">add a new tutorial</a>
-          </div>
+
+        <%= yield %>
+
     </div>
-      
-
-  </div>
-    <div id="page-header"> 
-        <%= yield :page_header %>
-      <%#do a content for yield here%>
-    </div>
-  </header>
-  <div id="flash-notices">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </div>
-  <div id="page-frame">
-
-  
-    <%= yield %>
-
-</div>
-<footer>
-  contact us @meta-tutor
-</footer>
+    <footer>
+        contact us @meta-tutor
+    </footer>
 </body>
+
 </html>

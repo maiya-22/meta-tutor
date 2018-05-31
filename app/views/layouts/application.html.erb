@@ -5,13 +5,19 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' , :defer => "defer" %>
   </head>
   <body>
   <header>
     <div id="site-header">
     
-      <h1 id="site-title">meta-tutor</h1>
+      <h1 id="site-title"><a href="/">meta-tutor</a></h1>
+      
+    
+
+
+
+      
         <%if false%>
           <div id="header-sign-in-buttons-wrap">
             <button id="header-sign-in">sign in</button>
@@ -50,22 +56,48 @@
             </div>
             
         </div>
+
         <div id="header-user-name">
-        <% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path)  %>  
-  </li>
-<% end %>
-        </div>
+          <% if user_signed_in? %>
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn"><%=current_user.name%></button>
+                <div id="myDropdown" class="dropdown-content">
+                    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>  
+                </div>
+            </div>
+      <% else %>
+
+          <%= link_to('Login', new_user_session_path)  %>  
+
+      <% end %>
+      </div>
     </div>
         <%end%>
+        <%#if signed out, new tutorial leads to sign-in/ sign up%>
+  
+
+    <div id="header-explore-wrap">
+      <div id="explore-by-topic-wrap">
+        <h3>EXPLORE tutorials by topic</h3>
+        <a href="#">HTML</a>
+        <a href="#">CSS</a>
+        <a href="#">JavaScript</a>
+        <a href="#">SQL</a> ...
+      </div>     
+      <div><form id="search-tutorials" action="/tutorials/search" method="GET">
+               <input type="text" class="searchTerm" placeholder="Search by Title .." name="title">
+                <button type="submit" class="searchButton">
+               search
+              </button>
+          </form> </div>
+          <div><a href="#" class="header-add-tutorial-link">add a new tutorial</a>
+          </div>
     </div>
-    <div id="page-header"> page header
-        <%= yield :page_links %>
+      
+
+  </div>
+    <div id="page-header"> 
+        <%= yield :page_header %>
       <%#do a content for yield here%>
     </div>
   </header>

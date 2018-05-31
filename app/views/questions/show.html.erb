@@ -1,8 +1,18 @@
 
-<% content_for :page_links do %>
-  <%= link_to 'New Tutorial', new_tutorial_path %>
-  PUT CONTENT HERE FOR THE HEADER:  "ASK ANOTHER QUESTION --> takes you back to the tutorial page and opens a form"
-  <a href="/tutorials/<%= @question.tutorial.id %>">back to tutorial interpolated</a>
+<% content_for :page_header do %>
+
+ 
+  <div id="question-page-header">
+  <a href="/tutorials/<%= @question.tutorial.id %>">tutorial</a>
+        <span><%= @question.tutorial.title %>
+              <%if @question.tutorial.format == "chapter"%>
+                edition: 3
+                p. <%= @question.page %>
+              <%end%>
+        </span>
+        <span>by: <%= @question.tutorial.author %></span>
+      
+    </div>
 <% end %>
 
 
@@ -24,59 +34,47 @@
           <a class="question-star-vote" href="#">˅</a>
       </div>
       <div id="question-content-wrap"> 
-          <p>
-            <strong>From:</strong>
-            <%= @question.tutorial.title %>
-            </p>
-            <%if @question.tutorial.format == "chapter"%>
+          <div id="question-content-content">
+              
               <p>
-              <strong>p.</strong>
-              <%= @question.page %>
+                <strong>Question:</strong>
+                <%= @question.title %>
               </p>
-            <%end%>
-            
-          
-          <p>
-            <strong>Question:</strong>
-            <%= @question.title %>
-          </p>
-          
-          <p>
-            <strong>Content:</strong>
-            <%= @question.content %>
-          </p>
+              
+              <p>
+                <strong>Content:</strong>
+                <%= @question.content %>
+              </p>
 
-          <p>
-            <strong>Status:</strong>
+      
+           
+          
+              
+          
+              
+          </div>
+          <div id="questions-footer">
+          <div id="question-content-tags-wrap">
+          <span>status:</span>
+          <span>
             <%= @question.status %>
-          </p>
-        
+          </span>
+
+          <span> tags: </span>
+
+          <%4.times do |num|%>
+              <div class="tag">tag-name</div>
+          <%end%>
+        </div>
           <p>
-            <strong>Level:</strong>
-            <%= @question.level %>
-          </p>
 
-        
-
-          <p>
-            <strong>Time:</strong>
-            <%= @question.time %>
-          </p>
-
-          <p>
-            <strong>User:</strong>
-            <%= @question.user_id %>
-          </p>
-
-          <p>
-            <strong>Tutorial:</strong>
-            <%= @question.tutorial_id %>
-          </p>
-
-          <%= link_to 'Edit', edit_question_path(@question) %> |
-          <%= link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
-  
-       
+                
+               
+                <%= link_to 'edit', edit_question_path(@question) %> |
+              <%= link_to 'delete', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <strong>By:</strong><%= @question.user.name %>
+              </p>
+              </div>
       </div>
 
      

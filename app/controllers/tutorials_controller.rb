@@ -4,6 +4,7 @@ class TutorialsController < ApplicationController
   # GET /tutorials
   # GET /tutorials.json
   def index
+    
     @tutorials = Tutorial.all
     # @tutorials = Tutorial.paginate(:page =>params[:page], :per_page => 2)
   end
@@ -11,7 +12,9 @@ class TutorialsController < ApplicationController
   # GET /tutorials/1
   # GET /tutorials/1.json
   def show
-    if(@tutorial.format == "video")
+    if(params[:id] == "search")
+      render plain: "OK"
+    elsif(@tutorial.format == "video")
       @questions = Question.where(tutorial_id: @tutorial.id).order(:time)
     elsif (@tutorial.format == "chapter")
       @questions = Question.where(tutorial_id: @tutorial.id).order(:page)
@@ -71,7 +74,17 @@ class TutorialsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tutorial
-      @tutorial = Tutorial.find(params[:id])
+      p "params:"
+      p params
+      # if someone is using the search by title form:
+      if(params[:title] != nil)
+        @tutorial = Tutorial.where(title:params[:title])[0]
+        if(@tutorial == nil)
+          render plain: "fix the search functionality, for when the title is not available"
+        end
+      else
+        @tutorial = Tutorial.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,0 +1,39 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+#search-tutorials {
+  position: relative;
+  width: 180px;
+  transform: translate(10px, -10px);
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #243133;
+  padding: 5px;
+  height: 0.75rem;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+
+  outline: none;
+  color: #9dbfaf;
+}
+
+.searchTerm:focus {
+  color: #00b4cc;
+}
+
+.searchButton {
+  border: 1px solid #243133;
+  background: #243133;
+  color: #fff;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+}
+
+svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  transform: scaleX(-1) scale(1.3) translate(15px, 0px);
+}

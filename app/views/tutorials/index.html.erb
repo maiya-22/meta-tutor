@@ -6,6 +6,11 @@
 <% end %>
 
 
+<p>SHOW ALL OF THE CATEGORIES: </p>
+<p>make links that generates this same view, with the filetered tutorials</p>
+<%Tag.all.each do |tag|%>
+  <a href="#">go to tutorials with tag: <%=tag.name%></a>
+<%end%>
 
 <h1>Tutorials</h1>
 

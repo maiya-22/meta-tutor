@@ -50,6 +50,10 @@ end
         user_id: 1
     )
     @tutorial_ids.push(@tutorial.id)
+    TagsTutorial.create(
+        tutorial_id: @tutorial.id,
+        tag_id: @tag_ids[num-1]
+    )
 end
 
 # create videos for half of the tutorials

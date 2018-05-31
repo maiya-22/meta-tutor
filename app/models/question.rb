@@ -1,7 +1,7 @@
 class Question < ApplicationRecord
     belongs_to :tutorial
-    has_many :answers
-    has_many :comments
+    has_many :answers, dependent: :destroy
+    has_many :comments, dependent: :destroy
     belongs_to :user
 end
  

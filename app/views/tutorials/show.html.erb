@@ -1,3 +1,5 @@
+**  PUT LINKS HERE TO add a question
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -26,7 +28,7 @@
   <strong>User:</strong>
   <%= @tutorial.user_id %>
 </p>
-
+<%= link_to 'Destroy', @tutorial, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Edit', edit_tutorial_path(@tutorial) %> |
 <%= link_to 'Back', tutorials_path %>
 
@@ -45,7 +47,5 @@
     <p><%=question.page%></p>
     <%end%>
     <%= link_to 'Show', question %>
-    <%= link_to 'Edit', edit_question_path(question) %>
-    <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
   <%end%>
 <%end%>

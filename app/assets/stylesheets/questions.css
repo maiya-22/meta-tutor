@@ -3,3 +3,8 @@
   border: dotted magenta 2px;
   padding-left: 2rem;
 }
+
+.comment-wrap {
+  border: dotted green 2px;
+  padding: 1rem;
+}

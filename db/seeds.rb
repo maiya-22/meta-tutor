@@ -15,6 +15,16 @@ require 'faker'
 # create ten tutorials
 @tutorial_ids = []
 
+# create categories for the tutorials:
+@tutorial_categories = ["javascript", "html", "css", "react","mongodb"]
+@tag_ids = []
+@tutorial_categories.each do |category|
+    @tag = Tag.create!(
+        name: category
+    )
+    @tag_ids.push(@tag.id)
+end
+
 5.times do |num|
     @tutorial = Tutorial.create(
         title: "Optional Chaining Operator in JavaScript",
@@ -24,6 +34,11 @@ require 'faker'
         user_id: 1
     )
     @tutorial_ids.push(@tutorial.id)
+    # associate the tutorial with a category (tag)
+    TagsTutorial.create(
+        tutorial_id: @tutorial.id,
+        tag_id: @tag_ids[num-1]
+    )
 end
 
 5.times do |num|
@@ -111,17 +126,24 @@ end
 
 # give each question two comments
 @question_ids.each do |id|
-    @comment = Comment.create!(
-        content: "I am the content of a comment on a question.",
-        question_id: id
-    )
+    2.times do 
+        @comment = Comment.create!(
+            content: "I am the content of a comment on a question.",
+            question_id: id,
+            user_id: 1
+        )
+    end
 end
 
 # give each answer two comments
 
 @answer_ids.each do |id|
-    @comment = Comment.create!(
-        content: "I am the content of a comment on an answer.",
-        answer_id: id
-    )
+    2.times do 
+        @comment = Comment.create!(
+            content: "I am the content of a comment on an answer.",
+            answer_id: id,
+            user_id: 1
+        )
+    end
 end
+

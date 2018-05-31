@@ -30,6 +30,9 @@
                 <a href="#" class="header-add-tutorial-link">add a new tutorial</a>
             </div>
             <div id="header-profile-wrap">
+                <div class="dropdown">
+                    <button><%=current_user.name%></button>
+                  </div>
                 <div id="stars-wrap">
                     <div class="outter-star-wrap">
                         <p>teach</p>
@@ -40,25 +43,23 @@
                         </div>
                      </div>   
                         <div class="outter-star-wrap">
-                            <p>teach</p>
-                            <div id="teach-star-wrap" class="star-wrap">
-                                <div id="teach-star-content" class="star-content">
+                            <p>learn</p>
+                            <div id="learn-star-wrap" class="star-wrap">
+                                <div id="learn-star-content" class="star-content">
                                     <p class="star-count">5</p>
                                 </div>
                             </div>
                         </div>
                         <div class="outter-star-wrap">
-                            <p>teach</p>
-                            <div id="teach-star-wrap" class="star-wrap">
-                                <div id="teach-star-content" class="star-content">
+                            <p>create</p>
+                            <div id="create-star-wrap" class="star-wrap">
+                                <div id="create-star-content" class="star-content">
                                     <p class="star-count">5</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="dropdown">
-                    <button><%=current_user.name%></button>
-                  </div>
+                    
                 </div>
                
 

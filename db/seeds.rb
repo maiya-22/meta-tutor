@@ -95,14 +95,32 @@ end
 end
 
 # Make 3 answers for each of the questions:
+@answer_ids = []
 @question_ids.each do |id|
     4.times do |num|
-        Answer.create(
+        @answer = Answer.create(
             content: "i am some content of an answer.",
             votes: 5,
             approved: true,
             question_id: id,
             user_id: 1
         )
+        @answer_ids.push(@answer.id)
     end
+end
+
+# give each question two comments
+@question_ids.each do |id|
+    Comment.create(
+        content: "I am the content of a comment.",
+        question_id: id
+    )
+end
+
+# give each answer two comments
+@answer_ids.each do |id|
+    Comment.create(
+        content: "I am the content of a comment.",
+        answer_id: id
+    )
 end

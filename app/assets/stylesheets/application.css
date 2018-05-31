@@ -13,6 +13,7 @@
  * require_tree .
  *= require reset
  *= require home
+ *= require questions
  *= require tutorials
  *= require_self
  */

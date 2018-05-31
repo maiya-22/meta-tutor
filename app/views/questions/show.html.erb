@@ -60,6 +60,7 @@
 <%=@question.answers.length%>
 
 <%@question.answers.each do |answer|%>
-  <%@answer = answer%>
-  <%= render partial: '/answers/show', locals: {answer: @answer} %>
+  <div class="answer-wrap">
+    <%= render partial: '/answers/show', locals: {answer: answer} %>
+  </div>
 <%end%>

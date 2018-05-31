@@ -111,16 +111,17 @@ end
 
 # give each question two comments
 @question_ids.each do |id|
-    Comment.create(
-        content: "I am the content of a comment.",
+    @comment = Comment.create!(
+        content: "I am the content of a comment on a question.",
         question_id: id
     )
 end
 
 # give each answer two comments
+
 @answer_ids.each do |id|
-    Comment.create(
-        content: "I am the content of a comment.",
+    @comment = Comment.create!(
+        content: "I am the content of a comment on an answer.",
         answer_id: id
     )
 end

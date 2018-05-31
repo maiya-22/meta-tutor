@@ -1,5 +1,5 @@
 body {
-  font-family: monospace;
+  font-family: sans-serif;
 }
 
 a {
@@ -41,6 +41,22 @@ input {
   font-size: 1.5rem;
 }
 
+#header-profile-wrap {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  border: solid greenyellow 2px;
+  align-items: center;
+}
+
+#stars-wrap {
+  width: 100%;
+  border: solid magenta 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 /* HEADER: SIGN IN WRAP -OR- PROFILE WRAP */
 #header-sign-in-buttons-wrap,
 #header-profile-wrap {
@@ -61,21 +77,20 @@ input {
 .header-add-tutorial-link {
 }
 
-#stars-wrap {
-  border: solid magenta 2px;
-}
 .outter-star-wrap {
-  width: 3rem;
+  /* border: solid blue 3px; */
+  font-size: 0.75rem;
+  /* width: 3rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid turquoise 2px;
+  border: solid turquoise 2px; */
 }
 
 .star-wrap {
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   background-color: turquoise;
 }
 
@@ -104,6 +119,7 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* font-size: 0.5rem; */
 }
 
 #header-user-name {

@@ -1,20 +1,85 @@
-<div class="tutorials-summary-wrap">
-    <p>title: </p>
-    <p>author: </p>
-    <p>url: </p>
-    <p>format: </p>
-    <p>added by: </p>
+<!DOCTYPE html>
+<html>
 
-    <p>for VIDEO:</p>
-    <p>channel:</p>
-    <p>playlist:</p>
-    <p>duration:</p>
+<head>
+    <title>Journal</title>
+    <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+            <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+                <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' , :defer => "defer" %>
+</head>
 
-    <p>for BOOK:</p>
-    <p>book title:</p>
-    <p>book edition:</p>
-    <p>start page:</p>
-    <p>end page:</p>
+<body>
+    <header>
+        <div id="site-header">
+            <h1 id="site-title">
+                <a href="/">meta-tutor</a>
+            </h1>
+            <div id="header-explore-wrap">
+                <div id="explore-by-topic-wrap">
+                    <h3>EXPLORE tutorials by topic</h3>
+                    <a href="#">HTML</a>
+                    <a href="#">CSS</a>
+                    <a href="#">JavaScript</a>
+                    <a href="#">SQL</a> ...
+                </div>
+                <form id="search-tutorials" action="/tutorials/search" method="GET">
+                    <input type="text" class="searchTerm" placeholder="Search by Title .." name="title">
+                    <button type="submit" class="searchButton">search</button>
+                </form>
+                <a href="#" class="header-add-tutorial-link">add a new tutorial</a>
+            </div>
+            <div id="header-profile-wrap">
+                <div id="stars-wrap">
+                    <div class="outter-star-wrap">
+                        <p>teach</p>
+                        <div id="teach-star-wrap" class="star-wrap">
+                            <div id="teach-star-content" class="star-content">
+                                <p class="star-count">5</p>
+                            </div>
+                        </div>
+                        <div class="outter-star-wrap">
+                            <p>teach</p>
+                            <div id="teach-star-wrap" class="star-wrap">
+                                <div id="teach-star-content" class="star-content">
+                                    <p class="star-count">5</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="outter-star-wrap">
+                            <p>teach</p>
+                            <div id="teach-star-wrap" class="star-wrap">
+                                <div id="teach-star-content" class="star-content">
+                                    <p class="star-count">5</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="page-header">
+            <%= yield :page_header %>
+                <%#do a content for yield here%>
+        </div>
+    </header>
+    <div id="flash-notices">
+        <p class="notice">
+            <%= notice %>
+        </p>
+        <p class="alert">
+            <%= alert %>
+        </p>
+    </div>
+    <div id="page-frame">
 
-    <p>link to view this tutorial</p>
-</div>
+
+        <%= yield %>
+
+    </div>
+    <footer>
+        contact us @meta-tutor
+    </footer>
+</body>
+
+</html>

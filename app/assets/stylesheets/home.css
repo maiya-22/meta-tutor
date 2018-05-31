@@ -49,18 +49,48 @@ input {
 
 #site-title {
   font-size: 1.5rem;
+  padding: 0.5rem;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 #header-explore-wrap {
   width: 80vw;
   display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0.5rem;
 }
 
 #explore-by-topic-wrap {
   color: white;
 }
 
-.header-add-tutorial-link {
+#explore-by-topic-wrap > * {
+  padding: 0.25rem;
+}
+
+#search-tutorials input {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: none;
+  width: 175px;
+  padding: 0.25rem;
+  font-size: 0.5rem;
+}
+
+#search-tutorials button {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: none;
+  background: none;
+  color: gainsboro;
+  padding: 0.25rem;
+  background-color: darkgray;
+  transform: translate(-10px, 0px);
+  font-size: 0.5rem;
 }
 
 #header-profile-wrap {
@@ -90,7 +120,8 @@ input {
 }
 
 .dropdown {
-  align-self: center;
+  align-self: flex-end;
+  padding-bottom: 0.5rem;
 }
 
 .dropdown button {

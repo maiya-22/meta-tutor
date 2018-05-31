@@ -58,8 +58,8 @@
 <a href="/tutorials/<%= @question.tutorial.id %>">back to tutorials interpolated</a>
 
 <%=@question.answers.length%>
+
 <%@question.answers.each do |answer|%>
-  </br>
-    <p>ANSWER:</p>
-    <p><%=answer.content%></p>
+  <%@answer = answer%>
+  <%= render partial: '/answers/show', locals: {answer: @answer} %>
 <%end%>

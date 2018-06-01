@@ -1,10 +1,10 @@
 /* on question show page */
 
 #question-page-wrap {
-  border: dotted orange 5px;
+  /* border: dotted orange 5px; */
   padding-left: 20vw;
   padding-right: 20vw;
-  border: solid 1px white;
+  /* border: solid 1px white; */
   margin-top: 2rem;
 }
 
@@ -14,9 +14,10 @@
   padding-top: 1.5rem;
   display: flex;
   min-height: 40vh;
-  /* background-color: rgba(128, 129, 129, 0.452); */
-  border: solid rgb(201, 201, 201) 5px;
+  background-color: rgba(128, 129, 129, 0.452);
+  border: solid rgb(201, 201, 201) 15px;
   border-radius: 5px;
+  background-color: white;
 }
 
 #question-status-wrap {
@@ -32,34 +33,32 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-left: 0.5rem;
+  padding-left: 3rem;
   background-color: white;
   line-height: 1.5rem;
 }
 
 #question-title {
-  background-color: rgba(58, 58, 53, 0.884);
+  /* background-color: rgba(58, 58, 53, 0.884); */
   height: 1.5rem;
-  border-radius: 15px;
+  font-size: 2rem;
+  border-radius: 5px;
   padding: 0.1rem;
-  color: greenyellow;
+  color: darkgray;
+  letter-spacing: 0.3rem;
+  font-weight: bold;
   display: flex;
   justify-content: center;
 }
 
 #actual-question-content {
   flex-grow: 3;
-  padding: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   /* border: dotted blue 2px; */
   border-bottom: dotted gainsboro 1px;
 }
 
-#question-footer {
-  /* border: solid pink 3px; */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
 #question-content-tags-wrap {
   width: 100%;
   padding: 0.25rem;
@@ -111,12 +110,24 @@
   color: rgb(174, 0, 255);
 }
 
+#question-comments-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.comment-wrap {
+  background-color: rgba(64, 224, 208, 0.808);
+  /* background-color: rgb(190, 255, 248); */
+  width: 70%;
+  border: solid green 5px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
 .answer-wrap {
   border: dotted magenta 2px;
   padding-left: 2rem;
-}
-
-.comment-wrap {
-  border: dotted green 2px;
-  padding: 1rem;
 }

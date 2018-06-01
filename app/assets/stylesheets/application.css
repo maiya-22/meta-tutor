@@ -21,6 +21,11 @@
 
 body {
   padding-top: 3rem;
+  font-family: "Tinos", serif;
+  background-color: rgb(68, 68, 68);
+}
+header {
+  font-family: sans-serif;
 }
 #flash-notices {
   position: fixed;

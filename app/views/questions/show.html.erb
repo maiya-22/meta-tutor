@@ -64,21 +64,16 @@
     </div>
 
   </div>
-
-
-
+  <div id="question-comments-wrap">  
+    <%@question.comments.each do |comment|%>
+      <div class="comment-wrap">
+        <%@comment = comment%>
+        <%= render partial: 'show_comment', locals: {comment: @comment} %>
+      </div>
+    <%end%>
+    <p>**  put a link here to add another comment </p>
+  </div>
   
-  <%@question.comments.each do |comment|%>
-    <div class="comment-wrap">
-      <%@comment = comment%>
-      <%= render partial: 'show_comment', locals: {comment: @comment} %>
-    </div>
-  <%end%>
-  <p>**  put a link here to add another comment </p>
-
-
-
-  <%=@question.answers.length%>
   <%@question.answers.each do |answer|%>
     <div class="answer-wrap">
       <%@answer = answer%>

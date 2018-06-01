@@ -8,6 +8,7 @@
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' , :defer => "defer" %>
 </head>
 <body>
+    <div id="site-info"> meta*tutor:  ask questions about programming tutorials.  go deeper into tutorials.  make a tutorial about a tutorial.  get stars</div>
     <header>
         <div id="site-header">
             <h1 id="site-title">
@@ -20,6 +21,8 @@
                     <a href="#">CSS</a>
                     <a href="#">JavaScript</a>
                     <a href="#">SQL</a>
+                    <a id="explore-more-arrow" href="#"> ▾   </a>
+                    
                 </div>
                 <form id="search-tutorials" action="/tutorials/search" method="GET">
                     <input type="text" class="searchTerm" placeholder="Search by title .." name="title">

@@ -15,7 +15,7 @@
   display: flex;
   min-height: 40vh;
   background-color: rgba(128, 129, 129, 0.452);
-  border: solid rgb(201, 201, 201) 15px;
+  border: solid rgb(85, 84, 84) 15px;
   border-radius: 5px;
   background-color: white;
 }
@@ -26,6 +26,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2rem;
 }
 
 #question-content-wrap {
@@ -33,7 +34,9 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-left: 3rem;
+  padding: 3rem;
+  padding-left: 2rem;
+  padding-right: 4rem;
   background-color: white;
   line-height: 1.5rem;
 }

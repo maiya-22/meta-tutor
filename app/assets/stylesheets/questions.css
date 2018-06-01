@@ -4,17 +4,22 @@
   border: dotted orange 5px;
   padding-left: 20vw;
   padding-right: 20vw;
+  border: solid 1px white;
+  margin-top: 2rem;
 }
 
 #question-page-question-wrap {
-  border: dotted green 3px;
+  margin-top: 1.75rem;
   padding: 1rem;
-  margin-top: 1rem;
+  padding-top: 1.5rem;
   display: flex;
+  min-height: 40vh;
+  /* background-color: rgba(128, 129, 129, 0.452); */
+  border: solid rgb(201, 201, 201) 5px;
+  border-radius: 5px;
 }
 
 #question-status-wrap {
-  border: dotted pink 2px;
   width: 3rem;
   display: flex;
   flex-direction: column;
@@ -22,33 +27,48 @@
   align-items: center;
 }
 
-#question-page-question-wrap {
-  padding: 1rem;
-}
-
 #question-content-wrap {
-  border: solid purple 2px;
+  /* border: dotted gainsboro 1px; */
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.5rem;
+  background-color: white;
+  line-height: 1.5rem;
 }
 
-#question-content-content {
-  border: dotted turquoise 2px;
-  padding: 0.5rem;
+#question-title {
+  background-color: rgba(58, 58, 53, 0.884);
+  height: 1.5rem;
+  border-radius: 15px;
+  padding: 0.1rem;
+  color: greenyellow;
+  display: flex;
+  justify-content: center;
 }
 
-#questions-footer {
-  border: solid pink 3px;
+#actual-question-content {
+  flex-grow: 3;
+  padding: 2rem;
+  /* border: dotted blue 2px; */
+  border-bottom: dotted gainsboro 1px;
+}
+
+#question-footer {
+  /* border: solid pink 3px; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 #question-content-tags-wrap {
   width: 100%;
-  border: dotted turquoise 2px;
   padding: 0.25rem;
   display: flex;
   flex-wrap: wrap;
 }
 
 .tag {
-  margin-left: 0.5rem;
+  margin: 0.5rem;
   background-color: gainsboro;
   border-radius: 3px;
   padding: 3px;

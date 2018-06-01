@@ -16,7 +16,7 @@
             </h1>
             <div id="header-explore-wrap">
                 <div id="explore-by-topic-wrap">
-                    <h3>EXPLORE</h3>
+                    <h3>EXPLORE<a href="#">ask</a></h3>
                     <a href="#">HTML</a>
                     <a href="#">CSS</a>
                     <a href="#">JavaScript</a>
@@ -24,10 +24,12 @@
                     <a id="explore-more-arrow" href="#"> ▾   </a>
                     
                 </div>
+                
                 <form id="search-tutorials" action="/tutorials/search" method="GET">
                     <input type="text" class="searchTerm" placeholder="Search by title .." name="title">
                     <button type="submit" class="searchButton">search</button>
                 </form>
+                
             </div>
             <div id="header-profile-wrap">
             <% if user_signed_in? %>

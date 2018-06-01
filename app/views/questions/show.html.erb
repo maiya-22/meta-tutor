@@ -1,86 +1,73 @@
 
 <% content_for :page_header do %>
-
- 
   <div id="question-page-header">
-  <a href="/tutorials/<%= @question.tutorial.id %>">tutorial</a>
-        <span><%= @question.tutorial.title %>
-              <%if @question.tutorial.format == "chapter"%>
-                edition: 3
-                p. <%= @question.page %>
-              <%end%>
-        </span>
-        <span>by: <%= @question.tutorial.author %></span>
-      
+  
+        <%= link_to 'add a new tutorial', new_tutorial_path, class: "page-header-add-tutorial" %> *
+        <%= link_to 'answer questions', new_tutorial_path, class: "page-header-add-tutorial" %>
     </div>
 <% end %>
 
 
-
 <div id="question-page-wrap">
   <p id="notice"><%= notice %></p>
+  <h1>
+    <a href="/tutorials/<%= @question.tutorial.id %>"
+      <span> 
+        Back to 
+        <%= @question.tutorial.format %>: 
+        <%= @question.tutorial.title %> tutorial
+        <%if @question.tutorial.format == "chapter"%>
+           edition: 3
+          p. <%= @question.page %>
+       <%end%>
+       by: <%= @question.tutorial.author %>
+      </span>    
+    </a>
+  </h1>
   <div id="question-page-question-wrap">
-      <div id="question-status-wrap">
-          <%#make ajax to give a star%>
-          <a class="question-star-vote" href="#">˄</a>
-          <div id="question-stars-wrap">
-            <div id="question-stars-count">
+    <div id="question-status-wrap">
+        <%#make ajax to give a star%>
+        <a class="question-star-vote" href="#">˄</a>
+        <div id="question-stars-wrap">
+          <div id="question-stars-count">
              5
-            </div>
-            <div id="question-stars-star">
+          </div>
+          <div id="question-stars-star">
               ★
-            </div>
           </div>
-          <a class="question-star-vote" href="#">˅</a>
+        </div>
+        <a class="question-star-vote" href="#">˅</a>
+    </div>
+    <div id="question-content-wrap">
+      <div id="question-title"><p><%= @question.title %></p></div>
+      <div id="actual-question-content">
+         <%=@question.content%>
+         <%700.times do%>
+          word 
+        <%end%>
       </div>
-      <div id="question-content-wrap"> 
-          <div id="question-content-content">
-              
-              <p>
-                <strong>Question:</strong>
-                <%= @question.title %>
-              </p>
-              
-              <p>
-                <strong>Content:</strong>
-                <%= @question.content %>
-              </p>
-
-      
-           
-          
-              
-          
-              
-          </div>
-          <div id="questions-footer">
-          <div id="question-content-tags-wrap">
-          <span>status:</span>
-          <span>
-            <%= @question.status %>
-          </span>
-
-          <span> tags: </span>
-
-          <%4.times do |num|%>
+      <div id="question-content-tags-wrap">
+          <%14.times do |num|%>
               <div class="tag">tag-name</div>
           <%end%>
         </div>
-          <p>
+        <div id="question-footer">
+        <div>
+            by: <%= @question.user.name %>
+        </div>
+        <div>
+            <%= link_to 'edit', edit_question_path(@question) %> 
+            <%= link_to 'delete', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+          
+        </div>
+    </div>
 
-                
-               
-                <%= link_to 'edit', edit_question_path(@question) %> |
-              <%= link_to 'delete', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
-              <strong>By:</strong><%= @question.user.name %>
-              </p>
-              </div>
-      </div>
-
-     
   </div>
-  <p>number of comments:</p>
-  <%=@question.comments.length%>
+
+
+
+  
   <%@question.comments.each do |comment|%>
     <div class="comment-wrap">
       <%@comment = comment%>

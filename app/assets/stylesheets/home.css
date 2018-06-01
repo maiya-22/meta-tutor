@@ -200,10 +200,10 @@ input {
 
 #page-header {
   /* border: dotted pink 2px; */
-  width: 86%;
+  width: 95%;
   padding-right: 12rem;
   padding-left: 1.2rem;
-
+  background-color: white;
   padding-top: 0.5rem;
   margin: auto;
   height: 3rem;

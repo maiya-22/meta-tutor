@@ -19,6 +19,9 @@
  *= require_self
  */
 
+body {
+  padding-top: 3rem;
+}
 #flash-notices {
   position: fixed;
   top: 0px;

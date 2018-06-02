@@ -13,7 +13,8 @@
 //= require rails-ujs
 //= require activestorage
 //= require ajax-promises
-//= require comments
+//= require add-tutorial-form
+// require comments
 // require turbolinks
 // require_tree .
 

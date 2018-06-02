@@ -1,0 +1,33 @@
+<form id="new-tutorial-form">
+    <input type="radio" name="format" id="video" checked>
+        <label for="video">Video</label>
+        <input type="radio" name="format" id="book">
+        <label for="book">Book</label>
+    <br>
+    <br>
+    <input class="tutorial-form-element" type="text" name="tutorial[title]" id="title" placeholder="title">
+    <input class="tutorial-form-element" type="text" name="book[edition]" id="edition" placeholder="edition" hidden>
+    <input class="tutorial-form-element" type="text" name="" id="video[channel]" placeholder="channel">
+    <input class="tutorial-form-element" type="text" name="tutorial[author]" id="author" placeholder="author">
+    <input class="tutorial-form-element" type="text" name="tutorial[url]" id="url" placeholder="url">
+    <div class="tutorial-form-element" id="time" hidden>
+        <select name="video[hour]">
+            <%2.times do |hour|%>
+                <option value="<%=hour%>"><%=hour%></option>
+            <%end%>
+        </select>
+        <select name="video[minute]">
+            <%60.times do |min|%>
+                <option value="<%=min%>"><%=min%></option>
+            <%end%>
+        </select>
+        <select name="video[second]">
+            <%60.times do |sec|%>
+                <option value="<%=sec%>"><%=sec%></option>
+            <%end%>
+        </select>
+    </div>
+
+    <button id="submit">Submit</button>
+</form>
+

@@ -9,6 +9,7 @@
  
  
   <%= link_to 'add a new tutorial', new_tutorial_path, class: "page-header-add-tutorial" %>
+  <%= render "shared/new_tutorial_form" %>
 <% end %>
 
     <% @tutorials.each do |tutorial| %>

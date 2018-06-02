@@ -67,9 +67,11 @@
         <%@comment = comment%>
         <%= render partial: 'show_comment', locals: {comment: @comment} %>
       </div>
+      <button>new comment</button>
+      <%= render partial: 'new_comment_form', locals: {comment: comment} %>
+    </div>
     <%end%>
-    <p>**  put a link here to add another comment </p>
-  </div>
+   
   
   <%@question.answers.each do |answer|%>
     <div id="question-page-question-wrap">

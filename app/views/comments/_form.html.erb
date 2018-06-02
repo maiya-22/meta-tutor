@@ -1,32 +1,23 @@
-<%= form_with(model: comment, local: true) do |form| %>
-  <% if comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-      <ul>
-      <% comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<button>new comment</button>
+      <form action="/comments/10" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" />
+  
+    <div class="field">
+      <label for="comment_content">Content</label>
+      <textarea name="comment[content]" id="comment_content">
+I am the content of a comment on a question.</textarea>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :question_id %>
-    <%= form.number_field :question_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :answer_id %>
-    <%= form.number_field :answer_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  
+    <div class="field">
+      <label for="comment_question_id">Question</label>
+      <input type="number" value="5" name="comment[question_id]" id="comment_question_id" />
+    </div>
+  
+    <div class="field">
+      <label for="comment_answer_id">Answer</label>
+      <input type="number" name="comment[answer_id]" id="comment_answer_id" />
+    </div>
+  
+    <div class="actions">
+      <input type="submit" name="commit" value="Update Comment" data-disable-with="Update Comment" />
+    </div>
+  </form>

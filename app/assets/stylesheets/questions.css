@@ -14,9 +14,10 @@
   padding-top: 1.5rem;
   display: flex;
   min-height: 40vh;
-  background-color: rgba(128, 129, 129, 0.452);
-  box-shadow: 0px 10px 50px darkgray;
-  border: solid rgb(85, 84, 84) 10px;
+  /* background-color: rgba(128, 129, 129, 0.452); */
+  /* box-shadow: 0px -5px 5px darkgray; */
+  /* border: solid rgb(85, 84, 84) 1px; */
+  border: solid white 1px;
   border-radius: 5px;
   background-color: white;
 }
@@ -120,20 +121,23 @@
 #question-comments-wrap {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: flex-end;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  padding-right: 7rem;
 }
 .comment-wrap {
   /* background-color: rgba(64, 224, 208, 0.808); */
   /* background-color: rgb(190, 255, 248); */
   width: 70%;
-  border: solid gray 7px;
+  /* border: solid gray 7px; */
   padding: 1rem;
   margin-top: 1rem;
-  background-color: gainsboro;
-  border: solid rgb(85, 84, 84) 7px;
+  line-height: 1.3rem;
+  background-color: rgb(243, 243, 243);
+  border: dotted magenta 3px;
+  /* border: solid rgb(85, 84, 84) 7px; */
 }
 
 .answer-wrap {

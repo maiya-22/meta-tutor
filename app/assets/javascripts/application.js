@@ -12,6 +12,8 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require ajax-promises
+//= require comments
 // require turbolinks
 // require_tree .
 

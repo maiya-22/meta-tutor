@@ -1,27 +1,39 @@
-<form id="new-tutorial-form">
-    <input type="radio" name="format" id="video" checked>
-        <label for="video">Video</label>
-        <input type="radio" name="format" id="book">
-        <label for="book">Book</label>
-    <br>
-    <br>
+<!-- depending on which format the tutorial is in, different form-fields will show.  Next time, maybe will just render a different form, depending on the format option -->
+
+<form id="new-tutorial-form" action="" method="">
+<!--  select the format of the tutorial you are adding:-->
+    <button name="tutorial[format]" id="video" class="tutorial-type-selector">video</button>
+    <button name="tutorial[format]" id="chapter" class="tutorial-type-selector active-tutorial-type">chapter</button>
+
+
+    <!--  enter the title info: -->
     <input class="tutorial-form-element" type="text" name="tutorial[title]" id="title" placeholder="title">
-    <input class="tutorial-form-element" type="text" name="book[edition]" id="edition" placeholder="edition" hidden>
-    <input class="tutorial-form-element" type="text" name="" id="video[channel]" placeholder="channel">
+    <input class="tutorial-form-element" type="text" name="chapter[book_title]" id="book-title" placeholder="from book title" hidden>
+    <input class="tutorial-form-element" type="text" name="chapter[book_edition]" id="edition" placeholder="book edition" hidden>
+
+    <!--  enter the author: -->
     <input class="tutorial-form-element" type="text" name="tutorial[author]" id="author" placeholder="author">
     <input class="tutorial-form-element" type="text" name="tutorial[url]" id="url" placeholder="url">
-    <div class="tutorial-form-element" id="time" hidden>
-        <select name="video[hour]">
+
+    <!--  video playlist info: -->
+    <input class="tutorial-form-element" type="text" name="video[channel]" id="channel" placeholder="channel">
+    <input class="tutorial-form-element" type="text" name="video[playlist]" id="playlist" placeholder="playlist">
+    
+
+    <input class="tutorial-form-element" type="text" name="chapter[start_page]" id="start_page" placeholder="start page" hidden>
+    <input class="tutorial-form-element" type="text" name="chapter[end_page]" id="end_page" placeholder="end page" hidden>
+    <div class="tutorial-form-element" id="duration" hidden>
+        <select name="video[duration][hour]">
             <%2.times do |hour|%>
                 <option value="<%=hour%>"><%=hour%></option>
             <%end%>
         </select>
-        <select name="video[minute]">
+        <select name="video[duration][minute]">
             <%60.times do |min|%>
                 <option value="<%=min%>"><%=min%></option>
             <%end%>
         </select>
-        <select name="video[second]">
+        <select name="video[duration][second]">
             <%60.times do |sec|%>
                 <option value="<%=sec%>"><%=sec%></option>
             <%end%>

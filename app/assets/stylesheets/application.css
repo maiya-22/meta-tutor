@@ -16,6 +16,7 @@
  *= require questions
  *= require tutorials
  *= require search-bar
+ *= require add-tutorial-form
  *= require_self
  */
 

@@ -4,8 +4,11 @@ class TutorialsController < ApplicationController
   # GET /tutorials
   # GET /tutorials.json
   def index
-    
+    # gon.authenticity_token = form_authenticity_token
     @tutorials = Tutorial.all
+  #   render locals: {
+  #   gon: gon
+  # }
     # @tutorials = Tutorial.paginate(:page =>params[:page], :per_page => 2)
   end
 
@@ -34,17 +37,19 @@ class TutorialsController < ApplicationController
   # POST /tutorials
   # POST /tutorials.json
   def create
-    @tutorial = Tutorial.new(tutorial_params)
+    # @tutorial = Tutorial.new(tutorial_params)
 
-    respond_to do |format|
-      if @tutorial.save
-        format.html { redirect_to @tutorial, notice: 'Tutorial was successfully created.' }
-        format.json { render :show, status: :created, location: @tutorial }
-      else
-        format.html { render :new }
-        format.json { render json: @tutorial.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @tutorial.save
+    #     format.html { redirect_to @tutorial, notice: 'Tutorial was successfully created.' }
+    #     format.json { render :show, status: :created, location: @tutorial }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @tutorial.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    p 'PARAMS'
+    render json: params
   end
 
   # PATCH/PUT /tutorials/1

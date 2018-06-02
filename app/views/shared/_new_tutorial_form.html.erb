@@ -1,13 +1,16 @@
 <!-- depending on which format the tutorial is in, different form-fields will show.  Next time, maybe will just render a different form, depending on the format option -->
 
-<form id="new-tutorial-form" action="" method="">
+<form id="new-tutorial-form" action="tutorials" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    <%#= form_authenticity_token %>
 <!--  select the format of the tutorial you are adding:-->
     <button name="tutorial[format]" id="video" class="tutorial-type-selector">video</button>
     <button name="tutorial[format]" id="chapter" class="tutorial-type-selector active-tutorial-type">chapter</button>
 
 
     <!--  enter the title info: -->
-    <input class="tutorial-form-element" type="text" name="tutorial[title]" id="title" placeholder="title">
+    
+    <input class="tutorial-form-element" type="text" name="tutorial[title]" id="title" placeholder="enter the title">
     <input class="tutorial-form-element" type="text" name="chapter[book_title]" id="book-title" placeholder="from book title" hidden>
     <input class="tutorial-form-element" type="text" name="chapter[book_edition]" id="edition" placeholder="book edition" hidden>
 
@@ -23,6 +26,7 @@
     <input class="tutorial-form-element" type="text" name="chapter[start_page]" id="start_page" placeholder="start page" hidden>
     <input class="tutorial-form-element" type="text" name="chapter[end_page]" id="end_page" placeholder="end page" hidden>
     <div class="tutorial-form-element" id="duration" hidden>
+        <h3> duration </h3>
         <select name="video[duration][hour]">
             <%2.times do |hour|%>
                 <option value="<%=hour%>"><%=hour%></option>

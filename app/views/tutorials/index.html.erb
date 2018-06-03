@@ -13,49 +13,35 @@
 <% end %>
 
     <% @tutorials.each do |tutorial| %>
-
-      <div class="tutorials-summary-wrap">
-          <%# tutorial.user_id %>
-          <p>format: <%= tutorial.format %></p>
-          <p>title: <%= tutorial.title %></p>
-          <p>author: <%= tutorial.author %></p>
-          <p>url: <%= tutorial.url %></p>
-          
-          <p>added by: <%= tutorial.user.name %> </p>
+      <% @video = Video.where(tutorial_id: tutorial.id)[0]%>
+      <% @chapter = Chapter.where(tutorial_id: tutorial.id)[0]%>
+      <div id="tutorial-<%=tutorial.id%>"" class="tutorials-summary-wrap">
           <%if tutorial.format == "video"%>
-            <p>this tutorial is a video:</p>
-            <%#=  why isn't this working? tutorial.video%>
-            <% @video = Video.where(tutorial_id: tutorial.id)[0]%>
-            <% if @video != nil %>
-                  <p>channel: <%=@video.channel %></p>
-                  <p>playlist: <%=@video.playlist %></p>
-                  <p>duration: <%=@video.duration %><p>
-            <% end %>
-            
-          <%elsif tutorial.format == "chapter"%>
-          <% @chapter = Chapter.where(tutorial_id: tutorial.id)[0]%>
-          <% if @chapter != nil %>
-          <p>book title: <%=@chapter.book_title %></p>
-          <p>book edition: <%=@chapter.book_edition %></p>
-          <p>start page: <%=@chapter.start_page %><p>
-          <p>end page: <%=@chapter.end_page %><p>
-          <p>tutorial_id: <%=@chapter.tutorial_id %><p>
-    <% end %>
+              <p>from <%=@video.channel %> channel  playlist: <%=@video.playlist %></p>
+              <p><%= tutorial.format %>: <%= tutorial.title %></p>
+              <p>presented by <%= tutorial.author %></p>
+              <p><%=@video.duration%><p>
+              <%@duration = Duration.new(:hours => 5, :minutes => 20, :seconds => 30)%>
+              <p>duration <%=@duration.hours%>:<%=@duration.minutes%>:<%=@duration.seconds%><p>
+          <%elsif tutorial.format == "chapter" %>
+            <p>by <%= tutorial.author %></p>
+            <p>from: <%=@chapter.book_title %>,  edition: <%=@chapter.book_edition %></p>
+            <p>chapter <%= @chapter.chapter %>:  <%= tutorial.title%></p>
+          <% end %> 
+
+
+
+
+
+         
           
-          <%end%>
           
           <%= link_to 'Show', tutorial %>
-            <%= link_to 'Edit', edit_tutorial_path(tutorial) %>
-            <%= link_to 'Destroy', tutorial, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%#= link_to 'Edit', edit_tutorial_path(tutorial) %>
+            <%#= link_to 'Destroy', tutorial, method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
 
-  <%end%>
-      
-  
-          
-           
-  
-       
+  <%end%>     
         <%#= will_paginate @tutorials%>
 
   <%= link_to 'New Tutorial', new_tutorial_path %>

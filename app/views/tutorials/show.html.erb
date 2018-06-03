@@ -1,13 +1,18 @@
 
+LINK TO UP-VOTE the presentation
+<%if @tutorial.format == "video"%>
+  <iframe width="560" height="315" src="<%=@tutorial.url%>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<%else%>
 
+<div style="max-width: 400px" >
+<img src="https://i.ytimg.com/vi/Q-36WlrS6bE/hqdefault.jpg" style="max-width:100%;" />
+</div>
+<%end%>
 
-
-<div id="#page-top">top of page</div>
+<div id="#1">top of page</div>
 
 **  PUT LINKS HERE TO add a question
-
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Title:</strong>
   <%= @tutorial.title %>
@@ -75,6 +80,6 @@
     <p><%=question.page%></p>
     <%end%>
     <%= link_to 'Show', question %>
-    <a href="#page-top">back to top of page</a>
+    <a href="1">back to top of page</a>
   <%end%>
 <%end%>

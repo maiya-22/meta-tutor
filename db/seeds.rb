@@ -25,7 +25,7 @@ end
     @tutorial = Tutorial.create(
         title: "Optional Chaining Operator in JavaScript",
         author: "mpj",
-        url: "https://www.youtube.com/watch?v=FKRVqtP8o48",
+        url: "https://www.youtube.com/embed/YYzt71o2IvQ",
         format: 'video',
         user_id: 1
     )
@@ -41,7 +41,7 @@ end
     @tutorial = Tutorial.create!(
         title: "Optional Chaining Operator in JavaScript",
         author: "mpj",
-        url: "https://www.youtube.com/watch?v=FKRVqtP8o48",
+        url: "https://www.youtube.com/embed/YYzt71o2IvQ",
         format: 'chapter',
         user_id: 1
     )

@@ -5,3 +5,7 @@
   margin: auto;
   margin-bottom: 1rem;
 }
+
+#tutorial-frame {
+  width: 400px;
+}

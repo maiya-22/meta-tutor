@@ -4,10 +4,17 @@
   
         <%= link_to 'add a new tutorial', new_tutorial_path, class: "page-header-add-tutorial" %> *
         <%= link_to 'answer questions', new_tutorial_path, class: "page-header-add-tutorial" %>
+        <a href="#">link to ask a question</a>
+        <a href="<%=@question.tutorial.url%>"></a>
     </div>
 <% end %>
 <div id="question-page-wrap">
   <p id="notice"><%= notice %></p>
+
+
+
+
+
   <h1>
     <a href="/tutorials/<%= @question.tutorial.id %>"
       <span> 
@@ -22,6 +29,12 @@
       </span>    
     </a>
   </h1>
+
+
+
+
+
+  
   <div id="question-page-question-wrap">
     <div id="question-status-wrap">
         <%#make ajax to give a star%>

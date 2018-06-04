@@ -1,13 +1,41 @@
+<% content_for :page_header do %>
+  <div id="tutorial-header-frame">
+      <div id="video-user-info">
+      LINK TO UP-VOTE the presentation
+      </div>
+      
+    <%if @tutorial.format == "video"%>
+      <%@duration = @tutorial.video.duration%>
+      <%=@duration%>
+        <div id="tutorial-video-and-nav">
+            <iframe id="tutorial-video" width="560" height="315" src="<%=@tutorial.url%>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen webkitallowfullscreen='true'></iframe>
+            <div id="video-question-page-anchors">
+              <%100.times do |time|%>
 
-LINK TO UP-VOTE the presentation
-<%if @tutorial.format == "video"%>
-  <iframe width="560" height="315" src="<%=@tutorial.url%>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-<%else%>
+                  <a href="#<%=time%>"><%=@duration%></a>
+                <%end%>
+            </div>
+        </div>
+       
 
-<div style="max-width: 400px" >
-<img src="https://i.ytimg.com/vi/Q-36WlrS6bE/hqdefault.jpg" style="max-width:100%;" />
-</div>
-<%end%>
+
+
+
+
+
+
+
+
+    
+    <%else%>
+
+    <div style="max-width: 400px" >
+    <img src="<%=@tutorial.url%>" style="max-width:100%;" />
+    </div>
+    <%end%>
+    </div>   
+<% end %>
+
 
 <div id="#1">top of page</div>
 

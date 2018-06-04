@@ -6,6 +6,22 @@
   margin-bottom: 1rem;
 }
 
-#tutorial-frame {
-  width: 400px;
+/* SHOW TUTORIAL PAGE: */
+#tutorial-header-frame {
+  width: 100%;
+  border: solid magenta 3px;
+}
+
+iframe {
+  border: 15px black solid;
+}
+
+#tutorial-video-and-nav {
+  border: green dotted 5px;
+  width: 560px;
+  float: right;
+  margin-right: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

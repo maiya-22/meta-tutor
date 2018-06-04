@@ -1,6 +1,13 @@
 <!-- depending on which format the tutorial is in, different form-fields will show.  Next time, maybe will just render a different form, depending on the format option -->
 
+
+
+
 <form id="new-tutorial-form" action="tutorials" method="post">
+    <p>in order to add a video, find the embed option on the video's page, copy only the string in the src option (not the quotes).
+    To add a book image, paste the image url. 
+    </p>
+
     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
     <%#= form_authenticity_token %>
 <!--  select the format of the tutorial you are adding:-->

@@ -3,7 +3,7 @@ class CreateVideos < ActiveRecord::Migration[5.2]
     create_table :videos do |t|
       t.string :playlist
       t.string :channel
-      t.time :duration
+      t.integer :duration
       t.string :tutorial_id
 
       t.timestamps

@@ -1,6 +1,8 @@
 class TutorialsController < ApplicationController
   before_action :set_tutorial, only: [:show, :edit, :update, :destroy]
 
+
+
   # GET /tutorials
   # GET /tutorials.json
   def index
@@ -12,15 +14,29 @@ class TutorialsController < ApplicationController
     # @tutorials = Tutorial.paginate(:page =>params[:page], :per_page => 2)
   end
 
+  def search 
+    @tutorial = Tutorial.where(title: params[:title])[0]
+    if(@tutorial != nil)
+      if(@tutorial.format == "video")
+        @questions = Question.where(tutorial_id: @tutorial.id).order(:time)
+      elsif (@tutorial.format == "chapter")
+        @questions = Question.where(tutorial_id: @tutorial.id).order(:page)
+      end
+      render 'show'
+    else
+      redirect_to action: 'new', title: params[:title]
+    end
+  end
+
   # GET /tutorials/1
   # GET /tutorials/1.json
   def show
     if(params[:id] == "search")
       render plain: "OK"
     elsif(@tutorial.format == "video")
-      @questions = Question.where(tutorial_id: @tutorial.id).order(:time)
+      # @questions = Question.where(tutorial_id: @tutorial.id).order(:time)
     elsif (@tutorial.format == "chapter")
-      @questions = Question.where(tutorial_id: @tutorial.id).order(:page)
+      # @questions = Question.where(tutorial_id: @tutorial.id).order(:page)
     end
    
   end
@@ -28,6 +44,9 @@ class TutorialsController < ApplicationController
   # GET /tutorials/new
   def new
     @tutorial = Tutorial.new
+    if(params[:title])
+      @tutorial.title = params[:title]
+    end
   end
 
   # GET /tutorials/1/edit

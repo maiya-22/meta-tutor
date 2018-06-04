@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
  
 
-  get 'tutorials/search', to: 'tutorials#show'
+  get 'tutorials/search', to: 'tutorials#search'
   
 
   resources :tags

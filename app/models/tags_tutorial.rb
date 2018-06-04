@@ -1,5 +1,5 @@
 class TagsTutorial < ActiveRecord::Base
 	self.table_name = "tags_tutorials"
-	belongs_to :tutorial
-	belongs_to :tag
+	belongs_to :tutorial,  required: false
+	belongs_to :tag,  required: false
 end

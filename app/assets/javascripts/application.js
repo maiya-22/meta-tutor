@@ -14,6 +14,7 @@
 //= require activestorage
 //= require ajax-promises
 //= require add-tutorial-form
+//= require question-thread
 // require comments
 // require turbolinks
 // require_tree .

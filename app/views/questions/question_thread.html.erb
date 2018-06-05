@@ -1,0 +1,60 @@
+<% content_for :page_header do %>
+    <div id="question-page-header">
+        <a href="">back to tutorial</a>
+        <a href="">see all tutorials</a>
+        <a href="">ask another question about this tutorial</a>
+    </div>
+<% end %>
+<div id="question-page-wrap">
+    <div id="question-page-question-wrap">
+    
+        <div id="question-status-wrap">
+            <a class="question-star-vote" href="#">˄</a>
+            <div id="question-stars-wrap">
+            <div id="question-stars-count">
+                15
+            </div>
+            <div id="question-stars-star">
+                ★
+            </div>
+        </div>
+        <a class="question-star-vote" href="#">˅</a>
+        </div>
+        <div id="question-content-wrap">
+            <div id="question-title"><%= @question.title %></div>
+            <div id="actual-question-content">
+                <%=@question.content%>
+            </div>
+            <form id="edit-question-form" hidden>
+                <div>
+                    title:
+                    <input id="question-title"value="<%= @question.title %>"></input>
+                </div>
+                <div>
+                    content: 
+                    <input id="actual-question-content" value="<%=@question.content%>"> </input>
+                </div>
+                <button id="cancel-edit-question-button" hidden>cancel</button>
+                <button type="submit">submit</button>
+            </form>
+            <div id="question-footer">
+            <div id="question-content-tags-wrap">
+                <%@tags = Tag.all%>
+                <%@tags.each do |tag|%>
+                    <div class="tag"><%=tag.name%></div>
+                <%end%>
+            </div>
+            <div>
+                by:<%= @question.user.name %>
+            </div>
+            <div>
+            </div>
+            </div> 
+            <%if current_user.id == @user.id%>
+                <button id="edit-question-button">edit this question</button>
+                <a href="">delete this question</a>
+            <%end%>        
+        </div>
+        </div>
+    </div>
+</div>

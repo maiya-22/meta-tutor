@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  # before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   # GET /questions
   # GET /questions.json
@@ -10,6 +10,11 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    @tutorial = Tutorial.find(params[:tutorial_id])
+    @question = Question.find(params[:question_id])
+    @user = @question.user
+    @current_user = current_user
+    render 'question_thread'
   end
 
   # GET /questions/new

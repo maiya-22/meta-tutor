@@ -13,8 +13,12 @@
 <% end %>
 
     <% @tutorials.each do |tutorial| %>
+
+
       <% @video = Video.where(tutorial_id: tutorial.id)[0]%>
       <% @chapter = Chapter.where(tutorial_id: tutorial.id)[0]%>
+      
+
       <div id="tutorial-<%=tutorial.id%>"" class="tutorials-summary-wrap">
           <%if tutorial.format == "video"%>
               <p>from <%=@video.channel %> channel  playlist: <%=@video.playlist %></p>

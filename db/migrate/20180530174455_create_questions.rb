@@ -4,7 +4,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :content
       t.string :status
-      t.string :level
+      # t.string :level
       t.float :page
       t.float :time
       t.integer :user_id

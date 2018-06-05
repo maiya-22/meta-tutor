@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_03_192323) do
+ActiveRecord::Schema.define(version: 2018_06_03_033212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2018_06_03_192323) do
   create_table "answers", force: :cascade do |t|
     t.text "content"
     t.integer "votes"
-    t.boolean "approved"
     t.integer "question_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -32,8 +31,6 @@ ActiveRecord::Schema.define(version: 2018_06_03_192323) do
     t.string "book_edition"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "tutorial_id"
-    t.integer "line_number"
     t.integer "chapter"
   end
 
@@ -50,15 +47,12 @@ ActiveRecord::Schema.define(version: 2018_06_03_192323) do
     t.string "title"
     t.text "content"
     t.string "status"
-    t.string "level"
     t.float "page"
     t.float "time"
     t.integer "user_id"
     t.integer "tutorial_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "chapter_id"
-    t.integer "video_id"
   end
 
   create_table "tags", force: :cascade do |t|

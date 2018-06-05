@@ -2,7 +2,7 @@
 <p>Find me in app/views/home/index.html.erb</p>
 home index
 
-<%#=@current_user.email%>
-<%1000.times do |num|%>
-    <%=num%> </br>
-<%end%>
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>   
+# new_user_registration GET    /users/sign_up(.:format)                                                                 devise/registrations#new
+<a href="/users/sign_up">sign up</a>
+<a href="/users/sign_in">sign in</a>

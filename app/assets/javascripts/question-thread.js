@@ -5,12 +5,18 @@
 let editQuestionButton = document.getElementById('edit-question-button');
 let editQuestionForm = document.getElementById('edit-question-form');
 let cancelEditQuestion = document.getElementById('cancel-edit-question-button');
+let questionDisplayElements = document.querySelectorAll('.question-display')
+let questionTitle = document.querySelector('#question-title')
 if(editQuestionButton) {
     editQuestionButton.addEventListener('click', function(e) {
         console.log('click')
        editQuestionForm.removeAttribute('hidden', null); 
        cancelEditQuestion.removeAttribute('hidden', null); 
        editQuestionButton.setAttribute('hidden', null); 
+       for(let i = 0 ; i < questionDisplayElements.length ; i++) {
+           questionDisplayElements[i].setAttribute('hidden', null)
+       }
+       questionTitle.setAttribute('hidden', null);
     });
 }
 

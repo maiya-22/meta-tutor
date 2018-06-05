@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # root to: 'tutorials#index'
   get 'tutorials/search', to: 'tutorials#search'
   get 'tutorials/:tutorial_id/questions/:question_id', to: 'questions#show'
-  
+ delete  "/questions/:question_id", to: 'questions#destroy'
 
   # resources :tags
   # resources :comments

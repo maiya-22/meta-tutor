@@ -22,7 +22,7 @@
         </div>
         <div id="question-content-wrap">
             <div id="question-title"><%= @question.title %></div>
-            <div id="actual-question-content">
+            <div id="actual-question-content" class="question-display">
                 <%=@question.content%>
             </div>
             <form id="edit-question-form" hidden>
@@ -52,7 +52,11 @@
             </div> 
             <%if current_user.id == @user.id%>
                 <button id="edit-question-button">edit this question</button>
-                <a href="">delete this question</a>
+                <form action="/questions/<%=@question.id%>" method="post">
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                    <input type="hidden" name="_method" value="delete" />
+                    <button type="submit">delete</button>
+                </form>
             <%end%>        
         </div>
         </div>

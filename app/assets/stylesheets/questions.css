@@ -6,6 +6,9 @@
   padding-right: 20vw;
   /* border: solid 1px white; */
   margin-top: 2rem;
+  border: dotted orange 3px;
+  display: flex;
+  flex-direction:column;
 }
 
 #question-page-question-wrap {
@@ -15,8 +18,7 @@
   display: flex;
   min-height: 40vh;
   /* background-color: rgba(128, 129, 129, 0.452); */
-  /* box-shadow: 0px -5px 5px darkgray; */
-  /* border: solid rgb(85, 84, 84) 1px; */
+  box-shadow: 0px -5px 15px darkgray;
   border: solid pink 1px;
   border-radius: 5px;
   background-color: white;
@@ -29,6 +31,7 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  border: dotted green 3px;
 }
 
 #question-content-wrap {
@@ -41,6 +44,7 @@
   padding-right: 4rem;
   background-color: white;
   line-height: 1.5rem;
+  border: solid purple 3px;
 }
 
 #question-title {
@@ -53,6 +57,7 @@
   letter-spacing: 0.3rem;
   font-weight: bold;
   /* display: flex; */
+  border: blue 2px solid;
   justify-content: center;
 }
 
@@ -61,7 +66,7 @@
   padding-top: 2rem;
   padding-bottom: 2rem;
   /* border: dotted blue 2px; */
-  border-bottom: dotted gainsboro 1px;
+  border: solid gray 2px;
 }
 
 #question-content-tags-wrap {
@@ -69,6 +74,7 @@
   padding: 0.25rem;
   display: flex;
   flex-wrap: wrap;
+  border: olive 2px solid;
 }
 
 .tag {
@@ -76,6 +82,14 @@
   background-color: gainsboro;
   border-radius: 3px;
   padding: 3px;
+}
+
+#question-footer {
+  border: solid turquoise 3px;
+}
+
+#question-footer div {
+  border: dotted pink 3px;
 }
 .question-star-vote {
   text-decoration: none;
@@ -126,7 +140,9 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-right: 7rem;
+  border: solid  purple 5px;
 }
+
 .comment-wrap {
   /* background-color: rgba(64, 224, 208, 0.808); */
   /* background-color: rgb(190, 255, 248); */
@@ -137,10 +153,34 @@
   line-height: 1.3rem;
   background-color: rgb(243, 243, 243);
   border: dotted magenta 3px;
+  background-color: blue;
   /* border: solid rgb(85, 84, 84) 7px; */
+  align-self: flex-end;
 }
 
 .answer-wrap {
-  border: dotted magenta 2px;
+  border: dotted darkorange 2px;
   padding-left: 2rem;
+}
+
+
+#add-comment-container, .comment-wrap {
+  border: solid purple 3px;
+}
+
+#add-comment-container textarea {
+  width: 96%;
+  height: 3rem;
+  padding: 0.5rem;
+  line-height: 1.2rem;
+}
+
+.comment-wrap form {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-wrap form button {
+  width: 3rem;
+  align-self: flex-end;
 }

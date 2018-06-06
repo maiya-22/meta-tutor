@@ -4,61 +4,169 @@
         <a href="">see all tutorials</a>
         <a href="">ask another question about this tutorial</a>
     </div>
-<% end %>
-<div id="question-page-wrap">
-    <div id="question-page-question-wrap">
-    
-        <div id="question-status-wrap">
-            <a class="question-star-vote" href="#">˄</a>
-            <div id="question-stars-wrap">
-            <div id="question-stars-count">
-                15
-            </div>
-            <div id="question-stars-star">
-                ★
-            </div>
-        </div>
-        <a class="question-star-vote" href="#">˅</a>
-        </div>
-        <div id="question-content-wrap">
-            <div id="question-title"><%= @question.title %></div>
-            <div id="actual-question-content" class="question-display">
-                <%=@question.content%>
-            </div>
-            <form id="edit-question-form" hidden>
-                <div>
-                    title:
-                    <input id="question-title"value="<%= @question.title %>"></input>
+    <% end %>
+        <div id="question-page-wrap">
+            <div id="question-page-question-wrap">
+                <div id="question-status-wrap">
+                    <a class="question-star-vote" href="#">˄</a>
+                    <div id="question-stars-wrap">
+                        <div id="question-stars-count">
+                            15
+                        </div>
+                        <div id="question-stars-star">
+                            ★
+                        </div>
+                    </div>
+                    <a class="question-star-vote" href="#">˅</a>
                 </div>
-                <div>
-                    content: 
-                    <input id="actual-question-content" value="<%=@question.content%>"> </input>
+                <div id="question-content-wrap">
+                    <div id="question-title">
+                        <%= @question.title %>
+                    </div>
+                    <div id="actual-question-content" class="question-display">
+                        <%=@question.content%>
+                    </div>
+                    <div id="edit-question-form" hidden>
+                        <form action="/questions/<%=@question.id%>" method="post">
+                            <input type="hidden" name="_method" value="patch" />
+                            <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                                <div>
+                                    title:
+                                    <input id="question-title" value="<%= @question.title %>" name="question[title]"></input>
+                                </div>
+                                <div>
+                                    content:
+                                    <input id="actual-question-content" value="<%=@question.content%>" name="question[content]"> </input>
+                                </div>
+                                <button type="submit">submit</button>
+                        </form>
+                        <form id="cancel-edit-question-button">
+                            <button>cancel</button>
+                        </form>
+                    </div>
+                    <div id="question-footer">
+                        <div id="question-content-tags-wrap">
+                            <%@tags = Tag.all%>
+                                <%@tags.each do |tag|%>
+                                    <div class="tag">
+                                        <%=tag.name%>
+                                    </div>
+                                <%end%>
+                        </div>
+                        <div>
+                            by:
+                            <%= @question.user.name %>
+                        </div>
+                        <div>
+                            <%if current_user.id == @user.id%>
+                                <button id="edit-question-button">edit this question</button>
+                                <form action="/questions/<%=@question.id%>" method="post">
+                                    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                                        <input type="hidden" name="_method" value="delete" />
+                                        <button type="submit">delete</button>
+                                </form>
+                            <%end%>
+                        </div>
+                    </div>
                 </div>
-                <button id="cancel-edit-question-button" hidden>cancel</button>
-                <button type="submit">submit</button>
-            </form>
-            <div id="question-footer">
-            <div id="question-content-tags-wrap">
-                <%@tags = Tag.all%>
-                <%@tags.each do |tag|%>
-                    <div class="tag"><%=tag.name%></div>
-                <%end%>
+                
             </div>
-            <div>
-                by:<%= @question.user.name %>
-            </div>
-            <div>
-            </div>
-            </div> 
-            <%if current_user.id == @user.id%>
-                <button id="edit-question-button">edit this question</button>
-                <form action="/questions/<%=@question.id%>" method="post">
-                <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-                    <input type="hidden" name="_method" value="delete" />
-                    <button type="submit">delete</button>
+
+            <%#  END OF QUESTION%>
+            <%#  START OF COMMENTS%>
+            <%@question.comments.each do |comment|%>
+                <div class="comment-wrap">
+                    <div><%=comment.content%></div>
+                    <div>written by <%=comment.user.name%></div>
+                    <form hidden>
+                        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                        <input type="hidden" name="_method" value="patch" />
+                    </form>
+                    <%if current_user.id == comment.user.id%>
+                        <button>edit</button>
+                        <a href="#">delete</a>
+                    <%end%>
+                </div>
+            <%end%>
+            <div id="add-comment-container" class="comment-wrap">
+                <form action="/comment" accept-charset="UTF-8" method="post">
+                    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                    <textarea name="comment[content]" id="comment_content"> </textarea>
+                    <input type="hidden" value="<%=@question.id%>" name="comment[question_id]" />
+                    <input type="hidden" value="<%=@tutorial.id%>" name="tutorial_id" />
+                    <input type="hidden" value="<%=current_user.id%>" name="user_id" />
+                    <button type="submit">add</button>
                 </form>
-            <%end%>        
-        </div>
-        </div>
-    </div>
-</div>
+            </div>
+            <button>add a comment</button>
+
+            <%# NOW PUT THE ANSWERS ON THE PAGE:  For now, they have the same class-names as the question html elements%>
+        
+
+          <%@question.answers.each do |answer|%>  
+            <div id="question-page-question-wrap">
+                <div id="question-status-wrap">
+                    <a class="question-star-vote" href="#">˄</a>
+                    <div id="question-stars-wrap">
+                        <div id="question-stars-count">
+                            15
+                        </div>
+                        <div id="question-stars-star">
+                            ★
+                        </div>
+                    </div>
+                    <a class="question-star-vote" href="#">˅</a>
+                </div>
+                <div id="question-content-wrap">
+                    <div id="question-title">
+                        <%= @question.title %>
+                    </div>
+                    <div id="actual-question-content" class="question-display">
+                        <%=@question.content%>
+                    </div>
+                    <div id="edit-question-form" hidden>
+                        <form action="/questions/<%=@question.id%>" method="post">
+                            <input type="hidden" name="_method" value="patch" />
+                            <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                                <div>
+                                    title:
+                                    <input id="question-title" value="<%= @question.title %>" name="question[title]"></input>
+                                </div>
+                                <div>
+                                    content:
+                                    <input id="actual-question-content" value="<%=@question.content%>" name="question[content]"> </input>
+                                </div>
+                                <button type="submit">submit</button>
+                        </form>
+                        <form id="cancel-edit-question-button">
+                            <button>cancel</button>
+                        </form>
+                    </div>
+                    <div id="question-footer">
+                        <div id="question-content-tags-wrap">
+                            <%@tags = Tag.all%>
+                                <%@tags.each do |tag|%>
+                                    <div class="tag">
+                                        <%=tag.name%>
+                                    </div>
+                                <%end%>
+                        </div>
+                        <div>
+                            by:
+                            <%= @question.user.name %>
+                        </div>
+                        <div>
+                            <%if current_user.id == @user.id%>
+                                <button id="edit-question-button">edit this question</button>
+                                <form action="/questions/<%=@question.id%>" method="post">
+                                    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                                        <input type="hidden" name="_method" value="delete" />
+                                        <button type="submit">delete</button>
+                                </form>
+                            <%end%>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        <%end%>

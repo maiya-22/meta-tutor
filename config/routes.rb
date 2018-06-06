@@ -3,10 +3,15 @@ Rails.application.routes.draw do
   
  root to: 'home#index'
   # root to: 'tutorials#index'
-  get 'tutorials/search', to: 'tutorials#search'
-  get 'tutorials/:tutorial_id/questions/:question_id', to: 'questions#show'
- delete  "/questions/:question_id", to: 'questions#destroy'
+  # [PATCH] "/questions/1"
 
+  patch  "/questions/:question_id", to: 'questions#update'
+  get 'tutorials/search', to: 'tutorials#search'
+  get 'tutorials/:tutorial_id', to: 'tutorials#show'
+  get 'tutorials/:tutorial_id/questions/:question_id', to: 'questions#show'
+  delete  "/questions/:question_id", to: 'questions#destroy'
+  post "/comment", to: 'comments#create'
+  
   # resources :tags
   # resources :comments
   # resources :answers

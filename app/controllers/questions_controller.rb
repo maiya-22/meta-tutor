@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
     @tutorial = Tutorial.find(params[:tutorial_id])
     @question = Question.find(params[:question_id])
     @user = @question.user
-    @current_user = current_user
+   
     render 'question_thread'
   end
 
@@ -45,27 +45,20 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
-    respond_to do |format|
-      if @question.update(question_params)
-        format.html { redirect_to @question, notice: 'Question was successfully updated.' }
-        format.json { render :show, status: :ok, location: @question }
-      else
-        format.html { render :edit }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
-    end
+    @question = Question.find(params[:question_id])
+    @question.update_attributes(question_params)
+    redirect_to "/tutorials/#{@question.tutorial.id}/questions/#{@question.id}"
   end
 
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
     @question = Question.find(params[:question_id])
-    render json: @question
+    @tutorial = @question.tutorial
     # @question.destroy
-    # respond_to do |format|
-    #   format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
-    #   format.json { head :no_content }
-    # end
+    # render json: @question
+
+    redirect_to "/tutorials/#{@question.tutorial.id}"
   end
 
   private
@@ -73,7 +66,6 @@ class QuestionsController < ApplicationController
     def set_question
       @question = Question.find(params[:id])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
       params.require(:question).permit(:title, :content, :status, :level, :page, :time, :user_id, :tutorial_id)

@@ -40,9 +40,7 @@
                                 </div>
                                 <button type="submit">submit</button>
                         </form>
-                        <form id="cancel-edit-question-button">
-                            <button id="quest-question.id">cancel</button>
-                        </form>
+                        <button data-show="question" class="click-to-show" hidden>cancel</button>
                     </div>
                     <div id="question-footer">
                         <div id="question-content-tags-wrap">
@@ -87,17 +85,16 @@
                             </div>
                             <button type="submit">submit</button>
                         </form>
-                        <form id="cancel-edit-question-comment-button">
-                            <button>cancel</button>
-                        </form>
+                        <button data-show="comment-<%=comment.id%>" class="click-to-show" hidden>cancel</button>
                     </div>
                     <%if current_user.id == comment.user.id%>
                         <button id="question-comment" data-show="comment-<%=comment.id%>" class="click-to-show">edit</button>
                         <a href="#">delete</a>
+                      
                     <%end%>
                 </div>
             <%end%>
-            <div id="add-comment-container" class="comment-wrap">
+            <div id="add-comment-container" class="comment-wrap" data-show="comment-<%=@question.id%>-add-next-comment" hidden>
                 <form action="/comment" accept-charset="UTF-8" method="post">
                     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
                     <textarea name="comment[content]" id="comment_content"> </textarea>
@@ -106,8 +103,10 @@
                     <input type="hidden" value="<%=current_user.id%>" name="user_id" />
                     <button type="submit">add</button>
                 </form>
+                <button  data-show="comment-<%=@question.id%>-add-next-comment" class="click-to-show" hidden>cancel</button>
             </div>
-            <button>add a comment</button>
+       
+            <button data-show="comment-<%=@question.id%>-add-next-comment" class="click-to-show">add a comment</button>
 
             <%# NOW PUT THE ANSWERS ON THE PAGE:  For now, they have the same class-names as the question html elements%>
         
@@ -139,9 +138,7 @@
                                 </div>
                                 <button type="submit">submit</button>
                         </form>
-                        <form id="cancel-edit-question-button">
-                            <button>cancel</button>
-                        </form>
+                        <button data-show="answer-<%=answer.id%>" class="click-to-show" hidden>cancel</button>
                     </div>
                     <div id="question-footer">
                         <div id="question-content-tags-wrap">
@@ -170,4 +167,39 @@
                 </div>
                 
             </div>
+            <%# NOW PUT THE Comments for this answer:%>
+            <%answer.comments.each do |comment|%>
+                <div class="comment-wrap">
+                    <div><%=comment.content%></div>
+                    <div>written by <%=comment.user.name%></div>
+                    <div id="edit-question-comment-form" data-show="comment-<%=comment.id%>" hidden>
+                        <form action="/questions/<%=@question.id%>/comments" method="post"n>
+                            <input type="hidden" name="_method" value="patch" />
+                            <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                            <div>
+                                <input id="question-comment-content" value="<%=comment.content%>" name="comment[content]"> </input>
+                            </div>
+                            <button type="submit">submit</button>
+                        </form>
+                        <button data-show="comment-<%=comment.id%>" class="click-to-show" hidden>cancel</button>
+                    </div>
+                    <%if current_user.id == comment.user.id || current_user.id != comment.user.id%>
+                        <button id="question-comment" data-show="comment-<%=comment.id%>" class="click-to-show">edit</button>
+                        <a href="#">delete</a>
+                    <%end%>
+                </div>
+            <%end%>
+            <div id="add-comment-container" class="comment-wrap"   data-show="comment-answer<%=answer.id%>-add-next-comment" hidden>
+                <form action="/comment" accept-charset="UTF-8" method="post">
+                    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                    <textarea name="comment[content]" id="comment_content"> </textarea>
+                    <input type="hidden" value="<%=@question.id%>" name="comment[question_id]" />
+                    <input type="hidden" value="<%=@tutorial.id%>" name="tutorial_id" />
+                    <input type="hidden" value="<%=current_user.id%>" name="user_id" />
+                    <button type="submit">add</button>
+                </form>
+                <button  data-show="comment-answer<%=answer.id%>-add-next-comment" class="click-to-show" hidden>cancel</button>
+            </div>
+            <button data-show="comment-answer<%=answer.id%>-add-next-comment" class="click-to-show">add a comment</button>
+
         <%end%>

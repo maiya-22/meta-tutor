@@ -1,37 +1,28 @@
-// hide the question content, and show the form content
+// If you want a button to hide some other elements, put class='click-to-show' and data=`${variableName}`
+// On all the elements who's visiblity you want to be toggled with this button, put data=`${variableName}`
+// On all of the elements who's visibilty, you want to start as hidden, type hidden in the tag
 
-
-// get the button that will toggle the form and the display elements' hidden states
-let editQuestionButton = document.getElementById('edit-question-button');
-let editQuestionForm = document.getElementById('edit-question-form');
-let cancelEditQuestion = document.getElementById('cancel-edit-question-button');
-let questionDisplayElements = document.querySelectorAll('.question-display')
-let questionTitle = document.querySelector('#question-title')
-if(editQuestionButton) {
-    editQuestionButton.addEventListener('click', function(e) {
-        console.log('click')
-       editQuestionForm.removeAttribute('hidden', null); 
-       cancelEditQuestion.removeAttribute('hidden', null); 
-       editQuestionButton.setAttribute('hidden', null); 
-       for(let i = 0 ; i < questionDisplayElements.length ; i++) {
-           questionDisplayElements[i].setAttribute('hidden', null)
-       }
-       questionTitle.setAttribute('hidden', null);
-    });
+// select all of the buttons that are used to toggle the forms/content view:
+const showEditFormsButtons = document.getElementsByClassName('click-to-show');
+if(showEditFormsButtons) {
+    for(let i = 0 ; i < showEditFormsButtons.length; i++) {
+        let button = showEditFormsButtons[i];
+        button.addEventListener('click', function(e) {
+            let dataToShowValue = this.getAttribute("data-show");
+            let itemsToToggleVisiblity = document.querySelectorAll(`[data-show=${dataToShowValue}]`);
+            if(itemsToToggleVisiblity) {
+                console.log(itemsToToggleVisiblity)
+                for(let i = 0 ; i < itemsToToggleVisiblity.length ; i++) {
+                    if(itemsToToggleVisiblity[i].hidden) {
+                        itemsToToggleVisiblity[i].removeAttribute('hidden', null);
+                    } else {
+                         itemsToToggleVisiblity[i].setAttribute('hidden', null);
+                    }
+                }
+            }  
+            console.log(dataToShowValue)
+        });
+    }
 }
 
-
-
-// const editQuestionButton = document.getElementById('edit-question-button');
-// const editQuestionForm = document.getElementById('edit-question-form'); 
-// if(editQuestionButton) {
-//     editQuestionButton.addEventListener('click') {
-//         // toggle visilbility on three things:
-//         1) the edit question form
-//         2) question title
-//         3question content
-//     }
-// }
-
-// <div id="question-title" hidden><<%= @question.title %></div>
-//             <div id="actual-question-content" hidden>
+// data-show="question" class="click-to-show"

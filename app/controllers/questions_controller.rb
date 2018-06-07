@@ -54,7 +54,7 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1.json
   def destroy
     @question = Question.find(params[:question_id])
-    @tutorial = @question.tutorial
+    # @question.destroy
     # @question.destroy
     # render json: @question
 

@@ -6,14 +6,16 @@ get 'tutorials/:tutorial_id/questions/:question_id', to: 'questions#show'
 
 
 # comments routes:
-# comments are read via the question and answer threads, so no route for index:
+# comments are read via the question threads, so no route for index:
 post "/comment", to: 'comments#create'
 delete "/comments/:comment_id", to: "comments#destroy"
 patch "/comments/:comment_id", to: "comments#update"
 
 # answers routes:
+# answers are read via the question threads, so no route for index:
 post "/answers", to: 'answers#create'
 delete "/answers/:answer_id", to: 'answers#destroy'
+patch "/answer/:answer_id", to: 'answers#update'
 
 
 

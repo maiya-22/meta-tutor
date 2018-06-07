@@ -47,15 +47,21 @@ class AnswersController < ApplicationController
   # PATCH/PUT /answers/1
   # PATCH/PUT /answers/1.json
   def update
-    respond_to do |format|
-      if @answer.update(answer_params)
-        format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @answer }
-      else
-        format.html { render :edit }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
-      end
+    @answer = Answer.find(params[:answer_id])
+    @answer.content = params[:content]
+    if(@answer.save)
+      redirect_to "/tutorials/#{params[:tutorial_id]}/questions/#{params[:question_id]}"
     end
+   
+    # respond_to do |format|
+    #   if @answer.update(answer_params)
+    #     format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @answer }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @answer.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /answers/1

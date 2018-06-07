@@ -48,7 +48,12 @@ class CommentsController < ApplicationController
   # "/questions/:question_id/comment" to: 'comments#update'
   # "/questions/:question_id/comment/:answer_id/" to: 'comments#update'
   def update
-    render json: params
+    # render json: params
+    @comment = Comment.find(params[:comment_id])
+    @comment.content = params[:content]
+    if(@comment.save)
+      redirect_to "/tutorials/#{params[:tutorial_id]}/questions/#{params[:question_id]}"
+    end
     # respond_to do |format|
     #   if @comment.update(comment_params)
     #     format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }

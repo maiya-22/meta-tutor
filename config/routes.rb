@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
  
-  
- delete "/comments/:comment_id", to: "comments#destroy"
+
+# comments routes:
+# comments are read via the question and answer threads, so no route for index:
+post "/comment", to: 'comments#create'
+delete "/comments/:comment_id", to: "comments#destroy"
+patch "/comments/:comment_id", to: "comments#update"
+
+
+
+
 #  "/tutorials/1/questions/tutorial/1/question/comments/7"
 
  root to: 'home#index'
@@ -13,12 +21,12 @@ Rails.application.routes.draw do
   get 'tutorials/:tutorial_id', to: 'tutorials#show'
   get 'tutorials/:tutorial_id/questions/:question_id', to: 'questions#show'
   delete  "/questions/:question_id", to: 'questions#destroy'
-  post "/comment", to: 'comments#create'
+  
   post "/answers", to: 'answers#create'
   
 
   # 
- patch "/questions/:question_id/comments", to: "comments#update"
+
 
   # resources :tags
   # resources :comments

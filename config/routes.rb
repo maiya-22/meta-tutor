@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   get 'tutorials/:tutorial_id/questions/:question_id', to: 'questions#show'
   delete  "/questions/:question_id", to: 'questions#destroy'
   post "/comment", to: 'comments#create'
+  post "/answers", to: 'answers#create'
   
+
+  # 
+ patch "/questions/:question_id/comments", to: "comments#update"
+
   # resources :tags
   # resources :comments
   # resources :answers

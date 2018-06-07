@@ -74,15 +74,16 @@
             <%#  START OF COMMENTS%>
             <%@question.comments.each do |comment|%>
                 <div class="comment-wrap">
-                    <div><%=comment.content%></div>
+                    <div data-show="comment-<%=comment.id%>"><%=comment.content%></div>
                     <div>written by <%=comment.user.name%></div>
                     <div id="edit-question-comment-form" data-show="comment-<%=comment.id%>" hidden>
                         <form action="/questions/<%=@question.id%>/comments" method="post"n>
                             <input type="hidden" name="_method" value="patch" />
+                            <input hidden name="category" value="question" />
+                            <input hidden name="tutorial_id" value="<%@question.tutorial.id%>" />
+                            <input hidden name="question_id" value="<%@question.id%>" />
                             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-                            <div>
-                                <input id="question-comment-content" value="<%=comment.content%>" name="comment[content]"> </input>
-                            </div>
+                            <input id="question-comment-content" value="<%=comment.content%>" name="content"> </input>
                             <button type="submit">submit</button>
                         </form>
                         <button data-show="comment-<%=comment.id%>" class="click-to-show" hidden>cancel</button>
@@ -97,10 +98,11 @@
             <div id="add-comment-container" class="comment-wrap" data-show="comment-<%=@question.id%>-add-next-comment" hidden>
                 <form action="/comment" accept-charset="UTF-8" method="post">
                     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-                    <textarea name="comment[content]" id="comment_content"> </textarea>
-                    <input type="hidden" value="<%=@question.id%>" name="comment[question_id]" />
-                    <input type="hidden" value="<%=@tutorial.id%>" name="tutorial_id" />
-                    <input type="hidden" value="<%=current_user.id%>" name="user_id" />
+                    <textarea name="content"> </textarea>
+                    <input hidden name="category" value="question" />
+                    <input hidden name="question_id"  value="<%=@question.id%>" />
+                    <input hidden name="tutorial_id"  value="<%=@question.tutorial.id%>" />
+                    <input hidden name="user_id"  value="<%=current_user.id%>" />
                     <button type="submit">add</button>
                 </form>
                 <button  data-show="comment-<%=@question.id%>-add-next-comment" class="click-to-show" hidden>cancel</button>
@@ -170,7 +172,7 @@
             <%# NOW PUT THE Comments for this answer:%>
             <%answer.comments.each do |comment|%>
                 <div class="comment-wrap">
-                    <div><%=comment.content%></div>
+                    <div data-show="comment-<%=comment.id%>"><%=comment.content%></div>
                     <div>written by <%=comment.user.name%></div>
                     <div id="edit-question-comment-form" data-show="comment-<%=comment.id%>" hidden>
                         <form action="/questions/<%=@question.id%>/comments" method="post"n>
@@ -192,10 +194,12 @@
             <div id="add-comment-container" class="comment-wrap"   data-show="comment-answer<%=answer.id%>-add-next-comment" hidden>
                 <form action="/comment" accept-charset="UTF-8" method="post">
                     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-                    <textarea name="comment[content]" id="comment_content"> </textarea>
-                    <input type="hidden" value="<%=@question.id%>" name="comment[question_id]" />
-                    <input type="hidden" value="<%=@tutorial.id%>" name="tutorial_id" />
-                    <input type="hidden" value="<%=current_user.id%>" name="user_id" />
+                    <textarea name="content"> </textarea>
+                    <input hidden name="category" value="answer" />
+                    <input hidden name="question_id"  value="<%=@question.id%>" />
+                    <input hidden name="tutorial_id"  value="<%=@question.tutorial.id%>" />
+                    <input hidden name="answer_id"  value="<%=answer.id%>" />
+                    <input hidden name="user_id"  value="<%=current_user.id%>" />
                     <button type="submit">add</button>
                 </form>
                 <button  data-show="comment-answer<%=answer.id%>-add-next-comment" class="click-to-show" hidden>cancel</button>
@@ -203,3 +207,19 @@
             <button data-show="comment-answer<%=answer.id%>-add-next-comment" class="click-to-show">add a comment</button>
 
         <%end%>
+
+
+    <div>
+    <h3>add your answer:</h3>
+        <form action="/answers" accept-charset="UTF-8" method="post">
+        <input name="utf8" type="hidden" value="&#x2713;" />
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+          <textarea name="answer[content]" id="answer_content"></textarea>
+          <input hidden name="question_id" value="<%=@question.id%>" />
+          <input hidden name="tutorial_id" value="<%=@question.tutorial.id%>" />
+          <input type="submit" name="commit" value="Create Answer" data-disable-with="Create Answer" />
+  
+      </form>
+</div>
+
+    </div>

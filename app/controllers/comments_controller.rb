@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  # before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
   # GET /comments.json
@@ -24,26 +24,54 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.create!(
-      content: params[:comment][:content],
-      question_id: params[:comment][:question_id].to_i,
-      user_id: params[:user_id].to_i
-    )
-    redirect_to "/tutorials/#{params[:tutorial_id]}/questions/#{params[:comment][:question_id]}"
+    # if(params[:category] == "question")
+    #     @comment = Comment.create!(
+    #       content: params[:content],
+    #       question_id: params[:question_id].to_i,
+    #       user_id: params[:user_id].to_i
+    #     )
+    # elsif (params[:category] == "answer")
+    #   @comment = Comment.create!(
+    #     content: params[:content],
+    #     answer_id: params[:answer_id].to_i,
+    #     user_id: params[:user_id].to_i
+    #   )
+    # end
+    if(params[:category] == "question")
+      # render plain: "question"
+      Comment.create(
+        content: params[:content],
+        question_id: params[:question_id],
+        user_id: params[:user_id]
+      )
+    elsif(params[:category] == "answer")
+      # render plain: "answer"
+      Comment.create(
+        content: params[:content],
+        answer_id: params[:answer_id],
+        user_id: params[:user_id]
+      )
+    end
+    # render json: params
+   redirect_to "/tutorials/#{params[:tutorial_id]}/questions/#{params[:question_id]}"
   end
 
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
+  # "/questions/:question_id/comment" to: 'comments#update'
+  # "/questions/:question_id/comment/:answer_id/" to: 'comments#update'
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
-      else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
+    render json: params
+    # respond_to do |format|
+    #   if @comment.update(comment_params)
+    #     format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @comment }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @comment.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    # redirect to question of the answer, or question of the comment.
   end
 
   # DELETE /comments/1

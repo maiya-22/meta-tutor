@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  # before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
   # GET /answers
   # GET /answers.json
@@ -25,16 +25,23 @@ class AnswersController < ApplicationController
   # POST /answers.json
   def create
     @answer = Answer.new(answer_params)
-
-    respond_to do |format|
-      if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
-        format.json { render :show, status: :created, location: @answer }
-      else
-        format.html { render :new }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
-      end
+    @answer[:question_id] = params[:question_id]
+    @answer[:user_id] = current_user[:id]
+    if(@answer.save)
+      # render json: {answer: @answer, params: params}
+      redirect_to "/tutorials/#{params[:tutorial_id]}/questions/#{params[:question_id]}"
     end
+    
+
+    # respond_to do |format|
+    #   if @answer.save
+    #     format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
+    #     format.json { render :show, status: :created, location: @answer }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @answer.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /answers/1

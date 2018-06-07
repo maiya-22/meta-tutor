@@ -176,10 +176,13 @@
                         <div>
                             <%#if current_user.id == @user.id%>
                                 <button id="edit-answer-button"  data-show="answer-<%=answer.id%>" class="click-to-show">edit this question</button>
-                                <form action="/questions/<%=@question.id%>" method="post">
+                                DELETE ANSWER FORM
+                                <form action="/answers/<%=answer.id%>" method="post">
+                                    <input type="hidden" name="_method" value="delete" />
                                     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-                                        <input type="hidden" name="_method" value="delete" />
-                                        <button type="submit">delete</button>
+                                    <input hidden name="tutorial_id" value="<%=@question.tutorial.id%>" />
+                                    <input hidden name="question_id" value="<%=@question.id%>" />
+                                    <button type="submit">delete answer</button>
                                 </form>
                             <%#end%>
                         </div>

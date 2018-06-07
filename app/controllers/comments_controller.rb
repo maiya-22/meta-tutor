@@ -24,19 +24,6 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    # if(params[:category] == "question")
-    #     @comment = Comment.create!(
-    #       content: params[:content],
-    #       question_id: params[:question_id].to_i,
-    #       user_id: params[:user_id].to_i
-    #     )
-    # elsif (params[:category] == "answer")
-    #   @comment = Comment.create!(
-    #     content: params[:content],
-    #     answer_id: params[:answer_id].to_i,
-    #     user_id: params[:user_id].to_i
-    #   )
-    # end
     if(params[:category] == "question")
       # render plain: "question"
       Comment.create(
@@ -77,11 +64,15 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+    @comment = Comment.find(params[:comment_id])
     @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # @comment.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
+    redirect_to "/tutorials/#{params[:tutorial_id]}/questions/#{params[:question_id]}"
+    # render json: params
   end
 
   private

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
  
   
+ delete "/comments/:comment_id", to: "comments#destroy"
+#  "/tutorials/1/questions/tutorial/1/question/comments/7"
+
  root to: 'home#index'
   # root to: 'tutorials#index'
   # [PATCH] "/questions/1"

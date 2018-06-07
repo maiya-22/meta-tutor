@@ -6,6 +6,8 @@
     </div>
     <% end %>
         <div id="question-page-wrap">
+
+        QUESTION PAGE WRAP
             <div id="question-page-question-wrap">
                 <div id="question-status-wrap">
                     <a class="question-star-vote" href="#">˄</a>
@@ -20,13 +22,16 @@
                     <a class="question-star-vote" href="#">˅</a>
                 </div>
                 <div id="question-content-wrap" >
+                    QUESTION CONTENT
                     <div id="question-title" data-show="question" >
                         <%= @question.title %>
                     </div>
                     <div id="actual-question-content" class="question-display"  data-show="question">
                         <%=@question.content%>
                     </div>
+                    FORM EDIT QUESTION | 
                     <div id="edit-question-form" data-show="question" hidden>
+                    
                         <form action="/questions/<%=@question.id%>" method="post">
                             <input type="hidden" name="_method" value="patch" />
                             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
@@ -42,6 +47,7 @@
                         </form>
                         <button data-show="question" class="click-to-show" hidden>cancel</button>
                     </div>
+                    QUESTION FOOTER
                     <div id="question-footer">
                         <div id="question-content-tags-wrap">
                             <%@tags = Tag.all%>
@@ -55,9 +61,11 @@
                             by:
                             <%= @question.user.name %>
                         </div>
+                        EDIT BUTTON
                         <div>
                             <%if current_user.id == @user.id%>
                                 <button id="edit-question-button" data-show="question" class="click-to-show">edit this question</button>
+                                DELETE QUESTION FORM:
                                 <form action="/questions/<%=@question.id%>" method="post">
                                     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
                                         <input type="hidden" name="_method" value="delete" />
@@ -70,13 +78,15 @@
                 
             </div>
 
-            <%#  END OF QUESTION%>
+            START OF COMMENTS:
             <%#  START OF COMMENTS%>
             <%@question.comments.each do |comment|%>
                 <div class="comment-wrap">
                     <div data-show="comment-<%=comment.id%>"><%=comment.content%></div>
                     <div>written by <%=comment.user.name%></div>
+                    CONTAINER FOR EDIT FORM | 
                     <div id="edit-question-comment-form" data-show="comment-<%=comment.id%>" hidden>
+                        FORM FOR UPDATE COMMENT
                         <form action="/questions/<%=@question.id%>/comments" method="post"n>
                             <input type="hidden" name="_method" value="patch" />
                             <input hidden name="category" value="question" />
@@ -89,9 +99,18 @@
                         <button data-show="comment-<%=comment.id%>" class="click-to-show" hidden>cancel</button>
                     </div>
                     <%if current_user.id == comment.user.id%>
+                        BUTTON FOR SHOW EDIT FORM:
                         <button id="question-comment" data-show="comment-<%=comment.id%>" class="click-to-show">edit</button>
-                        <a href="#">delete</a>
-                      
+                       
+                        DELETE FORM:
+                        <form action="/comments/<%=comment.id%>" method="post">
+                            <input type="hidden" name="_method" value="delete" />
+                            <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                            <input type="hidden" name="_method" value="delete" />
+                            <input hidden name="tutorial_id" value="<%=@question.tutorial.id%>" />
+                            <input hidden name="question_id" value="<%=@question.id%>" />
+                            <button>delete button</button>
+                        </form>
                     <%end%>
                 </div>
             <%end%>
@@ -188,6 +207,28 @@
                     <%if current_user.id == comment.user.id || current_user.id != comment.user.id%>
                         <button id="question-comment" data-show="comment-<%=comment.id%>" class="click-to-show">edit</button>
                         <a href="#">delete</a>
+
+                    COMMENT DELETE FORM:
+                    <form action="/comments/<%=comment.id%>" method="post">
+                        <input type="hidden" name="_method" value="delete" />
+                        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                        <input type="hidden" name="_method" value="delete" />
+                        <input hidden name="tutorial_id" value="<%=@question.tutorial.id%>" />
+                        <input hidden name="question_id" value="<%=@question.id%>" />
+                        <button>delete button</button>
+                    </form>
+
+
+
+
+
+
+
+
+
+
+
+
                     <%end%>
                 </div>
             <%end%>

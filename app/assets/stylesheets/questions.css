@@ -153,7 +153,7 @@
   line-height: 1.3rem;
   background-color: rgb(243, 243, 243);
   border: dotted magenta 3px;
-  background-color: blue;
+  background-color: lightgray;
   /* border: solid rgb(85, 84, 84) 7px; */
   align-self: flex-end;
 }

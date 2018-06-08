@@ -6,12 +6,11 @@ class TutorialsController < ApplicationController
   # GET /tutorials
   # GET /tutorials.json
   def index
-    # gon.authenticity_token = form_authenticity_token
-    @tutorials = Tutorial.all
-  #   render locals: {
-  #   gon: gon
-  # }
-    # @tutorials = Tutorial.paginate(:page =>params[:page], :per_page => 2)
+ @tutorials = Tutorial.where(format: "video")
+ @videos = Video.all
+#  render json: @videos
+    # @tutorials = Tutorial.all
+
   end
 
   def search 

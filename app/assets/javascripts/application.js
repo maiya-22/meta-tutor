@@ -10,13 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require activestorage
+// require rails-ujs
+// require activestorage
 //= require ajax-promises
 //= require add-tutorial-form
 //= require question-thread
 // require comments
-// require turbolinks
+//=require turbolinks
 // require_tree .
 
 function myFunction() {

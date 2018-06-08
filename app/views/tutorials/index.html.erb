@@ -24,21 +24,23 @@
 
 </div>
 
+<div>
 
-
-<%@tutorials.each do | tutorial |%>
-  <%if tutorial.format == "video"%>
-  <a href="tutorials/<%=tutorial.id%>">
-  go ask and answer questions
-    <div>
-        title: <%=tutorial.title%>
-        presented by: <%=tutorial.author%>
-        from channel: <%=tutorial.video.channel%>
-        from playlist: <%=tutorial.video.playlist%>
-        added by: <%=tutorial.user.name || tutorial.user.email%>
-              </a>
-    </div>
-  <%else%>
-    "only video tutorials supported at this time"
-  <%end%>
+<%@videos.each do |video|%>
+  <div class="tutorial-index-wrap">
+    <%=video.tutorial.title%>
+    <%=video.tutorial.url%>
+    <%=video.channel%>
+  </div>
 <%end%>
+
+
+
+
+
+
+
+
+
+
+</div>

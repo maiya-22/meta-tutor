@@ -1,7 +1,7 @@
 <% content_for :page_header do %>
   <div id="tutorial-header-frame">
     <div>
-      < ----  go back to all tutorials ....................................................  These are all of the questions:
+    ...............................................................................  These are all of the questions:
     </div>
 
 
@@ -27,11 +27,25 @@
          
           <a href="/tutorial/<%=@tutorial.id%>/question/new">Add a question to ths tutorial: </a>
           Edit this tutorial:
-          <form>
-          </form>
+  <form action="/tutorials/<%=@tutorial.id%>" accept-charset="UTF-8" method="post">
+  <input name="utf8" type="hidden" value="&#x2713;" />
+  <input type="hidden" name="_method" value="patch" />
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+  title:
+    <input type="text" name="tutorial[title]" value="<%=@tutorial.title%>" /><br>
+  author:
+    <input type="text" name="tutorial[author]" value="<%=@tutorial.author%>"/><br>
+  url:
+    <input type="text" name="tutorial[url]" value="<%=@tutorial.url%>"/><br>
+  playlist:
+    <input type="text" name="video[playlist]" value="<%=@tutorial.video.playlist%>"/><br>
+    <input type="text" name="video[duration]" value="<%=@tutorial.video.duration%>"/><br>
+    <input hidden type="text" name="video[format]" value="video"/>
+    <input type="submit" name="commit" value="Edit Tutorial" />
+</form>
           
       <%elsif @tutorial.format == "chapter"%>
-        "tutorial is a chapter"
+        "we do not yet support chapters"
       <%end%>
     </div>
 

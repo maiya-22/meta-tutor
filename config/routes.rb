@@ -7,6 +7,10 @@ root to: 'tutorials#index'
 # tutorials routes:
 get "/tutorials", to: "tutorials#index"
 post "/tutorials", to: "tutorials#create"
+get 'tutorials/search', to: 'tutorials#search'
+get 'tutorials/new', to: "tutorials#new"
+get 'tutorials/:tutorial_id', to: 'tutorials#show'
+patch 'tutorials/:tutorial_id', to: 'tutorials#update'
 
 
 
@@ -33,7 +37,6 @@ patch "/answer/:answer_id", to: 'answers#update'
 
 
 
-
 #  "/tutorials/1/questions/tutorial/1/question/comments/7"
 
 
@@ -43,9 +46,7 @@ patch "/answer/:answer_id", to: 'answers#update'
   # [PATCH] "/questions/1"
 
  
-  get 'tutorials/search', to: 'tutorials#search'
-  get 'tutorials/:tutorial_id', to: 'tutorials#show'
-  
+
   
 
 

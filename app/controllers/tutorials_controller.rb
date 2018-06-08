@@ -47,9 +47,9 @@ class TutorialsController < ApplicationController
   # GET /tutorials/new
   def new
     @tutorial = Tutorial.new
-    if(params[:title])
-      @tutorial.title = params[:title]
-    end
+    # if(params[:title])
+    #   @tutorial.title = params[:title]
+    # end
   end
 
   # GET /tutorials/1/edit
@@ -119,15 +119,52 @@ class TutorialsController < ApplicationController
   # PATCH/PUT /tutorials/1
   # PATCH/PUT /tutorials/1.json
   def update
-    respond_to do |format|
-      if @tutorial.update(tutorial_params)
-        format.html { redirect_to @tutorial, notice: 'Tutorial was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tutorial }
-      else
-        format.html { render :edit }
-        format.json { render json: @tutorial.errors, status: :unprocessable_entity }
-      end
-    end
+
+    @tutorial = Tutorial.find(params[:tutorial_id])
+    @tutorial.update_attributes(tutorial_params)
+    @video = @tutorial.video
+    @video.update_attributes(video_params)
+
+    redirect_to "/tutorials/#{params[:tutorial_id]}"
+    # render json: {
+    #   tutorial: @tutorial,
+    #   video: @video
+    # }
+
+    # render json: params
+
+  #   <form action="/tutorials/<%=@tutorial.id%>" accept-charset="UTF-8" method="post">
+  #   <input name="utf8" type="hidden" value="&#x2713;" />
+  #   <input type="hidden" name="_method" value="patch" />
+  #   <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+  #   title:
+  #     <input type="text" name="title" value="<%=@tutorial.title%>" /><br>
+  #   author:
+  #     <input type="text" name="author" value="<%=@tutorial.author%>"/><br>
+  #   url:
+  #     <input type="text" name="tutorial[url]" /><br>
+  #   playlist:
+  #     <input type="text" name="playlist" /><br>
+  #     <input hidden type="text" name="tutorial[format]" value="chapter"/>
+    
+  #     <input type="submit" name="commit" value="Edit Tutorial" />
+  # </form>
+
+
+
+
+
+
+    # respond_to do |format|
+    #   if @tutorial.update(tutorial_params)
+    #     format.html { redirect_to @tutorial, notice: 'Tutorial was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @tutorial }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @tutorial.errors, status: :unprocessable_entity }
+    #   end
+    # end
+
   end
 
   # DELETE /tutorials/1
@@ -159,8 +196,13 @@ class TutorialsController < ApplicationController
       # end
     # end
 
+
+
     # Never trust parameters from the scary internet, only allow the white list through.
-    # def tutorial_params
-    #   params.require(:tutorial).permit(:title, :author, :url, :format, :user_id)
-    # end
+    def tutorial_params
+      params.require(:tutorial).permit(:title, :author, :url, :format, :user_id)
+    end
+    def video_params
+      params.require(:video).permit(:playlist, :channel, :duration)
+    end
 end

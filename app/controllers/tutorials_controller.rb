@@ -1,5 +1,5 @@
 class TutorialsController < ApplicationController
-  before_action :set_tutorial, only: [:show, :edit, :update, :destroy]
+  # before_action :set_tutorial, only: [:show, :edit, :update, :destroy]
 
 
 
@@ -60,18 +60,60 @@ class TutorialsController < ApplicationController
   # POST /tutorials.json
   def create
     # @tutorial = Tutorial.new(tutorial_params)
+    @tutorial = Tutorial.new(
+      user_id: current_user.id,
+      title: params[:tutorial][:title],
+      author: params[:tutorial][:author],
+      url: params[:tutorial][:url],
+      format: params[:tutorial][:format]
+    )
+    if(@tutorial.save && @tutorial.format == "video")
+      @duration_obj = params[:duration]
+      @duration_temp = 5
+      @video = Video.new(
+        tutorial_id: @tutorial.id,
+        channel: params[:video][:channel],
+        playlist: params[:video][:playlist],
+        duration: @duration_temp,
+      )
+      if(@video.save)
+        redirect_to "/tutorials/#{@tutorial.id}"
+      end
+    end
 
-    # respond_to do |format|
-    #   if @tutorial.save
-    #     format.html { redirect_to @tutorial, notice: 'Tutorial was successfully created.' }
-    #     format.json { render :show, status: :created, location: @tutorial }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @tutorial.errors, status: :unprocessable_entity }
-    #   end
-    # end
+  
     p 'PARAMS'
-    render json: params
+    # render json: @tutorial
+    # {
+    #   "authenticity_token": "XkIaWzZ14FyOCbBQJ3jzF2XVh4YSGO9z4EXa5SGz1g0jbeofAEkhAofdHW2pWxEcd12QlEcP/lukELmKOONdPQ==",
+    #   "tutorial": {
+    #   "title": "higher order functions, part 1",
+    #   "author": "mpj",
+    #   "url": "https://www.youtube.com/embed/BMUiFMZr7vk"
+    #   },
+    #   "chapter": {
+    #   "book_title": "",
+    #   "book_edition": "",
+    #   "start_page": "",
+    #   "end_page": ""
+    #   },
+    #   "video": {
+    #   "channel": "fun fun functions",
+    #   "playlist": "higher order functions",
+    #   "duration": {
+    #   "hour": "0",
+    #   "minute": "0",
+    #   "second": "0"
+    #   }
+    #   },
+    #   "controller": "tutorials",
+    #   "action": "create"
+    #   }
+
+
+
+
+
   end
 
   # PATCH/PUT /tutorials/1
@@ -100,10 +142,10 @@ class TutorialsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_tutorial
-      if(params[:tutorial_id] != nil)
-        @tutorial = Tutorial.find(params[:tutorial_id])
-      end
+    # def set_tutorial
+    #   if(params[:tutorial_id] != nil)
+    #     @tutorial = Tutorial.find(params[:tutorial_id])
+    #   end
       # p "params:"
       # p params
       # # if someone is using the search by title form:
@@ -115,10 +157,10 @@ class TutorialsController < ApplicationController
       # else
       #   @tutorial = Tutorial.find(params[:id])
       # end
-    end
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def tutorial_params
-      params.require(:tutorial).permit(:title, :author, :url, :format, :user_id)
-    end
+    # def tutorial_params
+    #   params.require(:tutorial).permit(:title, :author, :url, :format, :user_id)
+    # end
 end

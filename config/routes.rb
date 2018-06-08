@@ -1,9 +1,22 @@
 Rails.application.routes.draw do
- 
+
+
+
+root to: 'tutorials#index'
+
+# tutorials routes:
+get "/tutorials", to: "tutorials#index"
+post "/tutorials", to: "tutorials#create"
+
+
+
 
 # questions routes:
-get 'tutorials/:tutorial_id/questions/:question_id', to: 'questions#show'
-
+get '/tutorials/:tutorial_id/questions/:question_id', to: 'questions#show'
+get "/tutorial/:tutorial_id/question/new", to: "questions#new"
+post "/tutorial/:tutorial_id/question", to: 'questions#create'
+delete  "/questions/:question_id", to: 'questions#destroy'
+patch  "/questions/:question_id", to: 'questions#update'
 
 # comments routes:
 # comments are read via the question threads, so no route for index:
@@ -18,17 +31,15 @@ delete "/answers/:answer_id", to: 'answers#destroy'
 patch "/answer/:answer_id", to: 'answers#update'
 
 
-# questions routes:
-get "/tutorial/:tutorial_id/question/new", to: "questions#new"
-post "/tutorial/:tutorial_id/question", to: 'questions#create'
-delete  "/questions/:question_id", to: 'questions#destroy'
-patch  "/questions/:question_id", to: 'questions#update'
+
 
 
 #  "/tutorials/1/questions/tutorial/1/question/comments/7"
 
- root to: 'home#index'
-  # root to: 'tutorials#index'
+
+
+#  root to: 'home#index'
+ 
   # [PATCH] "/questions/1"
 
  

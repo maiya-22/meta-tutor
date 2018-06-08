@@ -1,57 +1,25 @@
-<p id="notice"><%= notice %></p>
 
-
-
-<div id="page-number-links-wrap">
-
-</div>
-<% content_for :page_header do %>
- 
- 
-  <%= link_to 'add a new tutorial', new_tutorial_path, class: "page-header-add-tutorial" %>
+  Get a 'create' star by adding a new tutorial:
+  FORM FOR CREATING A TUTORIAL:
   <%= render "shared/new_tutorial_form" %>
-<% end %>
-
-    <% @tutorials.each do |tutorial| %>
-
-
-      <% @video = Video.where(tutorial_id: tutorial.id)[0]%>
-      <% @chapter = Chapter.where(tutorial_id: tutorial.id)[0]%>
-      
-
-      <div id="tutorial-<%=tutorial.id%>"" class="tutorials-summary-wrap">
-          <%if tutorial.format == "video"%>
-              <p>from <%=@video.channel %> channel  playlist: <%=@video.playlist %></p>
-              <p><%= tutorial.format %>: <%= tutorial.title %></p>
-              <p>presented by <%= tutorial.author %></p>
-              <p><%=@video.duration%><p>
-              <%@duration = Duration.new(:hours => 5, :minutes => 20, :seconds => 30)%>
-              <p>duration <%=@duration.hours%>:<%=@duration.minutes%>:<%=@duration.seconds%><p>
-          <%elsif tutorial.format == "chapter" %>
-            <p>by <%= tutorial.author %></p>
-            <p>from: <%=@chapter.book_title %>,  edition: <%=@chapter.book_edition %></p>
-            <p>chapter <%= @chapter.chapter %>:  <%= tutorial.title%></p>
-          <% end %> 
 
 
 
-
-
-         
-          
-          
-          <%= link_to 'Show', tutorial %>
-            <%#= link_to 'Edit', edit_tutorial_path(tutorial) %>
-            <%#= link_to 'Destroy', tutorial, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
-
-  <%end%>     
-        <%#= will_paginate @tutorials%>
-
-  <%= link_to 'New Tutorial', new_tutorial_path %>
-
-
-
-
-</br>
-
+<%@tutorials.each do | tutorial |%>
+  <%if tutorial.format == "video"%>
+  <a href="tutorials/<%=tutorial.id%>">
+  go ask and answer questions
+    <div>
+        title: <%=tutorial.title%>
+        presented by: <%=tutorial.author%>
+        from channel: <%=tutorial.video.channel%>
+        from playlist: <%=tutorial.video.playlist%>
+        added by: <%=tutorial.user.name || tutorial.user.email%>
+        
+        
+      </a>
+    </div>
+  <%else%>
+    "only video tutorials supported at this time"
+  <%end%>
+<%end%>

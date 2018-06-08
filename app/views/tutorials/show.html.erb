@@ -26,7 +26,8 @@
           </div>
          
           <a href="/tutorial/<%=@tutorial.id%>/question/new">Add a question to ths tutorial: </a>
-          Edit this tutorial:
+          <button data-show="edit-tutorial-form" class="click-to-show">edit video</button>
+  <div data-show="edit-tutorial-form" hidden>
   <form action="/tutorials/<%=@tutorial.id%>" accept-charset="UTF-8" method="post">
   <input name="utf8" type="hidden" value="&#x2713;" />
   <input type="hidden" name="_method" value="patch" />
@@ -43,6 +44,10 @@
     <input hidden type="text" name="video[format]" value="video"/>
     <input type="submit" name="commit" value="Edit Tutorial" />
 </form>
+<form>
+     <button>cancel</button>
+</form>
+</div>
           
       <%elsif @tutorial.format == "chapter"%>
         "we do not yet support chapters"

@@ -1,7 +1,28 @@
 
   Get a 'create' star by adding a new tutorial:
   FORM FOR CREATING A TUTORIAL:
-  <%= render "shared/new_tutorial_form" %>
+  <a href="/tutorial/<%=%>/question/new">Add a question to ths tutorial: </a>
+  <button data-show="create-tutorial-form" class="click-to-show">add a tutorial</button>
+<div data-show="create-tutorial-form" hidden>
+  <form action="/tutorials" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    title:
+    <input type="text" name="tutorial[title]" placeholder="what it the tutorial title" /><br>
+    author:
+    <input type="text" name="tutorial[author]" value="<%=%>"/><br>
+    url:
+    <input type="text" name="tutorial[url]" value="<%=%>"/><br>
+    playlist:
+    <input type="text" name="video[playlist]" value="<%=%>"/><br>
+    <input type="text" name="video[duration]" value="<%=%>"/><br>
+    
+    <button type="submit">Add Tutorial</button>
+  </form>
+<form>
+<button>cancel</button>
+</form>
+
+</div>
 
 
 
@@ -15,9 +36,7 @@
         from channel: <%=tutorial.video.channel%>
         from playlist: <%=tutorial.video.playlist%>
         added by: <%=tutorial.user.name || tutorial.user.email%>
-        
-        
-      </a>
+              </a>
     </div>
   <%else%>
     "only video tutorials supported at this time"

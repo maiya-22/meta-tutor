@@ -59,7 +59,8 @@ class TutorialsController < ApplicationController
   # POST /tutorials
   # POST /tutorials.json
   def create
-    # @tutorial = Tutorial.new(tutorial_params)
+    # render json: params
+    @tutorial = Tutorial.new(tutorial_params)
     @tutorial = Tutorial.new(
       user_id: current_user.id,
       title: params[:tutorial][:title],

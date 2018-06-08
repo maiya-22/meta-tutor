@@ -19,9 +19,18 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
+    @tutorial = Tutorial.find(params[:tutorial_id])
     @question = Question.new
+    @question.tutorial_id = @tutorial.id
+    @question.user_id = current_user.id
+    @question.title = ' what is the title of your question? '
+    @question.status = 'open'
+    @question.content = 'please write your question from ' + @tutorial.title
+    # render json: @question
   end
 
+
+  # not using this route:
   # GET /questions/1/edit
   def edit
   end
@@ -29,17 +38,51 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
+    @question = Question.new(
+      user_id: params[:user_id],
+      tutorial_id: params[:tutorial_id],
+      time: params[:time],
+      title: params[:title],
+      content: params[:content],
+      status: "open"
+    )
 
-    respond_to do |format|
-      if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        format.json { render :show, status: :created, location: @question }
-      else
-        format.html { render :new }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
+    if(@question.save)
+      redirect_to "/tutorials/#{params[:tutorial_id]}/questions/#{@question.id}"
     end
+
+    # render json: @question
+    # redirect_to "/tutorials/#{params[:tutorial_id]}"
+    
+    # respond_to do |format|
+    #   if @question.save
+    #     format.html { redirect_to @question, notice: 'Question was successfully created.' }
+    #     format.json { render :show, status: :created, location: @question }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @question.errors, status: :unprocessable_entity }
+    #   end
+    # end
+
+
+#     <form action="/question" method="post">
+#     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+#     <input hidden name="tutorial_id" value="<%=@tutorial.id%>"/>
+#     <input hidden name="status" value="open"></input>
+
+#     title:
+#     <input name="title"/>
+#     content:
+#     <input name="content" placehodler="ask your question ..."></input>
+#     time:
+#     <input  name="time" placeholer="enter the time-stamp of your question"></input>
+#     <button type="submit">submit question</button>
+# </form>
+# <button data-show="comment-<%=%>" class="click-to-show" hidden>cancel</button>
+
+
+
+
   end
 
   # PATCH/PUT /questions/1

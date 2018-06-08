@@ -92,14 +92,14 @@
   border: dotted pink 3px;
 }
 .question-star-vote {
-  text-decoration: none;
+  /* text-decoration: none; */
   padding: 0.5rem;
   color: gainsboro;
   font-size: 1.5rem;
 }
 
 .question-star-vote:hover {
-  text-decoration: none;
+  /* text-decoration: none; */
   color: darkgray;
   font-weight: bold;
 }

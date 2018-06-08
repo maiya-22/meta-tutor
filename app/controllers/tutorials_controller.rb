@@ -39,8 +39,9 @@ class TutorialsController < ApplicationController
     #   # @questions = Question.where(tutorial_id: @tutorial.id).order(:page)
     # end
     @tutorial = Tutorial.find(params[:tutorial_id])
+   @questions = @tutorial.questions.order('questions.time ASC')
     # render json: @tutorial
-    render plain: "show tutorial route"
+    # render plain: "show tutorial route"
   end
 
   # GET /tutorials/new

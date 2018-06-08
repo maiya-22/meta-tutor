@@ -18,7 +18,11 @@ delete "/answers/:answer_id", to: 'answers#destroy'
 patch "/answer/:answer_id", to: 'answers#update'
 
 
-
+# questions routes:
+get "/tutorial/:tutorial_id/question/new", to: "questions#new"
+post "/tutorial/:tutorial_id/question", to: 'questions#create'
+delete  "/questions/:question_id", to: 'questions#destroy'
+patch  "/questions/:question_id", to: 'questions#update'
 
 
 #  "/tutorials/1/questions/tutorial/1/question/comments/7"
@@ -27,15 +31,15 @@ patch "/answer/:answer_id", to: 'answers#update'
   # root to: 'tutorials#index'
   # [PATCH] "/questions/1"
 
-  patch  "/questions/:question_id", to: 'questions#update'
+ 
   get 'tutorials/search', to: 'tutorials#search'
   get 'tutorials/:tutorial_id', to: 'tutorials#show'
   
-  delete  "/questions/:question_id", to: 'questions#destroy'
-  
-  
   
 
+
+  
+ 
   # 
 
 

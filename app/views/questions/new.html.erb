@@ -1,5 +1,20 @@
 <h1>New Question</h1>
 
-<%= render 'form', question: @question %>
-
-<%= link_to 'Back', questions_path %>
+<form action="/tutorial/<%=@tutorial.id%>/question" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    <input  name="tutorial_id" value="<%=@tutorial.id%>"/>
+    <input  name="user_id" value="<%=current_user.id%>"/>
+    <input  name="status" value="open"></input>
+    title:
+    <input name="title"/>
+    content:
+    <input name="content" value="<%=@question.content%>"></input>
+    time:
+    question at about
+    <select name="time">
+    <%@tutorial.video.duration.to_i.times do |num|%>
+        <option value="<%=num%>"> <%=num%> minute</option>
+    <%end%>
+    </select>
+    <button type="submit">submit question</button>
+</form>

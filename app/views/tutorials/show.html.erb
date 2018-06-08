@@ -1,113 +1,78 @@
 <% content_for :page_header do %>
   <div id="tutorial-header-frame">
-      <div id="video-user-info">
-      LINK TO UP-VOTE the presentation
-      </div>
-      
-    <%if @tutorial.format == "video"%>
-      <%@duration = @tutorial.video.duration%>
-      <%=@duration%>
-        <div id="tutorial-video-and-nav">
-            <iframe id="tutorial-video" width="560" height="315" src="<%=@tutorial.url%>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen webkitallowfullscreen='true'></iframe>
-            <div id="video-question-page-anchors">
-              <%100.times do |time|%>
-
-                  <a href="#<%=time%>"><%=@duration%></a>
-                <%end%>
-            </div>
-        </div>
-       
-
-
-
-
-
-
-
-
-
-    
-    <%else%>
-
-    <div style="max-width: 400px" >
-    <img src="<%=@tutorial.url%>" style="max-width:100%;" />
+    <div>
+      < ----  go back to all tutorials ....................................................  These are all of the questions:
     </div>
-    <%end%>
-    </div>   
-<% end %>
 
 
-<div id="#1">top of page</div>
+   
+    <div id="tutorial-display-wrap">
 
-**  PUT LINKS HERE TO add a question
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Title:</strong>
-  <%= @tutorial.title %>
-  </br> tutorial id:
-  <%= @tutorial.id %>
-</p>
 
-<p>
-  <strong>Author:</strong>
-  <%= @tutorial.author %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @tutorial.url %>
-</p>
-
-<p>
-  <strong>Format:</strong>
-  <%= @tutorial.format %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @tutorial.user_id %>
-</p>
-<%= link_to 'Destroy', @tutorial, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Edit', edit_tutorial_path(@tutorial) %> |
-<%= link_to 'Back', tutorials_path %>
+      <%if @tutorial.format == "video"%>
+      <div>
+      Video: <%=@tutorial.title%> <br>
+      Channel: <%=@tutorial.video.channel%> <br>
+      Playlist: <%=@tutorial.video.playlist%> <br>
+      Presented by <%=@tutorial.author%> <br>
+      </div>
+          <iframe id="tutorial-video" width="280" height="207.5" src="<%=@tutorial.url%>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen webkitallowfullscreen='true'></iframe>
+          <br><%=@tutorial.video.duration%> mins
+          <h3>time-stamps of questions:</h3>
+          <div>
+            <%@questions.each do |question|%>
+              <a href="#"><%=question.time%></a>
+            <%end%>
+          </div>
+         
+          <a href="/tutorial/<%=@tutorial.id%>/question/new">Add a question to ths tutorial: </a>
+          Edit this tutorial:
+          <form>
+          </form>
+          
+      <%elsif @tutorial.format == "chapter"%>
+        "tutorial is a chapter"
+      <%end%>
+    </div>
 
 
 
 
-<div id="questions-location-links-wrap">
-  <%if @tutorial.format == "chapter"%>
-    <p>auto-scroll to the page you are studying</p>
-    <% @start_point = @questions[0].page %>
-    <% @end_point = @questions.last.page%>
-    <%@i = @start_point%>
-    <%while @i <= @end_point%>
-        <a href="#<%=@i%>">p. <%=@i%></a>
-        <%@i+=1%>
-    <%end%>
-    <p>Start POINT</p>
-    <%=@start_point%>
-    <p>END POINT</p>
-    <%=@end_point%>
-  <%elsif @tutorial.format == "video"%>
-    It's a video
-  <%end%>
-</div>
 
-<h1>Questions:</h1>
 
-<%10.times.each do %>
-  <%@questions.each do |question|%>
-    ******************************<br>
-    QUESTION:
-    <p><%=question.title%></p>
-    <p><%=question.content%></p>
-    <p><%=question.user.name%></p>
-    <%if @tutorial.format == "video"%>
-      <p><%=question.time%></p>
-    <%elsif @tutorial.format == "chapter"%>
-    <p><%=question.page%></p>
-    <%end%>
-    <%= link_to 'Show', question %>
-    <a href="1">back to top of page</a>
-  <%end%>
+  </div>
 <%end%>
+
+<div id="show-tutorial-page-wrap">
+  <a href="#end">go to end of page</a>
+  SHOW THE QUESTIONS:
+  <br>
+  <%@questions.each do |question|%>
+    - - - - - - - -
+    <div>
+      Question: <%=question.title%>
+      <br>
+      <a class="show-tutorial-link" href="/tutorials/<%=@tutorial.id%>/questions/<%=question.id%>">See This Question</a>
+      <br>
+      status: <%=question.status%>
+      at time: <%=question.time%> min
+    </div>
+    - - - - - - - -
+  <%end%>
+  <% 1000.times.each do |num| %>
+    <%@questions.each do |question|%>
+      - - - - - - - -
+      <div>
+        Question: <%=question.title%>
+        <br>
+        <a class="show-tutorial-link" href="/tutorials/<%=@tutorial.id%>/questions/<%=question.id%>">See This Question</a>
+        <br>
+        status: <%question.status%>
+        at time: <%question.time%> min
+      </div>
+      - - - - - - - -
+    <%end%>
+  <% end %>
+  <div id="end"> end of page
+  </div>
+</div>

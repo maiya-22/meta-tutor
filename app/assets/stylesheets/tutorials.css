@@ -10,6 +10,7 @@
 #tutorial-header-frame {
   width: 100%;
   border: solid magenta 3px;
+  z-index:-1;
 }
 
 iframe {
@@ -24,4 +25,30 @@ iframe {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#video-question-page-anchors {
+  height: 100px;
+  width: 100%;
+  border: dotted pink 4px;
+}
+
+.show-tutorial-link {
+  z-index: 100;
+}
+
+
+/* new styles */
+#tutorial-display-wrap {
+  position: fixed;
+  top: 7rem;
+  left: calc(5vw);
+  border: dotted orange 3px;
+}
+
+#show-tutorial-page-wrap {
+  border: solid purple 5px;
+  width: 50vw;
+  margin-left: calc(30vw);
+  padding-left: 1.5rem;
 }

@@ -23,8 +23,12 @@
                 </div>
                 <div id="question-content-wrap" >
                     QUESTION CONTENT
+        
                     <div id="question-title" data-show="question" >
                         <%= @question.title %>
+                    </div>
+                    <div id="" data-show="question" >
+                        at <%= @question.time %> mins
                     </div>
                     <div id="actual-question-content" class="question-display"  data-show="question">
                         <%=@question.content%>
@@ -38,6 +42,8 @@
                                 <div>
                                     title:
                                     <input id="question-title" value="<%= @question.title %>" name="question[title]"></input>
+                                    time: 
+                                    <input id="" value="<%= @question.time %>" name="question[time]"></input>
                                 </div>
                                 <div>
                                     content:

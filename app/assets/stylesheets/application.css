@@ -23,9 +23,7 @@
 body {
   padding-top: 3rem;
   font-family: "Tinos", serif;
-  /* background-color: gainsboro; */
   background-color: rgb(109, 109, 109);
- 
 }
 header {
   font-family: sans-serif;
@@ -38,7 +36,6 @@ header {
 #page-header button {
   margin-top: 0px;
 }
-/* Dropdown Button */
 /* Dropdown Button */
 .dropbtn {
   background-color: #3498db;
@@ -89,18 +86,56 @@ header {
   display: block;
 }
 
-
 .hidden {
   display: none;
 }
 
-
 iframe {
-   border: solid black 15px;
+  border: solid black 15px;
   margin: 1rem;
 }
 
-#page-title {
- 
+#page-header div#page-title {
   color: magenta;
+  font-weight: bold;
+}
+
+h3 {
+  color: rgb(18, 183, 248);
+}
+
+a {
+  text-decoration: none;
+}
+
+#site-title a {
+  color: rgb(255, 255, 184);
+  padding: 0.5rem;
+}
+
+span#site-star {
+  /* padding: 0.5rem; */
+  display: inline-block;
+  padding-right: 0.25rem;
+  padding-left: 0.25rem;
+  transform: translate(0px, 5px);
+}
+
+
+button {
+  background-color: gray;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+  letter-spacing: 0.25rem;
+  border: none;
+}
+
+#add-tutorial-button, #cancel-add-tutorial-button {
+  transform: translate(0px, -5px);
+}
+
+
+#page-frame {
+  min-width: 1060px;
 }

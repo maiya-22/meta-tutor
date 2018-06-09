@@ -1,51 +1,39 @@
-
 <%content_for :page_header do%> 
-  <div id="add-tutorial-form-controls">
-      <button data-show="create-tutorial-form" class="click-to-show">add a tutorial</button>
-      <form>
-          <button data-show="create-tutorial-form"  hidden>cancel</button>
-      </form>
-  </div>
+    <div id=“page-title">
+    All Tutorials :
+    </div>
+    <div id="add-tutorial-form-controls">
+        <button id="add-tutorial-button" data-show="create-tutorial-form" class="click-to-show">add a tutorial</button>
+        <button id="cancel-add-tutorial-button" data-show="create-tutorial-form" class="click-to-show" hidden>cancel</button>
+    </div>
   <div  data-show="create-tutorial-form" hidden>
-
-
-
-<div id="create-tutorial-form">
-    <form action="/tutorials" method="POST">
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-      Get some create stars:
-      <input type="text" name="tutorial[title]" placeholder="what it the tutorial title" /><br>
-      author:
-      <input type="text" name="tutorial[author]" placeholder="who is the presenter?"/><br>
-      url:
-      <input type="text" name="tutorial[url]" placeholder="paste the url here"/><br>
-      playlist:
-      <input type="text" name="video[playlist]" placeholder="what is the name of the playlist it belongs to?"/><br>
-      <input hidden type="text" name="video[format]" value="video"/><br>
-      <div class="form-controls">
-      duration:
-      <input type="text" name="video[duration]" placeholder="how many minutes long is"/><br>
-      <button type="submit">submit</button>
-      </div>
-    </form>
-
-</div>
-
-
-
-</div>
-<div id=“page-title">
-All Tutorials
-</div>
+   
+    <div id="create-tutorial-form">
+        <form action="/tutorials" method="POST">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+          <h3 id="add-tutorial-header">Get some create stars:</h3>
+          <input type="text" name="tutorial[title]" placeholder="what it the tutorial title" /><br>
+          <input type="text" name="tutorial[author]" placeholder="who is the presenter?"/><br>
+          <input type="text" name="tutorial[url]" placeholder="paste the url here"/><br>
+          <input type="text" name="video[playlist]" placeholder="what is the name of the playlist it belongs to?"/><br>
+          <input hidden type="text" name="video[format]" value="video"/><br>
+          <input type="text" name="video[duration]" placeholder="how many minutes long is"/><br>
+          <div class="form-controls">
+          <button class="submit" type="submit">submit</button>
+          </div>
+        </form>
+    </div> 
+  </div> 
 <%end%>
+
 <div id="tutorials-index-frame">
 
 
 <%@videos.each do |video|%>
   <div class="tutorial-index-wrap">
+    <h3> <%=video.tutorial.title%></h3>
     <ul>
-      <li>From: <%=video.channel%></li>
-      <li>Tutorial: <%=video.tutorial.title%></li>
+      <li>From the <%=video.channel%> channel</li>
       <li>Presented by: <%=video.tutorial.author%></li>
       <li><%=video.duration%> minutes</li>
       <li><%=video.tutorial.questions.length%> question(s) asked on this tutorial</li>
@@ -56,8 +44,8 @@ All Tutorials
           <%end%>
           <%=@unanswered%> unanswered questions
       </li>
-      <li>
-          <a href="/tutorial/<%=video.tutorial.id%>">ask and answer questions</a>
+      <li class="see-tutorial-link">
+          <a  href="/tutorial/<%=video.tutorial.id%>">ask and answer questions</a>
       </li>
     </ul>
     
@@ -67,6 +55,4 @@ All Tutorials
 <%end%>
 
 </div>
-
-
 

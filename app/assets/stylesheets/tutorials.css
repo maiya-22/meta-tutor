@@ -1,6 +1,33 @@
 form {
   font-family: monospace;
 }
+#add-tutorial-header {
+  color: gray;
+}
+
+.see-tutorial-link {
+  background-color: darkgray;
+  padding: 0.5rem;
+  align-self: flex-end;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content:center;
+  letter-spacing: .21rem;
+}
+.see-tutorial-link a {
+  display: inline-block;
+  color: white;
+}
+
+.see-tutorial-link:hover {
+  background-color: blue
+}
+.see-tutorial-link a:hover {
+  display: inline-block;
+  color: white;
+
+}
+
 
 /* on tutorial index page */
 #tutorials-index-frame {
@@ -11,18 +38,27 @@ form {
 
   font-family: sans-serif;
   justify-content: space-between;
-  
 }
-
 
 .tutorial-index-wrap {
+  line-height: 1.5rem;
   margin-top: 2rem;
-  margin-bottom: 2rem;
-  padding: 1rem 1rem 2rem 1rem;
-  line-height: 1.75rem;
+  margin-left: 3rem;
   border-radius: 5px;
-  background-color: white;
+  background-color: gray;
+  width: 25vw;
+  border: solid rgb(68, 72, 79) 5px;
 }
+
+.tutorial-index-wrap h3 {
+  background-color: rgb(68, 72, 79);
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+.tutorial-index-wrap li {
+  padding-left: 1rem;
+}
+
 
 #add-tutorial-form-controls {
   position: absolute;
@@ -32,36 +68,33 @@ form {
 #create-tutorial-form {
   position: absolute;
   right: 15vw;
-  top: 7rem;
+  top: 8.5rem;
   padding: 1rem;
   background-color: white;
-  box-shadow: -5px 5px 15px darkgray;
+  box-shadow: -5px 5px 15px black;
   border-radius: 5px;
   border: solid gray 5px;
-  width: 350px;
+  width: 400px;
   height: 450px;
 }
 #create-tutorial-form form:nth-child(1) {
   height: 100%;
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
 }
 
-
 #create-tutorial-form input {
-  width: 90%;
+  width: 100%;
   padding: 0.5rem;
   border: dotted gainsboro 1px;
-  margin: 0.75rem;
+  margin: 0.5rem;
+  color: gainsboro;
 }
 
-
 #edit-tutorial-form {
-
- 
 }
 #edit-tutorial-form input {
   width: 80%;
@@ -72,20 +105,12 @@ button {
   margin-top: 1rem;
 }
 
-
 /* SHOW TUTORIAL PAGE: */
 #tutorial-header-frame {
   width: 100%;
   border: solid magenta 3px;
-  z-index:-1;
+  z-index: -1;
 }
-
-
-
-
-
-
-
 
 #tutorial-video-and-nav {
   border: blue dotted 5px;
@@ -107,23 +132,21 @@ button {
   z-index: 100;
 }
 
-
 /* new styles */
 #tutorial-display-wrap {
   position: fixed;
   top: 10rem;
   left: calc(15vw);
   max-width: 350px;
-   background-color: black;
+  background-color: black;
   padding: 2rem;
   line-height: 1.5rem;
   border-radius: 5px;
   border: darkgray 5px solid;
-  font-family:monospace;
+  font-family: monospace;
 }
 
 #show-tutorial-page-wrap {
-  /* border: solid purple 5px; */
   width: 50vw;
   margin-left: calc(40vw);
   padding-left: 1.5rem;
@@ -136,7 +159,7 @@ button {
   margin-bottom: 1rem;
   line-height: 1.5rem;
   border-radius: 5px;
-  border: solid 3px  rgb(39, 34, 147);
+  border: solid 3px rgb(39, 34, 147);
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -144,5 +167,4 @@ button {
 
 .question-tutorial-show-wrap * {
   display: inline-block;
-  /* border: magenta 1px solid; */
 }

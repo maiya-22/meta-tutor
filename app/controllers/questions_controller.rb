@@ -50,39 +50,6 @@ class QuestionsController < ApplicationController
     if(@question.save)
       redirect_to "/tutorials/#{params[:tutorial_id]}/questions/#{@question.id}"
     end
-
-    # render json: @question
-    # redirect_to "/tutorials/#{params[:tutorial_id]}"
-    
-    # respond_to do |format|
-    #   if @question.save
-    #     format.html { redirect_to @question, notice: 'Question was successfully created.' }
-    #     format.json { render :show, status: :created, location: @question }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @question.errors, status: :unprocessable_entity }
-    #   end
-    # end
-
-
-#     <form action="/question" method="post">
-#     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-#     <input hidden name="tutorial_id" value="<%=@tutorial.id%>"/>
-#     <input hidden name="status" value="open"></input>
-
-#     title:
-#     <input name="title"/>
-#     content:
-#     <input name="content" placehodler="ask your question ..."></input>
-#     time:
-#     <input  name="time" placeholer="enter the time-stamp of your question"></input>
-#     <button type="submit">submit question</button>
-# </form>
-# <button data-show="comment-<%=%>" class="click-to-show" hidden>cancel</button>
-
-
-
-
   end
 
   # PATCH/PUT /questions/1

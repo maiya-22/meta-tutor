@@ -7,12 +7,15 @@ require 'faker'
 
 @user_one = User.find(1)
 @user_one.name = "Chuck"
+@user_one.save
 
 @user_two = User.find(2)
 @user_two.name = "Charlie"
+@user_two.save
 
 @user_three = User.find(3)
 @user_three.name = "Sam"
+@user_three.save
 
 
 
@@ -48,7 +51,7 @@ require 'faker'
 
 Comment.create(
     content: "I like your Question.  I had the same one!  Thanks",
-    user_id: @user_id_two
+    user_id: @user_id_two,
     question_id: 1
 )
 

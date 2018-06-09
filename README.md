@@ -1,10 +1,9 @@
 A question-answer site for tutorials.
-
 To set up: 
 in terminal
 1) rails db:create
 2) rails db:migrate
-3) sign up three times, to create 3 different users
+(stop and sign up three times, to create 3 different users)
 4) rails db:seed
 
 (in progress)

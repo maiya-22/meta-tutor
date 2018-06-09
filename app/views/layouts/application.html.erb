@@ -3,10 +3,8 @@
 <head>
     <title>Journal</title>
     <%= csrf_meta_tags %>
-     
         <%= csp_meta_tag %>
         <%= stylesheet_link_tag    'application', media: 'all' %>
-      
         <link href="https://fonts.googleapis.com/css?family=Tinos" rel="stylesheet">
         <%= javascript_include_tag 'application', :defer => "defer" %>
 </head>
@@ -24,33 +22,29 @@
                     <a href="#">CSS</a>
                     <a href="#">JavaScript</a>
                     <a href="#">SQL</a>
-                    <a id="explore-more-arrow" href="#"> ▾   </a>
+                    <a id="explore-more-arrow" href="#"> ▾  </a>
                 </div>
-                
                 <form id="search-tutorials" action="/tutorials/search" method="GET">
                     <input type="text" class="searchTerm" placeholder="Search by title .." name="title">
                     <button type="submit" class="searchButton">search</button>
                 </form>
-
                 <div>
                     <a href="/">
                         see all tutorials
                     </a>
                 </div>
-                
             </div>
             <div id="header-profile-wrap">
             <% if user_signed_in? %>
                 <div class="dropdown">
                   <button class="dropbtn" onclick="myFunction()">
-                   <%=current_user.name%></button>
+                   <%=current_user.name || "log out" %></button>
                    <div id="myDropdown" class="dropdown-content">
                    <form action="/users/sign_out" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
                         <button>logout</button>
                    </form>
-                  
                     </div>
                 </div>
               <% else %>
@@ -87,7 +81,6 @@
             </div>
         </div>
         <div id="page-header">
-      
             <%= yield :page_header %>
         </div>
     </header>

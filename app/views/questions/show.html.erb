@@ -1,12 +1,12 @@
 
 <% content_for :page_header do %>
-  <div id="question-page-header">
+
   
         <%= link_to 'add a new tutorial', new_tutorial_path, class: "page-header-add-tutorial" %> *
         <%= link_to 'answer questions', new_tutorial_path, class: "page-header-add-tutorial" %>
         <a href="#">link to ask a question</a>
         <a href="<%=@question.tutorial.url%>"></a>
-    </div>
+
 <% end %>
 <div id="question-page-wrap">
   <p id="notice"><%= notice %></p>

@@ -65,7 +65,7 @@ class TutorialsController < ApplicationController
       title: params[:tutorial][:title],
       author: params[:tutorial][:author],
       url: params[:tutorial][:url],
-      format: params[:tutorial][:format]
+      format: "video"
     )
     if(@tutorial.save && @tutorial.format == "video")
       @duration_obj = params[:duration]
@@ -77,7 +77,7 @@ class TutorialsController < ApplicationController
         duration: @duration_temp,
       )
       if(@video.save)
-        redirect_to "/tutorials/#{@tutorial.id}"
+        redirect_to "/tutorial/#{@tutorial.id}"
       end
     end
 

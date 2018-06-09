@@ -23,6 +23,7 @@
 body {
   padding-top: 3rem;
   font-family: "Tinos", serif;
+  background-color: gainsboro;
   /* background-color: rgb(68, 68, 68); */
 }
 header {

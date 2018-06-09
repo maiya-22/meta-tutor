@@ -1,10 +1,66 @@
-/* on tutorial index page */
-.tutorials-summary-wrap {
-  background-color: magenta;
-  width: 30vw;
-  margin: auto;
-  margin-bottom: 1rem;
+form {
+  font-family: monospace;
 }
+
+/* on tutorial index page */
+#tutorials-index-frame {
+  width: 80%;
+  margin: auto;
+  /* border: dotted orange 5px; */
+  display: flex;
+  flex-direction: column;
+
+  font-family: sans-serif;
+  justify-content: space-between;
+  
+}
+
+
+.tutorial-index-wrap {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem 1rem 2rem 1rem;
+  line-height: 1.75rem;
+  border-radius: 5px;
+  background-color: white;
+}
+
+#add-tutorial-form-controls {
+  position: absolute;
+  right: 4rem;
+}
+
+#create-tutorial-form {
+  position: absolute;
+  right: 15vw;
+  top: 7rem;
+  /* border: solid green 1px; */
+  padding: 1rem;
+  
+  background-color: white;
+  box-shadow: -5px 5px 15px darkgray;
+  border-radius: 5px;
+  border: solid gray 5px;
+  width: 350px;
+  height: 450px;
+}
+#create-tutorial-form form:nth-child(1) {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+
+#create-tutorial-form input {
+  width: 90%;
+  padding: 0.5rem;
+  border: dotted gainsboro 1px;
+  margin: 0.75rem;
+}
+
 
 /* SHOW TUTORIAL PAGE: */
 #tutorial-header-frame {

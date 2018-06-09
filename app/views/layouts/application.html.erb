@@ -5,10 +5,10 @@
     <%= csrf_meta_tags %>
      
         <%= csp_meta_tag %>
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <link rel="stylesheet" href="animate.min.css">
+        <%= stylesheet_link_tag    'application', media: 'all' %>
+      
         <link href="https://fonts.googleapis.com/css?family=Tinos" rel="stylesheet">
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' , :defer => "defer" %>
+        <%= javascript_include_tag 'application', :defer => "defer" %>
 </head>
 <body>
     <div id="site-info"> meta*tutor:  ask questions about programming tutorials.  go deeper into tutorials.  make a tutorial about a tutorial.  get stars</div>
@@ -82,8 +82,8 @@
             </div>
         </div>
         <div id="page-header">
+      
             <%= yield :page_header %>
-            <%#do a content for yield here%>
         </div>
     </header>
     <div id="flash-notices">

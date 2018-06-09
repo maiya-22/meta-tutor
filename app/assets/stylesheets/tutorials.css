@@ -6,7 +6,6 @@ form {
 #tutorials-index-frame {
   width: 80%;
   margin: auto;
-  /* border: dotted orange 5px; */
   display: flex;
   flex-direction: column;
 
@@ -34,9 +33,7 @@ form {
   position: absolute;
   right: 15vw;
   top: 7rem;
-  /* border: solid green 1px; */
   padding: 1rem;
-  
   background-color: white;
   box-shadow: -5px 5px 15px darkgray;
   border-radius: 5px;
@@ -62,6 +59,20 @@ form {
 }
 
 
+#edit-tutorial-form {
+
+ 
+}
+#edit-tutorial-form input {
+  width: 80%;
+  padding: 0.5rem;
+}
+
+button {
+  margin-top: 1rem;
+}
+
+
 /* SHOW TUTORIAL PAGE: */
 #tutorial-header-frame {
   width: 100%;
@@ -69,12 +80,15 @@ form {
   z-index:-1;
 }
 
-iframe {
-  border: 15px black solid;
-}
+
+
+
+
+
+
 
 #tutorial-video-and-nav {
-  border: green dotted 5px;
+  border: blue dotted 5px;
   width: 560px;
   float: right;
   margin-right: 10rem;
@@ -97,14 +111,38 @@ iframe {
 /* new styles */
 #tutorial-display-wrap {
   position: fixed;
-  top: 7rem;
-  left: calc(5vw);
-  border: dotted orange 3px;
+  top: 10rem;
+  left: calc(15vw);
+  max-width: 350px;
+   background-color: black;
+  padding: 2rem;
+  line-height: 1.5rem;
+  border-radius: 5px;
+  border: darkgray 5px solid;
+  font-family:monospace;
 }
 
 #show-tutorial-page-wrap {
-  border: solid purple 5px;
+  /* border: solid purple 5px; */
   width: 50vw;
-  margin-left: calc(30vw);
+  margin-left: calc(40vw);
   padding-left: 1.5rem;
+}
+
+.question-tutorial-show-wrap {
+  width: 70%;
+  padding: 1rem;
+  background-color: white;
+  margin-bottom: 1rem;
+  line-height: 1.5rem;
+  border-radius: 5px;
+  border: solid 3px  rgb(39, 34, 147);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.question-tutorial-show-wrap * {
+  display: inline-block;
+  /* border: magenta 1px solid; */
 }

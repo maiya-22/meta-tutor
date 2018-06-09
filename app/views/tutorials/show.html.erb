@@ -1,96 +1,68 @@
 <% content_for :page_header do %>
-  <div id="tutorial-header-frame">
-    <div>
-    ...............................................................................  These are all of the questions:
+  <a href="/tutorial/<%=@tutorial.id%>/question/new">Ask a question about ths tutorial: </a>
     </div>
-
-
-   
     <div id="tutorial-display-wrap">
 
       <%if @tutorial.format == "video"%>
       <div>
-      Video: <%=@tutorial.title%> <br>
-      Channel: <%=@tutorial.video.channel%> <br>
-      Playlist: <%=@tutorial.video.playlist%> <br>
+      Tutorial: <%=@tutorial.title%> <br>
+      From the <%=@tutorial.video.playlist%> playlist <br>
+      On the <%=@tutorial.video.channel%> Channel <br>
+      
       Presented by <%=@tutorial.author%> <br>
       </div>
           <iframe id="tutorial-video" width="280" height="207.5" src="<%=@tutorial.url%>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen webkitallowfullscreen='true'></iframe>
-          <br><%=@tutorial.video.duration%> mins
-          <h3>time-stamps of questions:</h3>
+          <br>
+          <a href="/tutorial/<%=@tutorial.id%>/question/new" data-show="edit-tutorial-form">Ask a question</a>
           <div>
-            <%@questions.each do |question|%>
-              <a href="#"><%=question.time%></a>
-            <%end%>
-          </div>
-         
-          <a href="/tutorial/<%=@tutorial.id%>/question/new">Add a question to ths tutorial: </a>
           <button data-show="edit-tutorial-form" class="click-to-show">edit video</button>
   <div data-show="edit-tutorial-form" hidden>
-  <form action="/tutorials/<%=@tutorial.id%>" accept-charset="UTF-8" method="post">
+  <form id="edit-tutorial-form" action="/tutorial/<%=@tutorial.id%>" accept-charset="UTF-8" method="post">
   <input name="utf8" type="hidden" value="&#x2713;" />
   <input type="hidden" name="_method" value="patch" />
   <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-  title:
+  title: <br>
     <input type="text" name="tutorial[title]" value="<%=@tutorial.title%>" /><br>
-  author:
+  author:<br>
     <input type="text" name="tutorial[author]" value="<%=@tutorial.author%>"/><br>
-  url:
+  url:<br>
     <input type="text" name="tutorial[url]" value="<%=@tutorial.url%>"/><br>
-  playlist:
+  playlist:<br>
     <input type="text" name="video[playlist]" value="<%=@tutorial.video.playlist%>"/><br>
+    duration:
     <input type="text" name="video[duration]" value="<%=@tutorial.video.duration%>"/><br>
-    <input hidden type="text" name="video[format]" value="video"/>
-    <input type="submit" name="commit" value="Edit Tutorial" />
+  
+    <input hidden name="video[format]" value="video"/>
+    <button type="submit">edit</button>
 </form>
 <form>
      <button>cancel</button>
 </form>
 </div>
-          
+</div>
       <%elsif @tutorial.format == "chapter"%>
         "we do not yet support chapters"
       <%end%>
-    </div>
-
-
-
-
-
+    
 
   </div>
 <%end%>
 
 <div id="show-tutorial-page-wrap">
-  <a href="#end">go to end of page</a>
-  SHOW THE QUESTIONS:
-  <br>
+
   <%@questions.each do |question|%>
-    - - - - - - - -
-    <div>
-      Question: <%=question.title%>
-      <br>
-      <a class="show-tutorial-link" href="/tutorials/<%=@tutorial.id%>/questions/<%=question.id%>">See This Question</a>
-      <br>
-      status: <%=question.status%>
-      at time: <%=question.time%> min
-    </div>
-    - - - - - - - -
-  <%end%>
-  <% 1000.times.each do |num| %>
-    <%@questions.each do |question|%>
-      - - - - - - - -
-      <div>
-        Question: <%=question.title%>
-        <br>
-        <a class="show-tutorial-link" href="/tutorials/<%=@tutorial.id%>/questions/<%=question.id%>">See This Question</a>
-        <br>
-        status: <%question.status%>
-        at time: <%question.time%> min
+      <div class="question-tutorial-show-wrap">
+          at <%=question.time%> mins <br>
+          <%=question.title%>
+          <br>
+        
+          status: <%=question.status%>        <br>
+
+          <a class="show-tutorial-link" href="/tutorials/<%=@tutorial.id%>/questions/<%=question.id%>">See This Question</a>
+    
       </div>
-      - - - - - - - -
-    <%end%>
-  <% end %>
-  <div id="end"> end of page
-  </div>
+  <%end%>
+  
+  <div id="end">
+</div>
 </div>

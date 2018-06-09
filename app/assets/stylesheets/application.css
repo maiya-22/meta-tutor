@@ -23,8 +23,9 @@
 body {
   padding-top: 3rem;
   font-family: "Tinos", serif;
-  background-color: gainsboro;
-  /* background-color: rgb(68, 68, 68); */
+  /* background-color: gainsboro; */
+  background-color: rgb(109, 109, 109);
+ 
 }
 header {
   font-family: sans-serif;
@@ -34,7 +35,9 @@ header {
   top: 0px;
   background-color: pink;
 }
-
+#page-header button {
+  margin-top: 0px;
+}
 /* Dropdown Button */
 /* Dropdown Button */
 .dropbtn {
@@ -93,5 +96,11 @@ header {
 
 
 iframe {
-  border: dotted green 2px;
+   border: solid black 15px;
+  margin: 1rem;
+}
+
+#page-title {
+ 
+  color: magenta;
 }

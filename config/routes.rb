@@ -10,7 +10,7 @@ post "/tutorials", to: "tutorials#create"
 get '/tutorials/search', to: 'tutorials#search'
 get '/tutorials/new', to: "tutorials#new"
 get '/tutorial/:tutorial_id', to: 'tutorials#show'
-patch '/tutorials/:tutorial_id', to: 'tutorials#update'
+patch '/tutorial/:tutorial_id', to: 'tutorials#update'
 
 
 

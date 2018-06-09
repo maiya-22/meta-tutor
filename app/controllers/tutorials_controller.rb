@@ -125,7 +125,7 @@ class TutorialsController < ApplicationController
     @video = @tutorial.video
     @video.update_attributes(video_params)
 
-    redirect_to "/tutorials/#{params[:tutorial_id]}"
+    redirect_to "/tutorial/#{params[:tutorial_id]}"
     # render json: {
     #   tutorial: @tutorial,
     #   video: @video

@@ -44,7 +44,6 @@ form {
   line-height: 1.5rem;
   margin-top: 2rem;
   margin-left: 3rem;
-  border-radius: 5px;
   background-color: gray;
   width: 25vw;
   border: solid rgb(68, 72, 79) 5px;
@@ -141,7 +140,7 @@ button {
   background-color: black;
   padding: 2rem;
   line-height: 1.5rem;
-  border-radius: 5px;
+
   border: darkgray 5px solid;
   font-family: monospace;
 }
@@ -154,17 +153,31 @@ button {
 
 .question-tutorial-show-wrap {
   width: 70%;
-  padding: 1rem;
-  background-color: white;
+ 
+  background-color: gray;
   margin-bottom: 1rem;
   line-height: 1.5rem;
-  border-radius: 5px;
-  border: solid 3px rgb(39, 34, 147);
+  border: solid rgb(51, 55, 79) 5px ;
   display: flex;
   flex-direction: column;
   align-content: center;
 }
 
-.question-tutorial-show-wrap * {
-  display: inline-block;
+.question-tutorial-show-wrap li {
+  padding: 0.5rem;
+}
+.question-tutorial-show-wrap button {
+  background-color: rgb(51, 55, 79);
+  border-radius: 0px;
+}
+
+
+#ask-question-link {
+  color:white;
+  
+}
+
+button a {
+  color: white;
+  
 }

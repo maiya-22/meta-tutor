@@ -1,8 +1,6 @@
 <% content_for :page_header do %>
-  <a href="/tutorial/<%=@tutorial.id%>/question/new">Ask a question about ths tutorial: </a>
     </div>
     <div id="tutorial-display-wrap">
-
       <%if @tutorial.format == "video"%>
       <div>
       Tutorial: <%=@tutorial.title%> <br>
@@ -12,10 +10,9 @@
       Presented by <%=@tutorial.author%> <br>
       </div>
           <iframe id="tutorial-video" width="280" height="207.5" src="<%=@tutorial.url%>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen webkitallowfullscreen='true'></iframe>
-          <br>
-          <a href="/tutorial/<%=@tutorial.id%>/question/new" data-show="edit-tutorial-form">Ask a question</a>
+        
           <div>
-          <button data-show="edit-tutorial-form" class="click-to-show">edit video</button>
+          <button data-show="edit-tutorial-form" class="click-to-show">edit tutorial info</button>
   <div data-show="edit-tutorial-form" hidden>
   <form id="edit-tutorial-form" action="/tutorial/<%=@tutorial.id%>" accept-charset="UTF-8" method="post">
   <input name="utf8" type="hidden" value="&#x2713;" />
@@ -31,7 +28,6 @@
     <input type="text" name="video[playlist]" value="<%=@tutorial.video.playlist%>"/><br>
     duration:
     <input type="text" name="video[duration]" value="<%=@tutorial.video.duration%>"/><br>
-  
     <input hidden name="video[format]" value="video"/>
     <button type="submit">edit</button>
 </form>
@@ -39,12 +35,11 @@
      <button>cancel</button>
 </form>
 </div>
+  <button><a id="ask-question-link" href="/tutorial/<%=@tutorial.id%>/question/new">ask a question about ths tutorial</a></button>
 </div>
       <%elsif @tutorial.format == "chapter"%>
         "we do not yet support chapters"
       <%end%>
-    
-
   </div>
 <%end%>
 
@@ -52,13 +47,20 @@
 
   <%@questions.each do |question|%>
       <div class="question-tutorial-show-wrap">
-          at <%=question.time%> mins <br>
+        <ul>
+          <li>
+          @ <%=question.time%> mins
+          </li>
+          <li>
           <%=question.title%>
-          <br>
-        
-          status: <%=question.status%>        <br>
-
-          <a class="show-tutorial-link" href="/tutorials/<%=@tutorial.id%>/questions/<%=question.id%>">See This Question</a>
+          </li>
+          <li>
+          status: <%=question.status%> 
+          </li>
+        </ul>
+        <button>
+          <a class="show-tutorial-link" href="/tutorials/<%=@tutorial.id%>/questions/<%=question.id%>">see This Question</a>
+        </button>
     
       </div>
   <%end%>

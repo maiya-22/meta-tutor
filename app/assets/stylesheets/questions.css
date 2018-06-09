@@ -6,7 +6,6 @@
   padding-right: 20vw;
   /* border: solid 1px white; */
   margin-top: 2rem;
-  border: dotted orange 3px;
   display: flex;
   flex-direction:column;
 }
@@ -18,8 +17,8 @@
   display: flex;
   min-height: 40vh;
   /* background-color: rgba(128, 129, 129, 0.452); */
-  box-shadow: 0px -5px 15px darkgray;
-  border: solid pink 1px;
+  box-shadow: 1px 5px 15px black;
+ 
   border-radius: 5px;
   background-color: white;
 }
@@ -31,11 +30,11 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  border: dotted green 3px;
+ 
 }
 
 #question-content-wrap {
-  /* border: dotted gainsboro 1px; */
+
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -44,29 +43,32 @@
   padding-right: 4rem;
   background-color: white;
   line-height: 1.5rem;
-  border: solid purple 3px;
+ 
 }
 
 #question-title {
   /* background-color: rgba(58, 58, 53, 0.884); */
-  height: 1.5rem;
-  font-size: 2rem;
+  
+  font-size: 1.2rem;
   border-radius: 5px;
   padding: 0.1rem;
-  color: darkgray;
+  color: black;
   letter-spacing: 0.3rem;
   font-weight: bold;
   /* display: flex; */
-  border: blue 2px solid;
+  /* border: blue 2px solid; */
   justify-content: center;
 }
 
-#actual-question-content {
+#question-title span {
+  color: gray;
+  font-size: 1rem;
+}
+.actual-question-content {
   flex-grow: 3;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  /* border: dotted blue 2px; */
-  border: solid gray 2px;
+
 }
 
 #question-content-tags-wrap {
@@ -74,7 +76,6 @@
   padding: 0.25rem;
   display: flex;
   flex-wrap: wrap;
-  border: olive 2px solid;
 }
 
 .tag {
@@ -85,11 +86,11 @@
 }
 
 #question-footer {
-  border: solid turquoise 3px;
+
 }
 
 #question-footer div {
-  border: dotted pink 3px;
+
 }
 .question-star-vote {
   /* text-decoration: none; */
@@ -140,7 +141,6 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-right: 7rem;
-  border: solid  purple 5px;
 }
 
 .comment-wrap {
@@ -149,13 +149,13 @@
   width: 70%;
   /* border: solid gray 7px; */
   padding: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.7rem;
   line-height: 1.3rem;
-  background-color: rgb(243, 243, 243);
-  border: dotted magenta 3px;
+  background-color: white;
   background-color: lightgray;
   /* border: solid rgb(85, 84, 84) 7px; */
   align-self: flex-end;
+
 }
 
 .answer-wrap {
@@ -165,7 +165,7 @@
 
 
 #add-comment-container, .comment-wrap {
-  border: solid purple 3px;
+
 }
 
 #add-comment-container textarea {
@@ -183,4 +183,16 @@
 .comment-wrap form button {
   width: 3rem;
   align-self: flex-end;
+}
+
+.add-comment-button {
+  width: 17rem;
+  align-self:flex-end;
+}
+
+.edit-question-form input {
+  font-size: 1rem;
+  border: dotted purple 3px;
+  width: 100%;
+  padding: 1rem;
 }

@@ -1,13 +1,7 @@
 <% content_for :page_header do %>
-   
-        <a href="">back to tutorial</a>
-        <a href="">see all tutorials</a>
-        <a href="">ask another question about this tutorial</a>
-
+    <a href="/tutorial/<%=@question.tutorial.id%>"> << --  back to tutorial:     <%=@tutorial.title%>  by: <%=@tutorial.author%></a>
     <% end %>
         <div id="question-page-wrap">
-
-        QUESTION PAGE WRAP
             <div id="question-page-question-wrap">
                 <div id="question-status-wrap">
                     <a class="question-star-vote" href="#">˄</a>
@@ -22,19 +16,14 @@
                     <a class="question-star-vote" href="#">˅</a>
                 </div>
                 <div id="question-content-wrap" >
-                    QUESTION CONTENT
-        
+                   
                     <div id="question-title" data-show="question" >
-                        <%= @question.title %>
+                        title: <%= @question.title %> <span>(@ <%= @question.time %> mins in the video) </span>
                     </div>
-                    <div id="" data-show="question" >
-                        at <%= @question.time %> mins
-                    </div>
-                    <div id="actual-question-content" class="question-display"  data-show="question">
+                    <div class="actual-question-content" class="question-display"  data-show="question">
                         <%=@question.content%>
                     </div>
-                    FORM EDIT QUESTION | 
-                    <div id="edit-question-form" data-show="question" hidden>
+                    <div class="edit-question-form" data-show="question" hidden>
                     
                         <form action="/questions/<%=@question.id%>" method="post">
                             <input type="hidden" name="_method" value="patch" />
@@ -47,15 +36,19 @@
                                 </div>
                                 <div>
                                     content:
-                                    <input id="actual-question-content" value="<%=@question.content%>" name="question[content]"> </input>
+                                    <input class="actual-question-content" value="<%=@question.content%>" name="question[content]"> </input>
                                 </div>
                                 <button type="submit">submit</button>
                         </form>
+                        <form action="/questions/<%=@question.id%>" method="post">
+                        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                            <input type="hidden" name="_method" value="delete" />
+                            <button type="submit">delete</button>
+                    </form>
                         <button data-show="question" class="click-to-show" hidden>cancel</button>
                     </div>
-                    QUESTION FOOTER
-                    <div id="question-footer">
-                        <div id="question-content-tags-wrap">
+                    <div id="question-footer" data-show="question">
+                        <div id="question-content-tags-wrap" >
                             <%@tags = Tag.all%>
                                 <%@tags.each do |tag|%>
                                     <div class="tag">
@@ -64,35 +57,22 @@
                                 <%end%>
                         </div>
                         <div>
-                            by:
-                            <%= @question.user.name %>
+                            question by @<%= @question.user.name %>
                         </div>
-                        EDIT QUESTION BUTTON
                         <div>
                             <%if current_user.id == @user.id%>
                                 <button id="edit-question-button" data-show="question" class="click-to-show">edit this question</button>
-                                DELETE QUESTION FORM:
-                                <form action="/questions/<%=@question.id%>" method="post">
-                                    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-                                        <input type="hidden" name="_method" value="delete" />
-                                        <button type="submit">delete</button>
-                                </form>
                             <%end%>
                         </div>
                     </div>
                 </div>
                 
             </div>
-
-            START OF COMMENTS for question:
-            <%#  START OF COMMENTS%>
             <%@question.comments.each do |comment|%>
                 <div class="comment-wrap">
                     <div data-show="comment-<%=comment.id%>"><%=comment.content%></div>
-                    <div>written by <%=comment.user.name%></div>
-                    CONTAINER FOR EDIT FORM | 
+                    <div>comment by @<%=comment.user.name%></div>
                     <div id="edit-question-comment-form" data-show="comment-<%=comment.id%>" hidden>
-                        #edit FORM FOR UPDATE COMMENT
                         <form action="/comments/<%=comment.id%>" method="post"n>
                             <input type="hidden" name="_method" value="patch" />
                             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
@@ -104,10 +84,7 @@
                         <button data-show="comment-<%=comment.id%>" class="click-to-show" hidden>cancel</button>
                     </div>
                     <%if current_user.id == comment.user.id%>
-                        BUTTON FOR SHOW EDIT FORM:
                         <button id="question-comment" data-show="comment-<%=comment.id%>" class="click-to-show">edit</button>
-                       
-                        DELETE FORM:
                         <form action="/comments/<%=comment.id%>" method="post">
                             <input type="hidden" name="_method" value="delete" />
                             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
@@ -132,13 +109,8 @@
                 <button  data-show="comment-<%=@question.id%>-add-next-comment" class="click-to-show" hidden>cancel</button>
             </div>
        
-            <button data-show="comment-<%=@question.id%>-add-next-comment" class="click-to-show">add a comment</button>
-
-           START OF ANSWERS:
-           <%#@question.answers.each do |answer|%>  
+            <button data-show="comment-<%=@question.id%>-add-next-comment" class="click-to-show add-comment-button">add a comment</button>
           <%@answers = @question.answers.order('answers.created_at DESC')%>  
-           
-          
           <%@answers.each do |answer|%>  
             <div id="question-page-question-wrap">
                 <div id="question-status-wrap">
@@ -154,11 +126,10 @@
                     <a class="question-star-vote" href="#">˅</a>
                 </div>
                 <div id="question-content-wrap">
-                    <div id="actual-question-content" class="question-display" data-show="answer-<%=answer.id%>">
+                    <div class="actual-question-content" class="question-display" data-show="answer-<%=answer.id%>">
                         <%=answer.content%>
                     </div>
-                    # EDIT ANSWER FORM:
-                    <div id="edit-answer-form">
+                    <div class="edit-question-form">
                         <form action="/answer/<%=answer.id%>" method="post" data-show="answer-<%=answer.id%>" hidden>
                             <input type="hidden" name="_method" value="patch" />
                             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
@@ -179,13 +150,11 @@
                                 <%end%>
                         </div>
                         <div>
-                            by:
-                            <%= @question.user.name %>
+                            answer by @<%= @question.user.name %>
                         </div>
                         <div>
                             <%#if current_user.id == @user.id%>
                                 <button id="edit-answer-button"  data-show="answer-<%=answer.id%>" class="click-to-show">edit this answer</button>
-                                DELETE ANSWER FORM
                                 <form action="/answers/<%=answer.id%>" method="post">
                                     <input type="hidden" name="_method" value="delete" />
                                     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
@@ -199,11 +168,10 @@
                 </div>
                 
             </div>
-            START OF COMMENTS FOR ANSWER:
             <%answer.comments.each do |comment|%>
                 <div class="comment-wrap">
                     <div data-show="comment-<%=comment.id%>"><%=comment.content%></div>
-                    <div>written by <%=comment.user.name%></div>
+                    <div>comment by @<%=comment.user.name%></div>
                     <div id="edit-question-comment-form" data-show="comment-<%=comment.id%>" hidden>
                         #edit EDIT COMMENT FORM FOR QUESTION
                         <form action="/comments/<%=comment.id%>" method="post"n>

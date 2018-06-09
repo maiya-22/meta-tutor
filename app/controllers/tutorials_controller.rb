@@ -126,45 +126,7 @@ class TutorialsController < ApplicationController
     @video.update_attributes(video_params)
 
     redirect_to "/tutorial/#{params[:tutorial_id]}"
-    # render json: {
-    #   tutorial: @tutorial,
-    #   video: @video
-    # }
-
-    # render json: params
-
-  #   <form action="/tutorials/<%=@tutorial.id%>" accept-charset="UTF-8" method="post">
-  #   <input name="utf8" type="hidden" value="&#x2713;" />
-  #   <input type="hidden" name="_method" value="patch" />
-  #   <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-  #   title:
-  #     <input type="text" name="title" value="<%=@tutorial.title%>" /><br>
-  #   author:
-  #     <input type="text" name="author" value="<%=@tutorial.author%>"/><br>
-  #   url:
-  #     <input type="text" name="tutorial[url]" /><br>
-  #   playlist:
-  #     <input type="text" name="playlist" /><br>
-  #     <input hidden type="text" name="tutorial[format]" value="chapter"/>
-    
-  #     <input type="submit" name="commit" value="Edit Tutorial" />
-  # </form>
-
-
-
-
-
-
-    # respond_to do |format|
-    #   if @tutorial.update(tutorial_params)
-    #     format.html { redirect_to @tutorial, notice: 'Tutorial was successfully updated.' }
-    #     format.json { render :show, status: :ok, location: @tutorial }
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @tutorial.errors, status: :unprocessable_entity }
-    #   end
-    # end
-
+  
   end
 
   # DELETE /tutorials/1
